@@ -148,6 +148,28 @@ body.login {
       align-items: flex-start; }
 
 /*
+##     ## ########    ###    ########  ######## ########
+##     ## ##         ## ##   ##     ## ##       ##     ##
+##     ## ##        ##   ##  ##     ## ##       ##     ##
+######### ######   ##     ## ##     ## ######   ########
+##     ## ##       ######### ##     ## ##       ##   ##
+##     ## ##       ##     ## ##     ## ##       ##    ##
+##     ## ######## ##     ## ########  ######## ##     ##
+*/
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3%;
+  background-color: #fff9f4;
+  color: #043540; }
+  header .fa-bars {
+    color: #043540;
+    z-index: 200; }
+  header .logo {
+    width: 10%; }
+
+/*
 ##     ## ######## ##    ## ##     ##
 ###   ### ##       ###   ## ##     ##
 #### #### ##       ####  ## ##     ##
@@ -237,25 +259,3 @@ body.login {
 
 .menu--visible.menu--animatable .app-menu {
   transition: all 330ms ease-out; }
-
-/*
-##     ## ########    ###    ########  ######## ########
-##     ## ##         ## ##   ##     ## ##       ##     ##
-##     ## ##        ##   ##  ##     ## ##       ##     ##
-######### ######   ##     ## ##     ## ######   ########
-##     ## ##       ######### ##     ## ##       ##   ##
-##     ## ##       ##     ## ##     ## ##       ##    ##
-##     ## ######## ##     ## ########  ######## ##     ##
-*/
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 3%;
-  background-color: #fff9f4;
-  color: #043540; }
-  header .fa-bars {
-    color: #043540;
-    z-index: 200; }
-  header .logo {
-    width: 10%; }

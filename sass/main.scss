@@ -150,6 +150,32 @@ body.login {
     }
 }
 
+/*
+##     ## ########    ###    ########  ######## ########
+##     ## ##         ## ##   ##     ## ##       ##     ##
+##     ## ##        ##   ##  ##     ## ##       ##     ##
+######### ######   ##     ## ##     ## ######   ########
+##     ## ##       ######### ##     ## ##       ##   ##
+##     ## ##       ##     ## ##     ## ##       ##    ##
+##     ## ######## ##     ## ########  ######## ##     ##
+*/
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3%;
+    background-color: $beige;
+    color: $teal;
+
+    .fa-bars {
+        color: $teal;
+        z-index: 200;
+    }
+    .logo {
+        width: 10%;
+    }
+}
 
 /*
 ##     ## ######## ##    ## ##     ##
@@ -247,31 +273,4 @@ body.login {
 
 .menu--visible.menu--animatable  {
     .app-menu { transition: all 330ms ease-out; }
-}
-
-/*
-##     ## ########    ###    ########  ######## ########
-##     ## ##         ## ##   ##     ## ##       ##     ##
-##     ## ##        ##   ##  ##     ## ##       ##     ##
-######### ######   ##     ## ##     ## ######   ########
-##     ## ##       ######### ##     ## ##       ##   ##
-##     ## ##       ##     ## ##     ## ##       ##    ##
-##     ## ######## ##     ## ########  ######## ##     ##
-*/
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 3%;
-    background-color: $beige;
-    color: $teal;
-
-    .fa-bars {
-        color: $teal;
-        z-index: 200;
-    }
-    .logo {
-        width: 10%;
-    }
 }
