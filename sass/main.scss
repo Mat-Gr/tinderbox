@@ -73,10 +73,6 @@ html, body {
 body.login {
     color: $beige;
     background-color: $teal;
-    background-image: url("../imgs/login-bg.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
 
     @include linx(underline, $beige, $beige, $beige, $beige);
 
