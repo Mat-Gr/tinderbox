@@ -57,10 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |	['ssl_options']	Used to set various SSL options that can be used when making SSL connections.
 |	['failover'] array - A array with 0 or more data for connections if the main should fail.
 |	['save_queries'] TRUE/FALSE - Whether to "save" all executed queries.
-| 				NOTE: Disabling this will also effectively disable both
-| 				$this->db->last_query() and profiling of DB queries.
-| 				When you run a query, with this setting set to TRUE (default),
-| 				CodeIgniter will store the SQL statement for debugging purposes.
+| 				NOTE: SQL statement for debugging purposes.
 | 				However, this may cause high memory usage, especially if you run
 | 				a lot of SQL queries ... disable this to avoid that problem.
 |
