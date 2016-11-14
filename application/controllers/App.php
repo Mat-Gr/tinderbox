@@ -4,10 +4,29 @@ class App extends CI_Controller
 {
     public function schedule() //load schedule
     {
-        //load auth lib
         // check request method with Auth-lib == GET
+        // $this->auth_lib->method('GET');
         // check user credentials in database with Auth-lib
-        // set display with schedule_model
+        // $user_res = $this->auth_lib->authorize();
+        // set output with schedule_model
+
+        $this->load->model('schedule_model');
+
+        $model_res = $this->schedule_model->get_schedule();
+
+        if($model_res === true)
+        {
+            $this->output
+                ->set_header('HTTP/1.1 200 OK')
+                ->set_header('Content-Type: application/json')
+                ->set_output(json_encode([
+                    'status' => 200,
+                    'statusText' => 'OK',
+                    'response' => $model_res
+                    ]))
+                ->_display();
+            die();
+        }
     }
 
     public function announcements() //load announcements
@@ -15,7 +34,7 @@ class App extends CI_Controller
         //load auth lib
         // check request method with Auth-lib == GET
         // check user credentials in database with Auth-lib
-        // set display with announcements_model
+        // set output with announcements_model
     }
 
     public function userinfo() //load userinfo (slide in menu)
@@ -23,7 +42,7 @@ class App extends CI_Controller
         //load auth lib
         // check request method with Auth-lib == GET
         // check user credentials in database with Auth-lib
-        // set display with user_model
+        // set output with user_model
     }
 
     public function signup()
