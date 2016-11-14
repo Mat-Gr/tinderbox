@@ -30,7 +30,7 @@ CREATE TABLE `announcements` (
   `a_id` int(11) NOT NULL,
   `u_id` int(11) NOT NULL,
   `content` text COLLATE utf8_danish_ci NOT NULL,
-  `datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `datetime` datetime NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
 
