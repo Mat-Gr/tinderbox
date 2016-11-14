@@ -6,6 +6,6 @@ class View extends CI_Controller
 
 	public function index()
 	{
-
+		//load main view file
 	}
 }

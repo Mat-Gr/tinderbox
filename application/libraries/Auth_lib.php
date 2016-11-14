@@ -9,7 +9,12 @@ class Auth_lib
         $this->ci =& get_instance();
     }
 
-    public function authorize()
+    public function method() // check request method
+    {
+
+    }
+
+    public function authorize() // check user credentials
     {
 
     }
