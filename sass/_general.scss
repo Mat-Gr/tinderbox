@@ -7,100 +7,31 @@
 ##    ##  ##       ##   ### ##       ##    ##  ##     ## ##
  ######   ######## ##    ## ######## ##     ## ##     ## ########
 */
-
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     font-family: Brown;
 }
-/* reset css */
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    vertical-align: baseline;
-}
-
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-/* end of css reset */
 
 html, body {
-    color: $teal;
     background-color: $beige;
     height: 100%;
     overflow: auto;
     font-size: 16px;
 }
 
-
-
-body.site {
-    .wrapper{
-        padding: 0 4%;
-    }
-
-    .wrapper.wrapper-beige{
-        background-color: $beige;
-    }
-
-    .wrapper.wrapper-yellow{
-        background-color: $yellow;
-        height: 100vh;
-    }
-}
-
 .wrapper {
     display: flex;
     flex-direction: column;
-   // justify-content: space-between;
+    min-height: 100vh;
 
-}
-
-.content{
-    display: flex;
-    flex-direction: column;
-
-}
-
-.login-fix{
-    $a: 100vh;
-    $b: 5.625em; //tb-colors height + tb-colors margin
-    min-height: -webkit-calc(#{$a} - #{$b});
-    min-height:    -moz-calc(#{$a} - #{$b});
-    min-height:         calc(#{$a} - #{$b});
+    main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .logo-teal {
@@ -116,13 +47,13 @@ body.site {
         text-decoration: $decor;
         color: $link;
         &:visited {
-            color: $visit;
+          color: $visit;
         }
         &:hover {
-            color: $hover;
+          color: $hover;
         }
         &:active {
-            color: $active;
+          color: $active;
         }
     }
 }
@@ -138,20 +69,19 @@ body.site {
 ##     ## ######## ##     ## ########  ######## ##     ##
 */
 
-.top-nav {
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 3%;
+    padding: 3%;
     background-color: $beige;
     color: $teal;
-    //border-bottom: 1px solid $teal-b3;
 
     .fa-bars {
         color: $teal;
         z-index: 200;
     }
-    .top-nav-logo {
+    .logo {
         width: 10%;
     }
 }
@@ -185,7 +115,7 @@ body.site {
         height: 100%;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
         -webkit-transform: translateX(+203%);
-        transform: translateX(+203%);
+                transform: translateX(+203%);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -208,6 +138,11 @@ body.site {
             &:nth-child(3) { background-color: $azur; }
             &:nth-child(4) { background-color: $yellow; }
             &:nth-child(5) { background-color: $teal; color: $beige; }
+        }
+
+        .logo {
+            width: 50%;
+            flex: 1;
         }
     }
 
@@ -247,41 +182,4 @@ body.site {
 
 .menu--visible.menu--animatable  {
     .app-menu { transition: all 330ms ease-out; }
-}
-
-
-.main-nav {
-    //flex:none;
-
-    ul{
-        border-top: 1px solid $teal-b3;
-        display: flex;
-        align-content: center;
-        justify-content: space-around;
-        list-style: none;
-
-        height: 4em;
-        width: 100%;
-        background-color: $beige;
-
-        position: fixed;
-        bottom: 0;
-
-        li{
-            display: flex;
-            align-items: center;
-
-            text-align: center;
-           // width: 20%; //could be 25 or maybe less
-
-            a, a:hover, a:focus, a:active, a:visited{
-                //line-height: 5em;
-                display: block;
-                color: $teal;
-                text-decoration: none;
-            }
-        }
-    }
-
-
 }
