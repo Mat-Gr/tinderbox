@@ -31,6 +31,23 @@ class App extends CI_Controller
 
     public function announcements() //load announcements
     {
+        $this->load->model('announcement_model');
+
+        $model_res = $this->announcement_model->get_ann();
+
+        if($model_res === true)
+        {
+            $this->output
+                ->set_header('HTTP/1.1 200 OK')
+                ->set_header('Content-Type: application/json')
+                ->set_output(json_encode([
+                    'status' => 200,
+                    'statusText' => 'OK',
+                    'response' => $model_res
+                    ]))
+                ->_display();
+            die();
+      }
         //load auth lib
         // check request method with Auth-lib == GET
         // check user credentials in database with Auth-lib
@@ -39,10 +56,27 @@ class App extends CI_Controller
 
     public function userinfo() //load userinfo (slide in menu)
     {
-        //load auth lib
-        // check request method with Auth-lib == GET
-        // check user credentials in database with Auth-lib
-        // set output with user_model
+      //load auth lib
+      // check request method with Auth-lib == GET
+      // check user credentials in database with Auth-lib
+      // set output with user_model
+      $this->load->model('user_model');
+
+      $model_res = $this->user_model->get_userinfo();
+
+      if($model_res === true)
+      {
+          $this->output
+              ->set_header('HTTP/1.1 200 OK')
+              ->set_header('Content-Type: application/json')
+              ->set_output(json_encode([
+                  'status' => 200,
+                  'statusText' => 'OK',
+                  'response' => $model_res
+                  ]))
+              ->_display();
+          die();
+        }
     }
 
     public function signup()
