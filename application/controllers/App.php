@@ -50,6 +50,7 @@ class App extends CI_Controller
         //load auth lib
         // check request method with Auth-lib == POST
         //file contents....
+        echo 'Hello world';
     }
 
     public function edit()
