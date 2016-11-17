@@ -84,6 +84,30 @@ class App extends CI_Controller
         //load auth lib
         // check request method with Auth-lib == POST
         //file contents....
+
+        $post = file_get_contents('php://input');
+        $post = json_decode($post);
+
+        // Validate
+        if(!is_object($post) || !isset($post->email) || !isset($post->password))
+        {
+            die('wrong data');
+        }
+
+        // Sanitize
+        $email = trim(strip_tags($post->email));
+        $password = trim(strip_tags($post->password));
+
+        // Escape
+        $safe_email = (string)$email;
+        $safe_password = (string)$password;
+
+        $this->load->model('user_model');
+
+        $this->auth_lib->http_response(200, 'OK', $this->user_model->set_user([
+            'email' => $safe_email,
+            'password' => $safe_password
+        ]));
     }
 
     public function edit()

@@ -13,9 +13,25 @@ class User_model extends CI_Model
 
     }
 
-    public function set_user() // create user
+    public function set_user($args = []) // create user
     {
+        $query = sprintf('INSERT into users 
+            (email, password)
+            VALUES
+            ("%s", "%s")'
+            , $args['email']
+            , $args['password']);
 
+        $this->db->query($query);
+
+        $id = $this->db->insert_id();
+
+        if(is_int($id) && $id > 0)
+        {
+            return $id;
+        }
+
+        return false;
     }
 
     public function edit_user() //.... edit
