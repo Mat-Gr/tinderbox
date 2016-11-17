@@ -15,7 +15,7 @@ class User_model extends CI_Model
 
     public function set_user($args = []) // create user
     {
-        $query = sprintf('INSERT into users 
+        $query = sprintf('INSERT into users
             (email, password)
             VALUES
             ("%s", "%s")'
@@ -34,9 +34,18 @@ class User_model extends CI_Model
         return false;
     }
 
-    public function edit_user() //.... edit
+    public function edit_user($id, $args = []) //.... edit
     {
+        $query = sprintf('UPDATE users
+        SET email = "%s", password = "%s"
+        WHERE id = "%s"'
+        , $args['email']
+        , $args['password']
+        , $id);
 
+        $this->db->query($query);
+
+        return $id;
     }
 
     public function delete_user() // delete

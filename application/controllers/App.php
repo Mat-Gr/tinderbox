@@ -110,12 +110,22 @@ class App extends CI_Controller
         ]));
     }
 
-    public function edit()
+    public function edit($id = null)
     {
         //load auth lib
         // check request method with Auth-lib == PUT
         // check user credentials in database with Auth-lib
         //file contents....
+        $this->auth_lib->method('PUT');
+        $this->load->model('user_model');
+
+        $put = file_get_contents('php://input');
+        $put = json_decode($put);
+
+        $this->auth_lib->http_response(200, 'OK', $this->user_model->edit_user($id, [
+            'email' => $put->email,
+            'password' => $put->password
+        ]));
     }
 
     public function delete()
