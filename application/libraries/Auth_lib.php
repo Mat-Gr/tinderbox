@@ -9,9 +9,30 @@ class Auth_lib
         $this->ci =& get_instance();
     }
 
-    public function method() // check request method
+    // check request method
+    public function method($allowed_method = 'GET') // set default value to get
     {
+        // Validate
+        if(!isset($_SERVER['REQUEST_METHOD']) // if not set
+            || empty($_SERVER['REQUEST_METHOD']) // or if empty
+            || !is_string($_SERVER['REQUEST_METHOD'])) // or if not string
+            {
+                $this->http_response(405, 'Method Not Allowed', '405 Method Not Allowed');
+            }
 
+        // Sanitize
+        $method = trim(strip_tags($_SERVER['REQUEST_METHOD']));
+
+        // Escape
+        $safe_method = (string)$method;
+
+        // check if allowed
+        if($method === $allowed_method)
+        {
+            return true;
+        }
+
+        $this->http_response(405, 'Method Not Allowed', '405 Method Not Allowed');
     }
 
     public function authorize() // check user credentials
@@ -42,7 +63,7 @@ class Auth_lib
             , (string)$statusText);
 
         if(is_string($response) || is_object($response) || is_array($response) || is_bool($response) || is_int($response))
-        { 
+        {
             $this->ci->output
                 ->set_header($safe_http_status)
                 ->set_header('Content-Type: application/json')
