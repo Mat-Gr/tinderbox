@@ -96,6 +96,7 @@ class App extends CI_Controller
 
     public function delete()
     {
+      echo "hello world";
         //load auth lib
         // check request method with Auth-lib == DELETE
         // check user credentials in database with Auth-lib
