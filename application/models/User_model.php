@@ -38,7 +38,7 @@ class User_model extends CI_Model
     {
         $query = sprintf('UPDATE users
         SET email = "%s", password = "%s"
-        WHERE id = "%s"'
+        WHERE u_id = "%s"'
         , $args['email']
         , $args['password']
         , $id);
