@@ -92,6 +92,7 @@ class App extends CI_Controller
         // check request method with Auth-lib == PUT
         // check user credentials in database with Auth-lib
         //file contents....
+        echo 'Hello world';
     }
 
     public function delete()
