@@ -5,11 +5,14 @@ class App extends CI_Controller
     public function schedule() //load schedule
     {
         // check request method with Auth-lib == GET
-        // $this->auth_lib->method('GET');
-        // check user credentials in database with Auth-lib
-        // $user_res = $this->auth_lib->authorize();
-        // set output with schedule_model
+        $this->auth_lib->method('GET');
 
+        // check user credentials in database with Auth-lib
+        $this->auth_lib->authorize();
+
+        // get userinfo (id or token needed to fetch unique users schedule)
+
+        // set output with schedule_model
         $this->load->model('schedule_model');
 
         $model_res = $this->schedule_model->get_schedule();
@@ -31,6 +34,15 @@ class App extends CI_Controller
 
     public function announcements() //load announcements
     {
+        // check request method with Auth-lib == GET
+        $this->auth_lib->method('GET');
+
+        // check user credentials in database with Auth-lib
+        $this->auth_lib->authorize();
+
+        // get userinfo (id or token needed to fetch unique users announcements)
+
+
         $this->load->model('announcement_model');
 
         $model_res = $this->announcement_model->get_ann();
@@ -54,18 +66,21 @@ class App extends CI_Controller
         // set output with announcements_model
     }
 
-    public function userinfo() //load userinfo (slide in menu)
+    public function userinfo() //load userinfo
     {
-      //load auth lib
-      // check request method with Auth-lib == GET
-      // check user credentials in database with Auth-lib
-      // set output with user_model
-      $this->load->model('user_model');
+        // check request method with Auth-lib == GET
+        $this->auth_lib->method('GET');
 
-      $model_res = $this->user_model->get_userinfo();
+        // check user credentials in database with Auth-lib
+        $this->auth_lib->authorize();
 
-      if($model_res === true)
-      {
+        // set output with user_model
+        $this->load->model('user_model');
+
+        $model_res = $this->user_model->get_userinfo();
+
+        if($model_res === true)
+        {
           $this->output
               ->set_header('HTTP/1.1 200 OK')
               ->set_header('Content-Type: application/json')
@@ -81,10 +96,10 @@ class App extends CI_Controller
 
     public function signup()
     {
-        //load auth lib
         // check request method with Auth-lib == POST
-        //file contents....
+        $this->auth_lib->method('POST');
 
+        //file contents....
         $post = file_get_contents('php://input');
         $post = json_decode($post);
 
@@ -110,7 +125,7 @@ class App extends CI_Controller
         ]));
     }
 
-    public function edit($id = null)
+    public function edit_user($id = null)
     {
         //load auth lib
         // check request method with Auth-lib == PUT
@@ -128,7 +143,7 @@ class App extends CI_Controller
         ]));
     }
 
-    public function delete()
+    public function delete_user()
     {
         //load auth lib
         // check request method with Auth-lib == DELETE

@@ -15,7 +15,7 @@ class User_model extends CI_Model
 
         if(password_verify($password, $res->row('pass')))
         {
-            return true;
+            return true; // propably needs to return a token or user id
         }
         return false;
     }
