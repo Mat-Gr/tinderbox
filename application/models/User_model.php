@@ -2,10 +2,22 @@
 
 class User_model extends CI_Model
 {
-    public function login_user() // for checking user credentials / logging in
+    public function login_user($email, $password) // for checking user credentials / logging in
     {
-        $query = $this->db->query('SELECT email AND password FROM users');
-        return $query->result();
+        // implement security here
+        $res = $this->db->query(sprintf('SELECT
+            email, pass
+            FROM users
+            WHERE
+            email = "%s"
+            LIMIT 1'
+            , $this->db->escape_like_str($email)));
+
+        if(password_verify($password, $res->row('pass')))
+        {
+            return true;
+        }
+        return false;
     }
 
     public function get_userinfo() // for getting user-viewable data (name, clothes sizes ext.)
