@@ -74,19 +74,6 @@ class App extends CI_Controller
         $userinfo = $this->user_lib->get_userinfo();
 
         $this->rest_lib->http_response(200, 'OK', $userinfo);
-        // if($model_res === true)
-        // {
-        //   $this->output
-        //       ->set_header('HTTP/1.1 200 OK')
-        //       ->set_header('Content-Type: application/json')
-        //       ->set_output(json_encode([
-        //           'status' => 200,
-        //           'statusText' => 'OK',
-        //           'response' => $model_res
-        //           ]))
-        //       ->_display();
-        //   die();
-        // }
     }
 
     public function signup()
