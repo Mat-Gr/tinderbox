@@ -86,31 +86,44 @@ class App extends CI_Controller
         $post = json_decode($post);
 
         // Validate
-        if(!is_object($post) || !isset($post->email) || !isset($post->password))
+        if(!is_object($post) || !isset($post->fname) || !isset($post->lname) || !isset($post->email) || !isset($post->password) || !isset($post->birthdate) || !isset($post->img) || !isset($post->phone) || !isset($post->shirt_size) || !isset($post->shoe_size))
         {
             die('wrong data');
         }
-
         // Sanitize
+        $fname = trim(strip_tags($post->fname));
+        $lname = trim(strip_tags($post->lname));
         $email = trim(strip_tags($post->email));
         $password = trim(strip_tags($post->password));
+        $birthdate = trim(strip_tags($post->birthdate));
+        $img = trim(strip_tags($post->img));
+        $phone = trim(strip_tags($post->phone));
+        $shirt_size = trim(strip_tags($post->shirt_size));
+        $shoe_size = trim(strip_tags($post->shoe_size));
 
         // Escape
+        $safe_fname = (string)$fname;
+        $safe_lname = (string)$lname;
         $safe_email = (string)$email;
         $safe_password = (string)$password;
+        $safe_birthdate = (string)$birthdate;
+        $safe_img = (string)$img;
+        $safe_phone = (string)$phone;
+        $safe_shirt_size = (string)$shirt_size;
+        $safe_shoe_size = (string)$shoe_size;
 
         $this->load->model('user_model');
 
         $this->rest_lib->http_response(200, 'OK', $this->user_model->set_user([
-            'fname' => $post->fname,
-            'lname' => $post->lname,
+            'fname' => $safe_fname,
+            'lname' => $safe_lname,
             'email' => $safe_email,
             'password' => $safe_password,
-            'birthdate' => $post->birthdate,
-            'img' => $post->img,
-            'phone' => $post->phone,
-            'shirt_size' => $post->shirt_size,
-            'shoe_size' => $post->shoe_size
+            'birthdate' => $safe_birthdate,
+            'img' => $safe_img,
+            'phone' => $safe_phone,
+            'shirt_size' => $safe_shirt_size,
+            'shoe_size' => $safe_shoe_size
         ]));
     }
 
