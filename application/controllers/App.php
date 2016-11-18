@@ -71,24 +71,22 @@ class App extends CI_Controller
         // check user credentials in database with User-lib
         $this->user_lib->authorize();
 
-        // set output with user_model
-        $this->load->model('user_model');
+        $userinfo = $this->user_lib->get_userinfo();
 
-        $model_res = $this->user_model->get_userinfo();
-
-        if($model_res === true)
-        {
-          $this->output
-              ->set_header('HTTP/1.1 200 OK')
-              ->set_header('Content-Type: application/json')
-              ->set_output(json_encode([
-                  'status' => 200,
-                  'statusText' => 'OK',
-                  'response' => $model_res
-                  ]))
-              ->_display();
-          die();
-        }
+        $this->rest_lib->http_response(200, 'OK', $userinfo);
+        // if($model_res === true)
+        // {
+        //   $this->output
+        //       ->set_header('HTTP/1.1 200 OK')
+        //       ->set_header('Content-Type: application/json')
+        //       ->set_output(json_encode([
+        //           'status' => 200,
+        //           'statusText' => 'OK',
+        //           'response' => $model_res
+        //           ]))
+        //       ->_display();
+        //   die();
+        // }
     }
 
     public function signup()
@@ -152,5 +150,10 @@ class App extends CI_Controller
         $this->user_lib->authorize();
 
         //file contents....
+    }
+
+    public function test()
+    {
+        echo 'hello';
     }
 }

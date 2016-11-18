@@ -6,22 +6,36 @@ class User_model extends CI_Model
     {
         // implement security here
         $res = $this->db->query(sprintf('SELECT
-            email, pass
+            email, password
             FROM users
             WHERE
             email = "%s"
             LIMIT 1'
             , $this->db->escape_like_str($email)));
 
-        if(password_verify($password, $res->row('pass')))
+        if(password_verify($password, $res->row('password')))
         {
             return true;
         }
-        return false; // propably needs to return a token or user id
+        return false;
     }
 
-    public function get_userinfo() // for getting user-viewable data (name, clothes sizes ext.)
+    public function get_userinfo($email, $password) // for getting user-viewable data (name, clothes sizes ext.)
     {
+        // implement security here
+        $res = $this->db->query(sprintf('SELECT
+            *
+            FROM users
+            WHERE
+            email = "%s"
+            LIMIT 1'
+            , $this->db->escape_like_str($email)));
+
+        if(password_verify($password, $res->row('password')))
+        {
+            return $res->result();
+        }
+        return false;
 
     }
 
