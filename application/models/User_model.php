@@ -15,9 +15,9 @@ class User_model extends CI_Model
 
         if(password_verify($password, $res->row('pass')))
         {
-            return true; // propably needs to return a token or user id
+            return true;
         }
-        return false;
+        return false; // propably needs to return a token or user id
     }
 
     public function get_userinfo() // for getting user-viewable data (name, clothes sizes ext.)

@@ -4,11 +4,11 @@ class App extends CI_Controller
 {
     public function schedule() //load schedule
     {
-        // check request method with Auth-lib == GET
-        $this->auth_lib->method('GET');
+        // check request method with Rest-lib == GET
+        $this->rest_lib->method('GET');
 
-        // check user credentials in database with Auth-lib
-        $this->auth_lib->authorize();
+        // check user credentials in database with User-lib
+        $this->user_lib->authorize();
 
         // get userinfo (id or token needed to fetch unique users schedule)
 
@@ -34,11 +34,11 @@ class App extends CI_Controller
 
     public function announcements() //load announcements
     {
-        // check request method with Auth-lib == GET
-        $this->auth_lib->method('GET');
+        // check request method with Rest-lib == GET
+        $this->rest_lib->method('GET');
 
-        // check user credentials in database with Auth-lib
-        $this->auth_lib->authorize();
+        // check user credentials in database with User-lib
+        $this->user_lib->authorize();
 
         // get userinfo (id or token needed to fetch unique users announcements)
 
@@ -60,19 +60,16 @@ class App extends CI_Controller
                 ->_display();
             die();
       }
-        //load auth lib
-        // check request method with Auth-lib == GET
-        // check user credentials in database with Auth-lib
         // set output with announcements_model
     }
 
     public function userinfo() //load userinfo
     {
-        // check request method with Auth-lib == GET
-        $this->auth_lib->method('GET');
+        // check request method with Rest-lib == GET
+        $this->rest_lib->method('GET');
 
-        // check user credentials in database with Auth-lib
-        $this->auth_lib->authorize();
+        // check user credentials in database with User-lib
+        $this->user_lib->authorize();
 
         // set output with user_model
         $this->load->model('user_model');
@@ -96,8 +93,8 @@ class App extends CI_Controller
 
     public function signup()
     {
-        // check request method with Auth-lib == POST
-        $this->auth_lib->method('POST');
+        // check request method with Rest-lib == GET
+        $this->rest_lib->method('GET');
 
         //file contents....
         $post = file_get_contents('php://input');
@@ -119,7 +116,7 @@ class App extends CI_Controller
 
         $this->load->model('user_model');
 
-        $this->auth_lib->http_response(200, 'OK', $this->user_model->set_user([
+        $this->rest_lib->http_response(200, 'OK', $this->user_model->set_user([
             'email' => $safe_email,
             'password' => $safe_password
         ]));
@@ -127,9 +124,12 @@ class App extends CI_Controller
 
     public function edit_user($id = null)
     {
-        //load auth lib
-        // check request method with Auth-lib == PUT
-        // check user credentials in database with Auth-lib
+        // check request method with Rest-lib == GET
+        $this->rest_lib->method('GET');
+
+        // check user credentials in database with User-lib
+        $this->user_lib->authorize();
+
         //file contents....
         $this->auth_lib->method('PUT');
         $this->load->model('user_model');
@@ -145,9 +145,12 @@ class App extends CI_Controller
 
     public function delete_user()
     {
-        //load auth lib
-        // check request method with Auth-lib == DELETE
-        // check user credentials in database with Auth-lib
+        // check request method with Rest-lib == GET
+        $this->rest_lib->method('GET');
+
+        // check user credentials in database with User-lib
+        $this->user_lib->authorize();
+
         //file contents....
     }
 }
