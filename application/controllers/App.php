@@ -151,9 +151,4 @@ class App extends CI_Controller
 
         //file contents....
     }
-
-    public function test()
-    {
-        echo 'hello';
-    }
 }
