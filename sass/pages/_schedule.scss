@@ -41,17 +41,11 @@ body.schedule{
 
 	.wrapper{
 		
-		h3{
-			margin-bottom: 1em;
+		.schedule-title{
+			margin: 2em 0 1em 0;
 		}
 
-		.schedule-current{
-			margin-bottom: 2em;
-		}
 
-		.schedule-upcoming{
-			
-		}
 
 		.schedule-upcoming, .schedule-current{
 		background-color: $beige;

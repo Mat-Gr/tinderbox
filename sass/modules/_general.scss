@@ -69,7 +69,7 @@ html, body {
 
 body.site {
     .wrapper{
-        padding: 0 4%;
+        padding: 0 1em; //4%
     }
 
     .wrapper.wrapper-beige{
@@ -78,7 +78,7 @@ body.site {
 
     .wrapper.wrapper-yellow{
         background-color: $yellow;
-        height: 100vh;
+        
     }
 }
 
@@ -149,7 +149,7 @@ body.site {
 
     .fa-bars {
         color: $teal;
-        z-index: 200;
+        z-index: 9999;
     }
     .top-nav-logo {
         width: 10%;

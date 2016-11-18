@@ -1,0 +1,87 @@
+.pinned-post{
+	margin: 2em 0em;
+	
+
+	.pp-headline{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	height: 2.5em;
+	}
+
+	.pp-details{
+		    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+	}
+
+
+	.pp-date, .pp-team{
+		color: $beige;
+	}
+
+	.pp-team{
+		text-transform: uppercase;
+	}
+
+	.pp-content{
+		padding-top: 0.5em;
+		line-height: 1.25;
+	}
+}
+
+.post{
+
+	 &:nth-of-type(1) {
+         margin-top:  2em;
+     }
+	
+
+	.post-headline{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-front;
+		max-height: 2.5em;
+
+		.post-image img{
+			width: 2.5em;
+			height: 2.5em;
+
+		}
+
+		.post-details{
+			margin-left: 1em;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+			.p-date{
+				color: $rosa;
+			}
+
+			.p-team{
+				color: $azur;
+			}
+		}
+	}
+
+	.post-content{
+		line-height: 1.25;
+		margin-left: 1.250em;
+		border-left: 1px solid $teal-b3;
+		padding: 0.5em 0 3em 2.250em;
+	}
+
+	
+
+}
+.post:last-of-type {
+
+		.post-content{
+			 padding-bottom: 0;
+		}
+
+
+	   
+}

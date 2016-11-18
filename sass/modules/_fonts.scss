@@ -45,6 +45,7 @@ h4 {
 
 p, a {
     font-size: 0.875em;
+
 }
 
 .small-p {
@@ -58,14 +59,33 @@ p, a {
 }
 
 
-.h3 {
-    font-family: Eveleth;
-    font-weight: bold;
-    font-size: 0.750em;
-}
-
 .p{
     font-family: Eveleth;
     font-weight: normal;
     font-size: 0.875em;
+}
+
+.h1 {
+    font-family: Eveleth;
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+.h2 {
+    font-family: Eveleth;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.h3 {
+    font-family: Eveleth;
+    font-weight: bold;
+    font-size: 0.750em;
+    letter-spacing: 0.5px;
+}
+
+.h4 {
+    font-family: Eveleth;
+    font-weight: normal;
+    font-size: 0.750em;
 }
