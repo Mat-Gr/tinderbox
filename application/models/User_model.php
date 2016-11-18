@@ -41,12 +41,31 @@ class User_model extends CI_Model
 
     public function set_user($args = []) // create user
     {
+        $fname = $args['fname'];
+        $lname = $args['lname'];
+        $email = $args['email'];
+        $password = $args['password'];
+        $birthdate = $args['birthdate'];
+        $img = $args['img'];
+        $phone = $args['phone'];
+        $shirt_size = $args['shirt_size'];
+        $shoe_size = $args['shoe_size'];
+
+        $hash_password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 10]);
+
         $query = sprintf('INSERT into users
-            (email, password)
+            (fname, lname, email, password, birthdate, img, phone, shirt_size, shoe_size)
             VALUES
-            ("%s", "%s")'
-            , $args['email']
-            , $args['password']);
+            ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s")'
+            , $fname
+            , $lname
+            , $email
+            , $hash_password
+            , $birthdate
+            , $img
+            , $phone
+            , $shirt_size
+            , $shoe_size);
 
         $this->db->query($query);
 

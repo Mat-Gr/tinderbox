@@ -79,7 +79,7 @@ class App extends CI_Controller
     public function signup()
     {
         // check request method with Rest-lib == GET
-        $this->rest_lib->method('GET');
+        //$this->rest_lib->method('GET');
 
         //file contents....
         $post = file_get_contents('php://input');
@@ -102,8 +102,15 @@ class App extends CI_Controller
         $this->load->model('user_model');
 
         $this->rest_lib->http_response(200, 'OK', $this->user_model->set_user([
+            'fname' => $post->fname,
+            'lname' => $post->lname,
             'email' => $safe_email,
-            'password' => $safe_password
+            'password' => $safe_password,
+            'birthdate' => $post->birthdate,
+            'img' => $post->img,
+            'phone' => $post->phone,
+            'shirt_size' => $post->shirt_size,
+            'shoe_size' => $post->shoe_size
         ]));
     }
 
