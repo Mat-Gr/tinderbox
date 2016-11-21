@@ -150,7 +150,7 @@ class App extends CI_Controller
             $this->rest_lib->http_response(400, 'Bad request', 'Bad ID');
         }
 
-        if(!isset($put->password) || !isset($put->img) || !isset($put->phone) || !isset($put->shirt_size) || !isset($put->shoe_size)) // The edit fails if none of the fields are filled out, since it won't know what to edit
+        if(!isset($put->password) || !isset($put->img) || !isset($put->phone) || !isset($put->shirt_size) || !isset($put->shoe_size)) // The edit fails if none of the fields are filled out, since it won't know what to edit - maybe we need to use empty as well as isset?
         {
             die('No fields have been changed'); // Not sure the validate works, since it edits no matter what - find out why
         }
