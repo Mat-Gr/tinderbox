@@ -108,7 +108,6 @@ class User_model extends CI_Model
         $none_tainted_phone = $this->db->escape_str((string)$san_phone);
         $none_tainted_shirt_size = $this->db->escape_str((string)$san_shirt_size);
         $none_tainted_shoe_size = $this->db->escape_str((string)$san_shoe_size);
-        ]));
 
         $query = sprintf('INSERT into users
             (fname, lname, email, password, birthdate, img, phone, shirt_size, shoe_size)
@@ -144,7 +143,7 @@ class User_model extends CI_Model
         $shirt_size = $args['shirt_size'];
         $shoe_size = $args['shoe_size'];
 
-        $hash_password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 10]
+        $hash_password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 10]);
 
         // Validate
 
@@ -178,7 +177,6 @@ class User_model extends CI_Model
         $none_tainted_phone = $this->db->escape_str((string)$san_phone);
         $none_tainted_shirt_size = $this->db->escape_str((string)$san_shirt_size);
         $none_tainted_shoe_size = $this->db->escape_str((string)$san_shoe_size);
-        ]));
 
         $query = sprintf('UPDATE users
         SET password = "%s", img = "%s", phone = "%s", shirt_size = "%s", shoe_size = "%s"
