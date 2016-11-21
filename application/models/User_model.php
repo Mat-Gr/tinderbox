@@ -5,6 +5,20 @@ class User_model extends CI_Model
     public function login_user($email, $password) // for checking user credentials / logging in
     {
         // implement security here
+        // Validate
+
+        if(!isset($email) || !isset($password))
+        {
+            die('wrong data');
+        }
+
+        // Sanitize
+        $email = trim(strip_tags($email));
+        $password = trim(strip_tags($password));
+
+        // Escape
+        $safe_password = (string)$password;
+
         $res = $this->db->query(sprintf('SELECT
             email, password
             FROM users
@@ -13,7 +27,7 @@ class User_model extends CI_Model
             LIMIT 1'
             , $this->db->escape_like_str($email)));
 
-        if(password_verify($password, $res->row('password')))
+        if(password_verify($safe_password, $res->row('password')))
         {
             return true;
         }
@@ -23,6 +37,20 @@ class User_model extends CI_Model
     public function get_userinfo($email, $password) // for getting user-viewable data (name, clothes sizes ext.)
     {
         // implement security here
+        // Validate
+
+        if(!isset($email) || !isset($password))
+        {
+            die('wrong data');
+        }
+
+        // Sanitize
+        $email = trim(strip_tags($email));
+        $password = trim(strip_tags($password));
+
+        // Escape
+        $safe_password = (string)$password;
+
         $res = $this->db->query(sprintf('SELECT
             *
             FROM users
@@ -31,7 +59,7 @@ class User_model extends CI_Model
             LIMIT 1'
             , $this->db->escape_like_str($email)));
 
-        if(password_verify($password, $res->row('password')))
+        if(password_verify($safe_password, $res->row('password')))
         {
             return $res->result();
         }
@@ -82,10 +110,13 @@ class User_model extends CI_Model
     public function edit_user($id, $args = []) //.... edit
     {
         $query = sprintf('UPDATE users
-        SET email = "%s", password = "%s"
+        SET password = "%s", img = "%s", phone = "%s", shirt_size = "%s", shoe_size = "%s"
         WHERE u_id = "%s"'
-        , $args['email']
         , $args['password']
+        , $args['img']
+        , $args['phone']
+        , $args['shirt_size']
+        , $args['shoe_size']
         , $id);
 
         $this->db->query($query);

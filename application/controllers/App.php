@@ -88,7 +88,7 @@ class App extends CI_Controller
         // Validate
         if(!is_object($post) || !isset($post->fname) || !isset($post->lname) || !isset($post->email) || !isset($post->password) || !isset($post->birthdate) || !isset($post->img) || !isset($post->phone) || !isset($post->shirt_size) || !isset($post->shoe_size))
         {
-            die('wrong data');
+            die('Please fill out all fields');
         }
         // Sanitize
         $fname = trim(strip_tags($post->fname));
@@ -130,21 +130,55 @@ class App extends CI_Controller
     public function edit_user($id = null)
     {
         // check request method with Rest-lib == GET
-        $this->rest_lib->method('GET');
+        // $this->rest_lib->method('GET');
 
         // check user credentials in database with User-lib
-        $this->user_lib->authorize();
+        // $this->user_lib->authorize();
 
         //file contents....
-        $this->auth_lib->method('PUT');
-        $this->load->model('user_model');
-
         $put = file_get_contents('php://input');
         $put = json_decode($put);
 
-        $this->auth_lib->http_response(200, 'OK', $this->user_model->edit_user($id, [
-            'email' => $put->email,
-            'password' => $put->password
+        // Validate
+        if($id === null)
+        {
+            $this->rest_lib->http_response(400, 'Bad request', 'Bad ID');
+        }
+
+        if(!preg_match('/^[0-9]+$/', $id))
+        {
+            $this->rest_lib->http_response(400, 'Bad request', 'Bad ID');
+        }
+
+        if(!isset($put->password) || !isset($put->img) || !isset($put->phone) || !isset($put->shirt_size) || !isset($put->shoe_size)) // The edit fails if none of the fields are filled out, since it won't know what to edit
+        {
+            die('No fields have been changed'); // Not sure the validate works, since it edits no matter what - find out why
+        }
+
+        // Sanitize
+        $san_id = trim(strip_tags($id));
+        $san_password = trim(strip_tags($put->password));
+        $san_img = trim(strip_tags($put->img));
+        $san_phone = trim(strip_tags($put->phone));
+        $san_shirt_size = trim(strip_tags($put->shirt_size));
+        $san_shoe_size = trim(strip_tags($put->shoe_size));
+
+        // Escape
+        $none_tainted_id = $this->db->escape_str((int)$san_id); // IS it valid to make it int inside the escape function?
+        $none_tainted_password = $this->db->escape_str((string)$san_password); // Same question as above?
+        $none_tainted_img = $this->db->escape_str((string)$san_img);
+        $none_tainted_phone = $this->db->escape_str((string)$san_phone);
+        $none_tainted_shirt_size = $this->db->escape_str((string)$san_shirt_size);
+        $none_tainted_shoe_size = $this->db->escape_str((string)$san_shoe_size);
+
+        $this->load->model('user_model');
+
+        $this->rest_lib->http_response(200, 'OK', $this->user_model->edit_user($none_tainted_id, [
+            'password' => $none_tainted_password,
+            'img' => $none_tainted_img,
+            'phone' => $none_tainted_phone,
+            'shirt_size' => $none_tainted_shirt_size,
+            'shoe_size' => $none_tainted_shoe_size
         ]));
     }
 
