@@ -69,9 +69,8 @@ class App extends CI_Controller
         $this->rest_lib->method('GET');
 
         // check user credentials in database with User-lib
-        $this->user_lib->authorize();
-
-        $userinfo = $this->user_lib->get_userinfo();
+        $token = $this->user_lib->authorize();
+        $userinfo = $this->user_lib->get_userinfo($token);
 
         $this->rest_lib->http_response(200, 'OK', $userinfo);
     }
@@ -132,30 +131,25 @@ class App extends CI_Controller
         $this->rest_lib->http_response(500, 'Internal Server Error', 'Something went wrong');
     }
 
-    public function edit_user($id = null)
+    public function edit_user()
     {
         $this->rest_lib->method('PUT');
 
         // check user credentials in database with User-lib
-        $this->user_lib->authorize();
+        $token = $this->user_lib->authorize();
 
         //file contents....
         $put = file_get_contents('php://input');
         $put = json_decode($put);
 
         // Validate
-        if($id === null || !preg_match('/^[0-9]+$/', $id))
-        {
-            $this->rest_lib->http_response(400, 'Bad request', 'Bad ID');
-        }
-
         if(!isset($put->password) || !isset($put->img) || !isset($put->phone) || !isset($put->shirt_size) || !isset($put->shoe_size)) // The edit fails if none of the fields are filled out, since it won't know what to edit - maybe we need to use empty as well as isset?
         {
             die('No fields have been changed'); // Not sure the validate works, since it edits no matter what - find out why
         }
 
         // Sanitize
-        $san_id = trim(strip_tags($id));
+        $san_token = trim(strip_tags($token));
         $san_password = trim(strip_tags($put->password));
         $san_img = trim(strip_tags($put->img));
         $san_phone = trim(strip_tags($put->phone));
@@ -163,8 +157,8 @@ class App extends CI_Controller
         $san_shoe_size = trim(strip_tags($put->shoe_size));
 
         // Escape
-        $none_tainted_id = $this->db->escape_str((int)$san_id); // IS it valid to make it int inside the escape function?
-        $none_tainted_password = $this->db->escape_str((string)$san_password); // Same question as above?
+        $none_tainted_token = $this->db->escape_str((string)$san_token);
+        $none_tainted_password = $this->db->escape_str((string)$san_password);
         $none_tainted_img = $this->db->escape_str((string)$san_img);
         $none_tainted_phone = $this->db->escape_str((string)$san_phone);
         $none_tainted_shirt_size = $this->db->escape_str((string)$san_shirt_size);
@@ -172,7 +166,7 @@ class App extends CI_Controller
 
         $this->load->model('user_model');
 
-        $this->rest_lib->http_response(200, 'OK', $this->user_model->edit_user($none_tainted_id, [
+        $this->rest_lib->http_response(200, 'OK', $this->user_model->edit_user($none_tainted_token, [
             'password' => $none_tainted_password,
             'img' => $none_tainted_img,
             'phone' => $none_tainted_phone,
