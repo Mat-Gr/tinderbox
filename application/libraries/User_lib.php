@@ -45,7 +45,7 @@ class User_lib
         {
             $this->ci->rest_lib->http_response(401, 'Unauthorized', 'Username or password is wrong');
         }
-        return true;
+        return $res;
 
     }
 

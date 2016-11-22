@@ -20,18 +20,34 @@ class User_model extends CI_Model
         $safe_password = (string)$password;
 
         $res = $this->db->query(sprintf('SELECT
-            email, password
+            u_id, email, password
             FROM users
             WHERE
             email = "%s"
             LIMIT 1'
             , $this->db->escape_like_str($email)));
 
-        if(password_verify($safe_password, $res->row('password')))
+        if(!password_verify($safe_password, $res->row('password')))
         {
-            return true;
+            return false; // http_response
+        }
+
+        $query = sprintf('SELECT
+            token
+            FROM user_tokens
+            WHERE
+            u_id = %d',
+            $this->db->escape_like_str($res->row('u_id')));
+
+
+        $res = $this->db->query($query);
+
+        if(!($res === false) && is_string($res->row('token')))
+        {
+            return $res->row('token');
         }
         return false;
+
     }
 
     public function get_userinfo($email, $password) // for getting user-viewable data (name, clothes sizes ext.)
