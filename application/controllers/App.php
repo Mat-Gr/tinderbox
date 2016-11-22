@@ -78,8 +78,7 @@ class App extends CI_Controller
 
     public function signup()
     {
-        // check request method with Rest-lib == GET
-        //$this->rest_lib->method('GET');
+        $this->rest_lib->method('POST');
 
         //file contents....
         $post = file_get_contents('php://input');
@@ -88,7 +87,7 @@ class App extends CI_Controller
         // Validate
         if(!is_object($post) || !isset($post->fname) || !isset($post->lname) || !isset($post->email) || !isset($post->password) || !isset($post->birthdate) || !isset($post->img) || !isset($post->phone) || !isset($post->shirt_size) || !isset($post->shoe_size))
         {
-            die('Please fill out all fields');
+            $this->rest_lib->http_response(400, 'Bad Request', 'Wrong data');
         }
         // Sanitize
         $fname = trim(strip_tags($post->fname));
@@ -114,7 +113,7 @@ class App extends CI_Controller
 
         $this->load->model('user_model');
 
-        $this->rest_lib->http_response(200, 'OK', $this->user_model->set_user([
+        $res = $this->user_model->set_user([
             'fname' => $safe_fname,
             'lname' => $safe_lname,
             'email' => $safe_email,
@@ -124,13 +123,18 @@ class App extends CI_Controller
             'phone' => $safe_phone,
             'shirt_size' => $safe_shirt_size,
             'shoe_size' => $safe_shoe_size
-        ]));
+        ]);
+
+        if(preg_match('/^[0-9]+$/', $res) && $res > 0)
+        {
+            $this->rest_lib->http_response(200, 'OK', $res);  // change this -- don't return id to user
+        }
+        $this->rest_lib->http_response(500, 'Internal Server Error', 'Something went wrong');
     }
 
     public function edit_user($id = null)
     {
-        // check request method with Rest-lib == GET
-        // $this->rest_lib->method('GET');
+        $this->rest_lib->method('PUT');
 
         // check user credentials in database with User-lib
         // $this->user_lib->authorize();
@@ -184,8 +188,7 @@ class App extends CI_Controller
 
     public function delete_user()
     {
-        // check request method with Rest-lib == GET
-        $this->rest_lib->method('GET');
+        $this->rest_lib->method('DELETE');
 
         // check user credentials in database with User-lib
         $this->user_lib->authorize();
