@@ -50,37 +50,25 @@ class User_model extends CI_Model
 
     }
 
-    public function get_userinfo($email, $password) // for getting user-viewable data (name, clothes sizes ext.)
+    public function get_userinfo($token) // for getting user-viewable data (name, clothes sizes ext.)
     {
         // implement security here
-        // Validate
-
-        if(!isset($email) || !isset($password))
-        {
-            die('wrong data');
-        }
-
-        // Sanitize
-        $email = trim(strip_tags($email));
-        $password = trim(strip_tags($password));
-
-        // Escape
-        $safe_password = (string)$password;
-
-        $res = $this->db->query(sprintf('SELECT
-            *
+        $query = sprintf('SELECT
+            users.t_id, users.r_id, users.fname, users.lname, users.birthdate, users.phone, users.shirt_size, users.shoe_size
             FROM users
+            INNER JOIN user_tokens
+            ON users.u_id=user_tokens.u_id
             WHERE
-            email = "%s"
-            LIMIT 1'
-            , $this->db->escape_like_str($email)));
+            token = "%s"',
+            $this->db->escape_like_str($token));
 
-        if(password_verify($safe_password, $res->row('password')))
+        $res = $this->db->query($query);
+
+        if(!empty($res))
         {
-            return $res->result();
+            return $res->row();
         }
-        return false;
-
+        else return false;
     }
 
     public function set_user($args = []) // create user
@@ -165,7 +153,7 @@ class User_model extends CI_Model
         return false;
     }
 
-    public function edit_user($id, $args = []) //.... edit
+    public function edit_user($token, $args = []) //.... edit
     {
         $password = $args['password'];
         $img = $args['img'];
@@ -176,24 +164,13 @@ class User_model extends CI_Model
         $hash_password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 10]);
 
         // Validate
-
-        if($id === null)
-        {
-            die('Bad ID');
-        }
-
-        if(!preg_match('/^[0-9]+$/', $id))
-        {
-            die('Bad ID'); // Can you use libraries in models?
-        }
-
         if(!isset($hash_password) || !isset($img) || !isset($phone) || !isset($shirt_size) || !isset($shoe_size))
         {
             die('Bad ID');
         }
 
         // Sanitize
-        $san_id = trim(strip_tags($id));
+        $san_token = trim(strip_tags($token));
         $san_password = trim(strip_tags($hash_password));
         $san_img = trim(strip_tags($img));
         $san_phone = trim(strip_tags($phone));
@@ -201,7 +178,7 @@ class User_model extends CI_Model
         $san_shoe_size = trim(strip_tags($shoe_size));
 
         // Escape
-        $none_tainted_id = $this->db->escape_str((int)$san_id);
+        $none_tainted_token = $this->db->escape_str((string)$san_token);
         $none_tainted_password = $this->db->escape_str((string)$san_password);
         $none_tainted_img = $this->db->escape_str((string)$san_img);
         $none_tainted_phone = $this->db->escape_str((string)$san_phone);
@@ -209,18 +186,20 @@ class User_model extends CI_Model
         $none_tainted_shoe_size = $this->db->escape_str((string)$san_shoe_size);
 
         $query = sprintf('UPDATE users
-        SET password = "%s", img = "%s", phone = "%s", shirt_size = "%s", shoe_size = "%s"
-        WHERE u_id = "%s"'
-        , $none_tainted_password
-        , $none_tainted_img
-        , $none_tainted_phone
-        , $none_tainted_shirt_size
-        , $none_tainted_shoe_size
-        , $none_tainted_id);
+            INNER JOIN user_tokens
+            ON users.u_id=user_tokens.u_id
+            SET users.password = "%s", users.img = "%s", users.phone = "%s", users.shirt_size = "%s", users.shoe_size = "%s"
+            WHERE token = "%s"'
+            , $none_tainted_password
+            , $none_tainted_img
+            , $none_tainted_phone
+            , $none_tainted_shirt_size
+            , $none_tainted_shoe_size
+            , $none_tainted_token);
 
         $this->db->query($query);
 
-        return $id; // What should be output to the user? Status message, updated info etc.?
+        return 'Updated';
     }
 
     public function delete_user() // delete
