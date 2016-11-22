@@ -84,7 +84,7 @@ class App extends CI_Controller
         $post = file_get_contents('php://input');
         $post = json_decode($post);
 
-        // Validate
+        // Validate -- NEEDS CHECKING IF EMPTY!!!!!!!!!!!!!!!!
         if(!is_object($post) || !isset($post->fname) || !isset($post->lname) || !isset($post->email) || !isset($post->password) || !isset($post->birthdate) || !isset($post->img) || !isset($post->phone) || !isset($post->shirt_size) || !isset($post->shoe_size))
         {
             $this->rest_lib->http_response(400, 'Bad Request', 'Wrong data');
@@ -125,7 +125,7 @@ class App extends CI_Controller
             'shoe_size' => $safe_shoe_size
         ]);
 
-        if(preg_match('/^[0-9]+$/', $res) && $res > 0)
+        if(!($res === false) && is_string($res))
         {
             $this->rest_lib->http_response(200, 'OK', $res);  // change this -- don't return id to user
         }
@@ -137,19 +137,14 @@ class App extends CI_Controller
         $this->rest_lib->method('PUT');
 
         // check user credentials in database with User-lib
-        // $this->user_lib->authorize();
+        $this->user_lib->authorize();
 
         //file contents....
         $put = file_get_contents('php://input');
         $put = json_decode($put);
 
         // Validate
-        if($id === null)
-        {
-            $this->rest_lib->http_response(400, 'Bad request', 'Bad ID');
-        }
-
-        if(!preg_match('/^[0-9]+$/', $id))
+        if($id === null || !preg_match('/^[0-9]+$/', $id))
         {
             $this->rest_lib->http_response(400, 'Bad request', 'Bad ID');
         }

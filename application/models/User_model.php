@@ -125,11 +125,25 @@ class User_model extends CI_Model
 
         $this->db->query($query);
 
-        $id = $this->db->insert_id();
+        $id = (int)$this->db->insert_id();
 
-        if(is_int($id) && $id > 0)
+        // add user token
+        //generate user token
+        $user_token = bin2hex(openssl_random_pseudo_bytes(16));
+
+        $query = sprintf('INSERT into user_tokens
+            (u_id, token)
+            VALUES
+            (%d, "%s")'
+            , $this->db->escape_like_str($id)
+            , $this->db->escape_like_str($user_token));
+
+        $this->db->query($query);
+        $res = $this->db->affected_rows();
+
+        if($res === 1)
         {
-            return $id;
+            return $user_token;
         }
 
         return false;
