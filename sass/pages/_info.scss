@@ -1,0 +1,135 @@
+.info-content {
+  display: flex column;
+  background-color: gray;
+  
+  justify-content: space-between;
+}
+
+.main-column1 {
+  display: flex;
+  padding: 50px;
+  justify-content: space-between;
+  
+  background: #fff9f4;
+  border-bottom:1px solid  #b6d9cf; 
+  border-top:1px solid  #b6d9cf;
+  text-align: center;
+ }  
+      .main-column1 article{
+        align-content: center;
+        border-radius: 20px;
+        background: #043540;
+        width: 30px;
+        height: 30px;
+        color: white;
+        float: left;
+        margin: 9px;
+ }
+      .main-column1 article2{
+        color: #b6d9cf;
+        width: 30px;
+        height: 30px;
+        align-content: center;
+ }
+.main-column2 {
+ display: flex;
+ justify-content: space-between;
+ padding: 50px;
+ background: #fff9f4;
+ border-bottom:1px solid  #b6d9cf;
+ text-align: center;
+}
+        .main-column2 article{
+          border-radius: 20px;
+          background: #f08779;
+          width: 30px;
+          height: 30px;
+          float: left;
+          color: white;
+          align-content: center;
+          margin: 9px;
+}
+        .main-column2 article2{
+         color: #b6d9cf;
+         width: 30px;
+         height: 30px;
+}
+.main-column3 {
+ display: flex;
+ justify-content: space-between;
+ padding: 50px;
+ background: #fff9f4;
+ border-bottom:1px solid  #b6d9cf;
+ text-align: center;
+}
+        .main-column3 article{
+         border-radius: 20px;
+         background: #8ac6b8;
+         width: 30px;
+         height: 30px;
+         float: left;
+         color: white;
+         align-content: center;
+         margin: 9px;
+}
+        .main-column3 article2{
+         color: #b6d9cf;
+         width: 30px;
+         height: 30px;
+}
+.main-column4 {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+  background: #fff9f4;
+  border-bottom:1px solid  #b6d9cf;
+  text-align: center;
+}
+        .main-column4 article{
+         border-radius: 20px;
+         background: #ffd961;
+         width: 30px;
+         height: 30px;
+         float: left;
+         color: white;
+         align-content: center;
+         margin: 9px;
+}
+        .main-column4 article2{
+         color: #b6d9cf;
+         width: 30px;
+         height: 30px;
+}
+
+
+.sidebar-one {
+
+  float: right;
+  height: 150px;
+  width: 15px;
+  background-color: #043540;
+  
+}
+
+.sidebar-two {
+  float: right;
+  width: 15px;
+  height: 149px;
+  background-color: #f08779;
+}
+
+ .sidebar-three {
+  float: right;
+  width: 15px;
+  height: 149px;
+  background-color: #8ac6b8;
+  
+
+}
+.sidebar-four {
+  float: right;
+  width: 15px;
+  height: 149px;
+  background-color: #ffd961;
+  
+}
