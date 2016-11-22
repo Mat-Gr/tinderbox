@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tinderbox</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#043540">
+    <meta name="description" content="Tinderbox Volunteer App">
+    <link rel="icon" sizes="192x192" href="imgs/icons/tinder-teal-192.png">
+    <link rel="icon" sizes="256x256" href="imgs/icons/tinder-teal-256.png">
+    <link rel="icon" sizes="384x384" href="imgs/icons/tinder-teal-384.png">
+    <link rel="icon" sizes="512x512" href="imgs/icons/tinder-teal-512.png">
+    <link rel="stylesheet" href="css/style.min.css">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+
+    <style type="text/css">
+     html, body, #basicMap {
+    
+          width: 100%;
+          height: 100%;
+          margin: 0;  }    </style>
+
+<script src="OpenLayers.js"></script>
+<script>
+      function init() {
+        map = new OpenLayers.Map("basicMap");
+        var mapnik         = new OpenLayers.Layer.OSM();
+        var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+        var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+        var position       = new OpenLayers.LonLat(13.41,52.52).transform( fromProjection, toProjection);
+        var zoom           = 15; 
+
+        map.addLayer(mapnik);
+        map.setCenter(position, zoom );   }
+</script>
+
+</head>
+
+    <body class="site schedule" onload="init();">
+    <div class="menu">
+    
+        <div class="app-menu">
+            <div>
+                <h1>MENU</h1>
+            </div>
+            <a href="schedule.html" class="menu-item">
+                <div>
+                    <h1>SCHEDULE</h1>
+                </div>
+            </a>
+            <a href="locations.html" class="menu-item">
+                <div>
+                    <h1>LOCATIONS</h1>
+                </div>
+            </a>
+            <a href="announcements.html" class="menu-item">
+                <div>
+                    <h1>ANNOUNCEMENTS</h1>
+                </div>
+            </a>
+            <a href="info.html" class="menu-item">
+                <div>
+                    <h1>INFO</h1>
+                </div>
+            </a>
+            <object class="logo" type="image/svg+xml" data="imgs/logo-teal.svg">Your browser does not support SVGs</object>
+            
+        </div>
+    </div>
+    <header class="top-nav">
+            <object class="top-nav-logo" type="image/svg+xml" data="imgs/logo-teal.svg">Your browser does not support SVGs</object>
+            <h1>location</h1>
+            <i class="fa fa-bars fa-2x menu-icon" aria-hidden="true"></i>
+    </header>
+    <div id="basicMap"></div>
+
+</body>
+<script type="text/javascript" src="js/main.js"></script>
+</html>
+
+
+
