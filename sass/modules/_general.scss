@@ -72,7 +72,10 @@ main.content{
 }
 
 
+
+
 body.site {
+
     .wrapper{
         padding: 0 1em; //4%
     }
@@ -83,6 +86,15 @@ body.site {
 
     .wrapper.wrapper-yellow{
         background-color: $yellow;
+        
+    }
+
+    .wrapper.wrapper-color{
+        background: url('../imgs/color-bg.jpg') no-repeat center center;
+         -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
         
     }
 }
@@ -167,6 +179,8 @@ body.site {
     .top-nav-logo {
         width: 10%;
     }
+
+
 }
 
 /*

@@ -1,0 +1,102 @@
+.signup-hero{
+	min-height: 25vh;
+	margin-bottom: 2rem;
+
+	h4{
+		color: beige;
+	}
+
+	h3{
+		color: $rosa;
+
+		span{
+			color: $teal;
+		}
+	}
+
+	.login-main-logo{
+		height: 1.875rem;
+	}
+
+}
+
+.signup-form{
+	margin-top: -2rem;
+	padding: 2rem 2rem 0 2rem;
+	background-color: $beige;
+	border-radius: 2px;	
+	
+
+	.form-fix{
+		margin-bottom: 2em;
+	
+		div{
+			margin-bottom: 2em;
+			display: flex;
+			flex-direction: row;
+			border-bottom: 1px solid $teal-b3;
+			padding-bottom: 0.500em;
+
+			i{
+				cursor: default;
+				text-align: center;
+				padding-left: 0.850em;
+				color: $teal-b3;
+				min-width: 2em;
+			}
+
+
+			> input{
+				width: 100%;
+				background-color: $beige;
+				padding: 0 0.850em;
+				border:0;
+
+				 &:not(.submit){
+				 	
+					color: $teal;
+					margin-bottom: 0;
+				}
+
+				 &:invalid {
+				 	 box-shadow: none;
+				}
+
+
+			}
+
+			&:last-of-type{
+				margin-bottom: 0;
+			}
+
+	
+		}
+
+
+	}
+
+	.signup-button-fix{
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+
+
+		
+		.button{
+				width: auto;
+				background-color: $yellow;
+				border: medium none;
+			    border-radius: 5px;
+			    color: $teal;
+			    padding: 0 1em;
+			    line-height: 2.5em;
+		}
+
+	}
+
+
+	
+
+
+}

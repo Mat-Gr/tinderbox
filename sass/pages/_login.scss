@@ -14,7 +14,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 4em;
+
 
 
     .login-main-logo {
@@ -26,6 +26,10 @@
 }
 
 body.login {
+
+    .login-hero{
+            margin-bottom: 4em;
+    }
 
     background-color: $beige;
 
@@ -81,6 +85,7 @@ body.login {
             
         }
 
+        
         form {
             width: 100%;
             display: flex;
@@ -154,6 +159,7 @@ body.login {
 
             }
         }
+        
 
         footer {
             
