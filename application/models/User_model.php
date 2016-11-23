@@ -113,7 +113,7 @@ class User_model extends CI_Model
         $query = sprintf('INSERT into users
             (fname, lname, email, password, birthdate, phone, shirt_size, shoe_size)
             VALUES
-            ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s")'
+            ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s")'
             , $none_tainted_fname
             , $none_tainted_lname
             , $none_tainted_email
