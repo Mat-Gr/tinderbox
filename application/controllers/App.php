@@ -161,7 +161,7 @@ class App extends CI_Controller
 
         $this->load->model('user_model');
 
-        $this->rest_lib->http_response(200, 'OK', $this->user_model->edit_user($none_tainted_tokenar, [
+        $this->rest_lib->http_response(200, 'OK', $this->user_model->edit_user($none_tainted_token, [
             'password' => $none_tainted_password,
             'phone' => $none_tainted_phone,
             'shirt_size' => $none_tainted_shirt_size,
