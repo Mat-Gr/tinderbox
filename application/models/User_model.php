@@ -78,7 +78,6 @@ class User_model extends CI_Model
         $email = $args['email'];
         $password = $args['password'];
         $birthdate = $args['birthdate'];
-        $img = $args['img'];
         $phone = $args['phone'];
         $shirt_size = $args['shirt_size'];
         $shoe_size = $args['shoe_size'];
@@ -86,7 +85,7 @@ class User_model extends CI_Model
         $hash_password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 10]);
 
         // Validate
-        if(!isset($fname) || !isset($lname) || !isset($email) || !isset($hash_password) || !isset($birthdate) || !isset($img) || !isset($phone) || !isset($shirt_size) || !isset($shoe_size))
+        if(!isset($fname) || !isset($lname) || !isset($email) || !isset($hash_password) || !isset($birthdate) || !isset($phone) || !isset($shirt_size) || !isset($shoe_size))
         {
             die('Bad ID');
         }
@@ -97,7 +96,6 @@ class User_model extends CI_Model
         $san_email = trim(strip_tags($email));
         $san_password = trim(strip_tags($hash_password));
         $san_birthdate = trim(strip_tags($birthdate));
-        $san_img = trim(strip_tags($img));
         $san_phone = trim(strip_tags($phone));
         $san_shirt_size = trim(strip_tags($shirt_size));
         $san_shoe_size = trim(strip_tags($shoe_size));
@@ -108,13 +106,12 @@ class User_model extends CI_Model
         $none_tainted_email = $this->db->escape_str((string)$san_email);
         $none_tainted_password = $this->db->escape_str((string)$san_password);
         $none_tainted_birthdate = $this->db->escape_str((string)$san_birthdate);
-        $none_tainted_img = $this->db->escape_str((string)$san_img);
         $none_tainted_phone = $this->db->escape_str((string)$san_phone);
         $none_tainted_shirt_size = $this->db->escape_str((string)$san_shirt_size);
         $none_tainted_shoe_size = $this->db->escape_str((string)$san_shoe_size);
 
         $query = sprintf('INSERT into users
-            (fname, lname, email, password, birthdate, img, phone, shirt_size, shoe_size)
+            (fname, lname, email, password, birthdate, phone, shirt_size, shoe_size)
             VALUES
             ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s")'
             , $none_tainted_fname
@@ -122,7 +119,6 @@ class User_model extends CI_Model
             , $none_tainted_email
             , $none_tainted_password
             , $none_tainted_birthdate
-            , $none_tainted_img
             , $none_tainted_phone
             , $none_tainted_shirt_size
             , $none_tainted_shoe_size);
@@ -156,7 +152,6 @@ class User_model extends CI_Model
     public function edit_user($token, $args = []) //.... edit
     {
         $password = $args['password'];
-        $img = $args['img'];
         $phone = $args['phone'];
         $shirt_size = $args['shirt_size'];
         $shoe_size = $args['shoe_size'];
@@ -164,7 +159,7 @@ class User_model extends CI_Model
         $hash_password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 10]);
 
         // Validate
-        if(!isset($hash_password) || !isset($img) || !isset($phone) || !isset($shirt_size) || !isset($shoe_size))
+        if(!isset($hash_password) || !isset($phone) || !isset($shirt_size) || !isset($shoe_size))
         {
             die('Bad ID');
         }
@@ -172,7 +167,6 @@ class User_model extends CI_Model
         // Sanitize
         $san_token = trim(strip_tags($token));
         $san_password = trim(strip_tags($hash_password));
-        $san_img = trim(strip_tags($img));
         $san_phone = trim(strip_tags($phone));
         $san_shirt_size = trim(strip_tags($shirt_size));
         $san_shoe_size = trim(strip_tags($shoe_size));
@@ -180,7 +174,6 @@ class User_model extends CI_Model
         // Escape
         $none_tainted_token = $this->db->escape_str((string)$san_token);
         $none_tainted_password = $this->db->escape_str((string)$san_password);
-        $none_tainted_img = $this->db->escape_str((string)$san_img);
         $none_tainted_phone = $this->db->escape_str((string)$san_phone);
         $none_tainted_shirt_size = $this->db->escape_str((string)$san_shirt_size);
         $none_tainted_shoe_size = $this->db->escape_str((string)$san_shoe_size);
@@ -188,10 +181,9 @@ class User_model extends CI_Model
         $query = sprintf('UPDATE users
             INNER JOIN user_tokens
             ON users.u_id=user_tokens.u_id
-            SET users.password = "%s", users.img = "%s", users.phone = "%s", users.shirt_size = "%s", users.shoe_size = "%s"
+            SET users.password = "%s", users.phone = "%s", users.shirt_size = "%s", users.shoe_size = "%s"
             WHERE token = "%s"'
             , $none_tainted_password
-            , $none_tainted_img
             , $none_tainted_phone
             , $none_tainted_shirt_size
             , $none_tainted_shoe_size

@@ -84,7 +84,7 @@ class App extends CI_Controller
         $post = json_decode($post);
 
         // Validate -- NEEDS CHECKING IF EMPTY!!!!!!!!!!!!!!!!
-        if(!is_object($post) || !isset($post->fname) || !isset($post->lname) || !isset($post->email) || !isset($post->password) || !isset($post->birthdate) || !isset($post->img) || !isset($post->phone) || !isset($post->shirt_size) || !isset($post->shoe_size))
+        if(!is_object($post) || !isset($post->fname) || !isset($post->lname) || !isset($post->email) || !isset($post->password) || !isset($post->birthdate) || !isset($post->phone) || !isset($post->shirt_size) || !isset($post->shoe_size))
         {
             $this->rest_lib->http_response(400, 'Bad Request', 'Wrong data');
         }
@@ -94,7 +94,6 @@ class App extends CI_Controller
         $email = trim(strip_tags($post->email));
         $password = trim(strip_tags($post->password));
         $birthdate = trim(strip_tags($post->birthdate));
-        $img = trim(strip_tags($post->img));
         $phone = trim(strip_tags($post->phone));
         $shirt_size = trim(strip_tags($post->shirt_size));
         $shoe_size = trim(strip_tags($post->shoe_size));
@@ -105,7 +104,6 @@ class App extends CI_Controller
         $safe_email = (string)$email;
         $safe_password = (string)$password;
         $safe_birthdate = (string)$birthdate;
-        $safe_img = (string)$img;
         $safe_phone = (string)$phone;
         $safe_shirt_size = (string)$shirt_size;
         $safe_shoe_size = (string)$shoe_size;
@@ -118,7 +116,6 @@ class App extends CI_Controller
             'email' => $safe_email,
             'password' => $safe_password,
             'birthdate' => $safe_birthdate,
-            'img' => $safe_img,
             'phone' => $safe_phone,
             'shirt_size' => $safe_shirt_size,
             'shoe_size' => $safe_shoe_size
@@ -143,7 +140,7 @@ class App extends CI_Controller
         $put = json_decode($put);
 
         // Validate
-        if(!isset($put->password) || !isset($put->img) || !isset($put->phone) || !isset($put->shirt_size) || !isset($put->shoe_size)) // The edit fails if none of the fields are filled out, since it won't know what to edit - maybe we need to use empty as well as isset?
+        if(!isset($put->password) || !isset($put->phone) || !isset($put->shirt_size) || !isset($put->shoe_size)) // The edit fails if none of the fields are filled out, since it won't know what to edit - maybe we need to use empty as well as isset?
         {
             die('No fields have been changed'); // Not sure the validate works, since it edits no matter what - find out why
         }
@@ -151,7 +148,6 @@ class App extends CI_Controller
         // Sanitize
         $san_token = trim(strip_tags($token));
         $san_password = trim(strip_tags($put->password));
-        $san_img = trim(strip_tags($put->img));
         $san_phone = trim(strip_tags($put->phone));
         $san_shirt_size = trim(strip_tags($put->shirt_size));
         $san_shoe_size = trim(strip_tags($put->shoe_size));
@@ -159,16 +155,14 @@ class App extends CI_Controller
         // Escape
         $none_tainted_token = $this->db->escape_str((string)$san_token);
         $none_tainted_password = $this->db->escape_str((string)$san_password);
-        $none_tainted_img = $this->db->escape_str((string)$san_img);
         $none_tainted_phone = $this->db->escape_str((string)$san_phone);
         $none_tainted_shirt_size = $this->db->escape_str((string)$san_shirt_size);
         $none_tainted_shoe_size = $this->db->escape_str((string)$san_shoe_size);
 
         $this->load->model('user_model');
 
-        $this->rest_lib->http_response(200, 'OK', $this->user_model->edit_user($none_tainted_token, [
+        $this->rest_lib->http_response(200, 'OK', $this->user_model->edit_user($none_tainted_tokenar, [
             'password' => $none_tainted_password,
-            'img' => $none_tainted_img,
             'phone' => $none_tainted_phone,
             'shirt_size' => $none_tainted_shirt_size,
             'shoe_size' => $none_tainted_shoe_size
