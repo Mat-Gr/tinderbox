@@ -8,28 +8,17 @@ class App extends CI_Controller
         $this->rest_lib->method('GET');
 
         // check user credentials in database with User-lib
-        $this->user_lib->authorize();
+        $token = $this->user_lib->authorize();
 
         // get userinfo (id or token needed to fetch unique users schedule)
 
         // set output with schedule_model
         $this->load->model('schedule_model');
 
-        $model_res = $this->schedule_model->get_schedule();
+        $model_res = $this->schedule_model->get_schedule($token);
 
-        if($model_res === true)
-        {
-            $this->output
-                ->set_header('HTTP/1.1 200 OK')
-                ->set_header('Content-Type: application/json')
-                ->set_output(json_encode([
-                    'status' => 200,
-                    'statusText' => 'OK',
-                    'response' => $model_res
-                    ]))
-                ->_display();
-            die();
-        }
+        $this->rest_lib->http_response(200, 'OK', $model_res);
+
     }
 
     public function announcements() //load announcements
