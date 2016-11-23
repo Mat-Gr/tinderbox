@@ -40,27 +40,16 @@ class App extends CI_Controller
         // check user credentials in database with User-lib
         $this->user_lib->authorize();
 
-        // get userinfo (id or token needed to fetch unique users announcements)
-
-
         $this->load->model('announcement_model');
 
-        $model_res = $this->announcement_model->get_ann();
+        $pinned = $this->announcement_model->get_pinned();
+        $announcements = $this->announcement_model->get_ann();
 
-        if($model_res === true)
-        {
-            $this->output
-                ->set_header('HTTP/1.1 200 OK')
-                ->set_header('Content-Type: application/json')
-                ->set_output(json_encode([
-                    'status' => 200,
-                    'statusText' => 'OK',
-                    'response' => $model_res
-                    ]))
-                ->_display();
-            die();
-      }
-        // set output with announcements_model
+        $pinned->pinned = 'true';
+        $result = $announcements;
+        array_unshift($result, $pinned);
+
+        return $this->rest_lib->http_response(200, 'OK', $result);
     }
 
     public function userinfo() //load userinfo
