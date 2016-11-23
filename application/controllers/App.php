@@ -71,6 +71,8 @@ class App extends CI_Controller
         // check user credentials in database with User-lib
         $token = $this->user_lib->authorize();
         $userinfo = $this->user_lib->get_userinfo($token);
+        unset($userinfo->t_id);
+        unset($userinfo->r_id);
 
         $this->rest_lib->http_response(200, 'OK', $userinfo);
     }

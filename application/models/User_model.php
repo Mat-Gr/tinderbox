@@ -54,10 +54,14 @@ class User_model extends CI_Model
     {
         // implement security here
         $query = sprintf('SELECT
-            users.t_id, users.r_id, users.fname, users.lname, users.birthdate, users.phone, users.shirt_size, users.shoe_size
+            users.fname, users.lname, users.t_id, team.team, users.r_id, role.role, users.birthdate, users.phone, users.shirt_size, users.shoe_size
             FROM users
             INNER JOIN user_tokens
             ON users.u_id=user_tokens.u_id
+            INNER JOIN team
+            ON users.t_id=team.t_id
+            INNER JOIN role
+            ON users.r_id=role.r_id
             WHERE
             token = "%s"',
             $this->db->escape_like_str($token));
