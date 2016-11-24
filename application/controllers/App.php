@@ -9,54 +9,57 @@ class App extends CI_Controller
         $this->load->library(array('rest_lib', 'user_lib'));
     }
 
-    public function schedule() //load schedule
+    public function schedule()
     {
-        // check request method with Rest-lib == GET
         $this->rest_lib->method('GET');
-
-        // check user credentials in database with User-lib
         $token = $this->user_lib->authorize();
 
-        // get userinfo (id or token needed to fetch unique users schedule)
-
-        // set output with schedule_model
         $this->load->model('schedule_model');
-
         $model_res = $this->schedule_model->get_schedule($token);
 
+        if($model_res === false)
+        {
+            $this->rest_lib->http_response(500, 'Internal Server Error', 'Something went wrong');
+        }
         $this->rest_lib->http_response(200, 'OK', $model_res);
-
     }
 
-    public function announcements() //load announcements
+    public function announcements()
     {
-        // check request method with Rest-lib == GET
         $this->rest_lib->method('GET');
-
-        // check user credentials in database with User-lib
         $this->user_lib->authorize();
 
         $this->load->model('announcement_model');
-
         $pinned = $this->announcement_model->get_pinned();
         $announcements = $this->announcement_model->get_ann();
-
-        $pinned->pinned = 'true';
         $result = $announcements;
-        array_unshift($result, $pinned);
 
+        if(!empty($pinned))
+        {
+            $pinned->pinned = 'true';
+        }
+        if(!is_null($pinned))
+        {
+            array_unshift($result, $pinned);
+        }
+
+        if(empty($result))
+        {
+            return $this->rest_lib->http_response(204, 'No Content', 'No announcements');
+        }
         return $this->rest_lib->http_response(200, 'OK', $result);
     }
 
-    public function userinfo() //load userinfo
+    public function userinfo()
     {
-        // check request method with Rest-lib == GET
         $this->rest_lib->method('GET');
-
-        // check user credentials in database with User-lib
         $token = $this->user_lib->authorize();
         $userinfo = $this->user_lib->get_userinfo($token);
 
+        if($userinfo === false)
+        {
+            $this->rest_lib->http_response(500, 'Internal Server Error', 'Something went wrong');
+        }
         $this->rest_lib->http_response(200, 'OK', $userinfo);
     }
 
@@ -64,7 +67,6 @@ class App extends CI_Controller
     {
         $this->rest_lib->method('POST');
 
-        //file contents....
         $post = file_get_contents('php://input');
         $post = json_decode($post);
 
@@ -89,7 +91,8 @@ class App extends CI_Controller
         $secured = $this->sec_lib->secure($post);
         $this->load->model('user_model');
 
-        $res = $this->user_model->set_user([
+        $data = new stdClass;
+        $data = (object)[
             'fname' => $secured->fname,
             'lname' => $secured->lname,
             'email' => $secured->email,
@@ -98,11 +101,13 @@ class App extends CI_Controller
             'phone' => $secured->phone,
             'shirt_size' => $secured->shirt_size,
             'shoe_size' => $secured->shoe_size
-        ]);
+        ];
+
+        $res = $this->user_model->set_user($data);
 
         if(!($res === false) && is_string($res))
         {
-            $this->rest_lib->http_response(200, 'OK', $res);  // change this -- don't return id to user
+            $this->rest_lib->http_response(200, 'OK', $res);
         }
         $this->rest_lib->http_response(500, 'Internal Server Error', 'Something went wrong');
     }
@@ -135,12 +140,15 @@ class App extends CI_Controller
         $secured = $this->sec_lib->secure($put);
         $this->load->model('user_model');
 
-        $res = $this->user_model->edit_user($token, [
+        $data = new stdClass;
+        $data = (object)[
             'password' => $secured->password,
             'phone' => $secured->phone,
             'shirt_size' => $secured->shirt_size,
             'shoe_size' => $secured->shoe_size,
-        ]);
+        ];
+
+        $res = $this->user_model->edit_user($token, $data);
 
         if($res === true)
         {
@@ -152,25 +160,15 @@ class App extends CI_Controller
     public function delete_user()
     {
         $this->rest_lib->method('DELETE');
-
         $token = $this->user_lib->authorize();
 
-        // Validate      
-        if(!is_string($token))
+        if(empty($token) || !is_string($token))
         {
-            $this->rest_lib->http_response(400, 'Bad Request', 'Wrong data');
+            return false;
         }
+        $token = (string)trim(strip_tags($token));
 
-
-        // Sanitize
-
-        $san_token = trim(strip_tags($token));
-
-        // Escape
-
-        $none_tainted_id = (string)$san_token;
-
-        $model_res = $this->user_model->delete_user($none_tainted_token);
+        $model_res = $this->user_model->delete_user($token);
 
         if($model_res === true)
         {
