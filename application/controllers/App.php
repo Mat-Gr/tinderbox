@@ -68,42 +68,36 @@ class App extends CI_Controller
         $post = file_get_contents('php://input');
         $post = json_decode($post);
 
-        // Validate -- NEEDS CHECKING IF EMPTY!!!!!!!!!!!!!!!!
-        if(!is_object($post) || !isset($post->fname) || !isset($post->lname) || !isset($post->email) || !isset($post->password) || !isset($post->birthdate) || !isset($post->phone) || !isset($post->shirt_size) || !isset($post->shoe_size))
+        // Validate
+        $req = [
+            'fname',
+            'lname',
+            'email',
+            'password',
+            'birthdate',
+            'phone',
+            'shirt_size',
+            'shoe_size'
+        ];
+
+        if(!is_object($post) || $this->sec_lib->validate($post, $req) === false)
         {
             $this->rest_lib->http_response(400, 'Bad Request', 'Wrong data');
         }
-        // Sanitize
-        $fname = trim(strip_tags($post->fname));
-        $lname = trim(strip_tags($post->lname));
-        $email = trim(strip_tags($post->email));
-        $password = trim(strip_tags($post->password));
-        $birthdate = trim(strip_tags($post->birthdate));
-        $phone = trim(strip_tags($post->phone));
-        $shirt_size = trim(strip_tags($post->shirt_size));
-        $shoe_size = trim(strip_tags($post->shoe_size));
 
-        // Escape
-        $safe_fname = (string)$fname;
-        $safe_lname = (string)$lname;
-        $safe_email = (string)$email;
-        $safe_password = (string)$password;
-        $safe_birthdate = (string)$birthdate;
-        $safe_phone = (string)$phone;
-        $safe_shirt_size = (string)$shirt_size;
-        $safe_shoe_size = (string)$shoe_size;
-
+        // Sanitize & escape
+        $secured = $this->sec_lib->secure($post);
         $this->load->model('user_model');
 
         $res = $this->user_model->set_user([
-            'fname' => $safe_fname,
-            'lname' => $safe_lname,
-            'email' => $safe_email,
-            'password' => $safe_password,
-            'birthdate' => $safe_birthdate,
-            'phone' => $safe_phone,
-            'shirt_size' => $safe_shirt_size,
-            'shoe_size' => $safe_shoe_size
+            'fname' => $secured->fname,
+            'lname' => $secured->lname,
+            'email' => $secured->email,
+            'password' => $secured->password,
+            'birthdate' => $secured->birthdate,
+            'phone' => $secured->phone,
+            'shirt_size' => $secured->shirt_size,
+            'shoe_size' => $secured->shoe_size
         ]);
 
         if(!($res === false) && is_string($res))
@@ -125,33 +119,34 @@ class App extends CI_Controller
         $put = json_decode($put);
 
         // Validate
-        if(!isset($put->password) || !isset($put->phone) || !isset($put->shirt_size) || !isset($put->shoe_size)) // The edit fails if none of the fields are filled out, since it won't know what to edit - maybe we need to use empty as well as isset?
+        $req = [
+            'password',
+            'phone',
+            'shirt_size',
+            'shoe_size'
+        ];
+
+        if(!is_object($put) || $this->sec_lib->validate($put, $req) === false)
         {
-            die('No fields have been changed'); // Not sure the validate works, since it edits no matter what - find out why
+            $this->rest_lib->http_response(400, 'Bad Request', 'Wrong data');
         }
 
         // Sanitize
-        $san_token = trim(strip_tags($token));
-        $san_password = trim(strip_tags($put->password));
-        $san_phone = trim(strip_tags($put->phone));
-        $san_shirt_size = trim(strip_tags($put->shirt_size));
-        $san_shoe_size = trim(strip_tags($put->shoe_size));
-
-        // Escape
-        $none_tainted_token = $this->db->escape_str((string)$san_token);
-        $none_tainted_password = $this->db->escape_str((string)$san_password);
-        $none_tainted_phone = $this->db->escape_str((string)$san_phone);
-        $none_tainted_shirt_size = $this->db->escape_str((string)$san_shirt_size);
-        $none_tainted_shoe_size = $this->db->escape_str((string)$san_shoe_size);
-
+        $secured = $this->sec_lib->secure($put);
         $this->load->model('user_model');
 
-        $this->rest_lib->http_response(200, 'OK', $this->user_model->edit_user($none_tainted_token, [
-            'password' => $none_tainted_password,
-            'phone' => $none_tainted_phone,
-            'shirt_size' => $none_tainted_shirt_size,
-            'shoe_size' => $none_tainted_shoe_size
-        ]));
+        $res = $this->user_model->edit_user($token, [
+            'password' => $secured->password,
+            'phone' => $secured->phone,
+            'shirt_size' => $secured->shirt_size,
+            'shoe_size' => $secured->shoe_size,
+        ]);
+
+        if($res === true)
+        {
+            $this->rest_lib->http_response(200, 'OK', 'Updated successfully');
+        }
+        $this->rest_lib->http_response(500, 'Internal Server Error', 'Something went wrong');
     }
 
     public function delete_user()
@@ -159,6 +154,15 @@ class App extends CI_Controller
         $this->rest_lib->method('DELETE');
 
         $token = $this->user_lib->authorize();
+
+        // Validate      
+        if(!is_string($token))
+        {
+            $this->rest_lib->http_response(400, 'Bad Request', 'Wrong data');
+        }
+
+
+        // Sanitize
 
         $model_res = $this->user_model->delete_user($token);
 
