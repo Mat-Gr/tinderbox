@@ -151,9 +151,15 @@ class App extends CI_Controller
     {
         $this->rest_lib->method('DELETE');
 
-        // check user credentials in database with User-lib
-        $this->user_lib->authorize();
+        $token = $this->user_lib->authorize();
 
-        //file contents....
+        $model_res = $this->user_model->delete_user($token);
+
+        if($model_res === true)
+        {
+            $this->rest_lib->http_response(200, 'OK', 'User Deleted');
+        }
+        $this->rest_lib->http_response(500, 'Internal Server Error', 'Something went wrong');
+
     }
 }

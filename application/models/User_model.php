@@ -198,9 +198,21 @@ class User_model extends CI_Model
         return 'Updated';
     }
 
-    public function delete_user() // delete
+    public function delete_user($token) // delete
     {
+        $query = sprintf('DELETE users, user_tokens FROM
+            users
+            INNER JOIN user_tokens
+            ON users.u_id = user_tokens.u_id
+            WHERE token = "%s"',
+            $token);
 
+        if($this->db->query($query))
+        {
+            return true;
+        }
+
+        return false;
     }
 
 }
