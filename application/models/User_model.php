@@ -193,9 +193,14 @@ class User_model extends CI_Model
             , $none_tainted_shoe_size
             , $none_tainted_token);
 
-        $this->db->query($query);
+        if($this->db->query($query))
+        {
+            return true;
+        }
 
-        return 'Updated';
+        return false;
+
+
     }
 
     public function delete_user($token) // delete
