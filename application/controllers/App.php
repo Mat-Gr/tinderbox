@@ -164,7 +164,13 @@ class App extends CI_Controller
 
         // Sanitize
 
-        $model_res = $this->user_model->delete_user($token);
+        $san_token = trim(strip_tags($token));
+
+        // Escape
+
+        $none_tainted_id = (string)$san_token;
+
+        $model_res = $this->user_model->delete_user($none_tainted_token);
 
         if($model_res === true)
         {
