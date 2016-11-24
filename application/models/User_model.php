@@ -193,10 +193,11 @@ class User_model extends CI_Model
             , $none_tainted_shoe_size
             , $none_tainted_token);
 
+
         if($this->db->query($query))
         {
             return true;
-        }
+        } 
 
         return false;
 
