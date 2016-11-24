@@ -29,9 +29,6 @@ class Announcement_model extends CI_Model
     		ORDER BY announcements.datetime DESC');
 
     	$this->announcements = $announcements->result();
-
-    /*	$result = $this->db->query('SELECT content, `datetime`
-    		FROM announcements WHERE status = 0 ORDER BY `datetime` DESC');*/
     }
 
     public function get_pinned()
