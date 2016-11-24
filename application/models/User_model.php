@@ -54,7 +54,7 @@ class User_model extends CI_Model
     {
         // implement security here
         $query = sprintf('SELECT
-            users.fname, users.lname, users.t_id, team.team, users.r_id, role.role, users.birthdate, users.phone, users.shirt_size, users.shoe_size
+            users.fname, users.lname, team.team, role.role, users.birthdate, users.phone, users.shirt_size, users.shoe_size
             FROM users
             INNER JOIN user_tokens
             ON users.u_id=user_tokens.u_id
