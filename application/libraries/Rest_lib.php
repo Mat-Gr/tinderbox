@@ -39,7 +39,7 @@ class Rest_lib
     {
         // Validate
         if(!isset($status) || empty($status) || !is_int($status)
-            || !isset($statusText) || empty($statusText) || !is_int($statusText))
+            || !isset($statusText) || empty($statusText) || !is_string($statusText))
         {
             die('wrong data');
         }

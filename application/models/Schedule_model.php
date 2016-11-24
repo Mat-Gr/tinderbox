@@ -2,8 +2,15 @@
 
 class Schedule_model extends CI_Model
 {
-    public function get_schedule($token)
+    public function get_schedule($token = "")
     {
+        if(empty($token) || !is_string($token))
+        {
+            return false;
+        }
+
+        $token = (string)trim(strip_tags($token));
+
         $query = sprintf('SELECT
             schedule_item.start, schedule_item.end, schedule_item.task, team.team, schedule_item.location
             FROM schedule_item
