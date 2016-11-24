@@ -38,12 +38,8 @@ class Rest_lib
     public function http_response($status, $statusText, $response)
     {
         // Validate
-        if(!is_int($status))
-        {
-            die('wrong data');
-        }
-
-        if(!is_string($statusText))
+        if(!isset($status) || empty($status) || !is_int($status)
+            || !isset($statusText) || empty($statusText) || !is_string($statusText))
         {
             die('wrong data');
         }
