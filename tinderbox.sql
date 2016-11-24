@@ -19,7 +19,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `tinderbox`
 --
-
+-- DROP DATABASE IF EXISTS 'tinderbox';
+-- CREATE DATABASE IF NOT EXISTS DBName;
+-- USE DBName - Creater DB såfremt denne ikke findes i forvejen
 -- --------------------------------------------------------
 
 --
