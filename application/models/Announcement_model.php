@@ -1,13 +1,13 @@
 <?php
 
 class Announcement_model extends CI_Model
-{	
+{
 	private $pinned = [];
 	private $announcements = [];
 
     public function __construct()
     {
-    	$pinned = $this->db->query('SELECT 
+    	$pinned = $this->db->query('SELECT
     		users.fname, users.lname, announcements.datetime, role.role, announcements.content
     		FROM announcements
     		INNER JOIN users
@@ -18,8 +18,8 @@ class Announcement_model extends CI_Model
 
     	$this->pinned = $pinned->row();
 
-    	$announcements = $this->db->query('SELECT 
-    		users.fname, users.lname, announcements.datetime, role.role, announcements.content 
+		$announcements = $this->db->query('SELECT
+    		users.fname, users.lname, announcements.datetime, role.role, announcements.content
     		FROM announcements
     		INNER JOIN users
     		ON announcements.u_id = users.u_id

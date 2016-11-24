@@ -2,6 +2,13 @@
 
 class App extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->database();
+        $this->load->library(array('rest_lib', 'user_lib'));
+    }
+
     public function schedule() //load schedule
     {
         // check request method with Rest-lib == GET
