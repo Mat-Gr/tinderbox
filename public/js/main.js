@@ -1,6 +1,6 @@
 jQuery(function()
 {
-	// Declare all function here
+	// Declare all functions here
 	function login_page()
 	{
 		// set html content
