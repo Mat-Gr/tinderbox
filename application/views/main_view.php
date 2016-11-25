@@ -6,7 +6,6 @@
 </head>
 <body>
 	<form method="post" action="">
-	<?php echo validation_errors(); ?>
 		<div>
 			<label>Email</label>
 			<input type="text" name="email">
@@ -17,5 +16,9 @@
 		</div>
 		<input type="submit">
 	</form>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="<?php echo base_url('public/js/main.js'); ?>"></script>
 </body>
 </html>
