@@ -14,7 +14,7 @@ jQuery(function()
 
 	function schedule_page()
 	{
-		if (localStorage.getItem('email') === null && localStorage.getItem('password') === null)
+		if (localStorage.getItem('login') === null)
 		{
 			login_page();
 			return;
@@ -22,9 +22,7 @@ jQuery(function()
 
 		var endpoint = 'schedule';
 
-		var email = localStorage.getItem('email');
-		var password = localStorage.getItem('password');
-		var auth = 'Basic ' + btoa(email + ':' + password) + '==';
+		var login = localStorage.getItem('login');
 
 		jQuery.ajax(
 		{
@@ -34,7 +32,7 @@ jQuery(function()
 			beforeSend: function(ajax)
 			{
 				ajax.setRequestHeader(
-					'Authorization', auth
+					'Authorization', login
 				);
 			},
 			success: function(data, status, response)
@@ -64,7 +62,7 @@ jQuery(function()
 
 	// declare all function BEFORE this point!!!!
 	// run on document start
-	if (localStorage.getItem('email') === null && localStorage.getItem('password') === null) // if local storage email and password not set
+	if (localStorage.getItem('login') === null) // if local storage login not set
 	{
 		login_page();
 	}
@@ -77,7 +75,7 @@ jQuery(function()
 	jQuery('body').on('submit', '#login_form', function(event)
 	{
 		event.preventDefault();
-		if(jQuery('#email').val() === '' && jQuery('#password').val() === '')
+		if(jQuery('#email').val() === '' || jQuery('#password').val() === '')
 		{
 			// msg user -> email and password required
 			return;
@@ -85,10 +83,8 @@ jQuery(function()
 		else
 		{
 			var email = jQuery('#email').val();
-			localStorage.setItem('email', email);
-
 			var password = jQuery('#password').val();
-			localStorage.setItem('password', password);
+			localStorage.setItem('login', ('Basic ' + btoa(email + ':' + password) + '=='));
 
 			schedule_page();
 		}
