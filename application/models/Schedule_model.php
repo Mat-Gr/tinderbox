@@ -29,7 +29,7 @@ class Schedule_model extends CI_Model
 
         $res = $this->db->query($query);
 
-        if($res === true)
+        if(!empty($res->result()))
         {
             return $res->result();
         }

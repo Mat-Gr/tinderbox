@@ -19,7 +19,7 @@ class App extends CI_Controller
 
         if($model_res === false)
         {
-            $this->rest_lib->http_response(500, 'Internal Server Error', 'Something went wrong');
+            $this->rest_lib->http_response(204, 'No Content', 'No schedule');
         }
         $this->rest_lib->http_response(200, 'OK', $model_res);
     }
