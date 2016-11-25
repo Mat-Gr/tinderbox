@@ -1,106 +1,69 @@
 .info-content {
   display: flex column;
   background-color: gray;
-  
   justify-content: space-between;
 }
 
 .main-column1 {
   display: flex;
-  padding: 50px;
+  padding: 58px;
   justify-content: space-between;
-  
   background: #fff9f4;
   border-bottom:1px solid  #b6d9cf; 
   border-top:1px solid  #b6d9cf;
   text-align: center;
  }  
       .main-column1 article{
-        align-content: center;
-        border-radius: 20px;
+        border-radius: 15px;
         background: #043540;
-        width: 30px;
-        height: 30px;
         color: white;
-        float: left;
-        margin: 9px;
- }
-      .main-column1 article2{
-        color: #b6d9cf;
-        width: 30px;
-        height: 30px;
-        align-content: center;
- }
+        padding: 9px;
+}
+
 .main-column2 {
  display: flex;
  justify-content: space-between;
- padding: 50px;
+ padding: 55px;
  background: #fff9f4;
  border-bottom:1px solid  #b6d9cf;
  text-align: center;
 }
         .main-column2 article{
-          border-radius: 20px;
+          border-radius: 15px;
           background: #f08779;
-          width: 30px;
-          height: 30px;
-          float: left;
           color: white;
-          align-content: center;
-          margin: 9px;
+          padding: 9px;
 }
-        .main-column2 article2{
-         color: #b6d9cf;
-         width: 30px;
-         height: 30px;
-}
+
 .main-column3 {
  display: flex;
  justify-content: space-between;
- padding: 50px;
+ padding: 55px;
  background: #fff9f4;
  border-bottom:1px solid  #b6d9cf;
  text-align: center;
 }
         .main-column3 article{
-         border-radius: 20px;
-         background: #8ac6b8;
-         width: 30px;
-         height: 30px;
-         float: left;
+         border-radius: 15px;
+         background:  #8ac6b8;
          color: white;
-         align-content: center;
-         margin: 9px;
+         padding: 9px;
 }
-        .main-column3 article2{
-         color: #b6d9cf;
-         width: 30px;
-         height: 30px;
-}
+
 .main-column4 {
   display: flex;
   justify-content: space-between;
-  padding: 50px;
+  padding: 55px;
   background: #fff9f4;
   border-bottom:1px solid  #b6d9cf;
   text-align: center;
 }
         .main-column4 article{
-         border-radius: 20px;
+         border-radius: 15px;
          background: #ffd961;
-         width: 30px;
-         height: 30px;
-         float: left;
          color: white;
-         align-content: center;
-         margin: 9px;
+         padding: 9px;
 }
-        .main-column4 article2{
-         color: #b6d9cf;
-         width: 30px;
-         height: 30px;
-}
-
 
 .sidebar-one {
 
@@ -114,14 +77,14 @@
 .sidebar-two {
   float: right;
   width: 15px;
-  height: 149px;
+  height: 144px;
   background-color: #f08779;
 }
 
  .sidebar-three {
   float: right;
   width: 15px;
-  height: 149px;
+  height: 144px;
   background-color: #8ac6b8;
   
 
@@ -129,95 +92,7 @@
 .sidebar-four {
   float: right;
   width: 15px;
-  height: 149px;
+  height: 144px;
   background-color: #ffd961;
   
-}
-
-
-
-body.contacts{
-
-
-.search-bar{
-
-  padding: 1em 0 0 0;
-
-
-  input{
-
-    border-radius: 2px;
-      width: 100%;
-      border: 0;
-      padding: 0.5em 0.5em;
-      color: $teal;
-  }
-}
-
-.wrapper-beige{
-  background-color: $beige;
-}
-
-  .letter{
-    background-color: $yellow;
-    padding: 0.750em 1em;
-    
-  }
-
-  .post{
-    border-bottom: 1px solid $teal-b3;
-    padding: 0.750em 0;
-    margin: 0;
-
-    &:last-of-type {
-    border: 0;
-    }
-
-    .post-details{
-      flex-direction: row;
-      justify-content: space-between;
-      width: 100%;
-
-      i{
-        font-size: 2rem;
-        padding-right: 0.500em;
-
-         &:last-of-type{
-         
-          padding-left: 1.500rem;
-      }
-      }
-
-      .post-icon{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-      }
-  
-     
-    }
-
-       .post-mail{
-        display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      width: 100%;
-
-    }
-
-    .post-content{
-      border: 0;
-      padding: 0.5em 0em 0.5em 2.25em;
-
-    }
-
-
-
-    .normal-p{
-      color: $rosa;
-      padding-bottom: 0.125em;
-    }
-  }
-
 }
