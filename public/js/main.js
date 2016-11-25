@@ -46,7 +46,7 @@ jQuery(function()
 						'<p>' + data[i].team + '</p></br>' +
 						'<p>' + data[i].location + '</p></br>';
 				}
-				var link = '<a class="announcements" href="#">Announcements</a>'
+				var link = '<a class="announcements" href="#">Announcements</a>';
 				jQuery('body').html(schedule + link);
 			},
 			error: function(request, status, error)
@@ -61,7 +61,7 @@ jQuery(function()
 		});
 	}
 
-		function announcements_page()
+	function announcements_page()
 	{
 		if (localStorage.getItem('login') === null)
 		{
