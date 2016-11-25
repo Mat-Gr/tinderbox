@@ -46,7 +46,59 @@ jQuery(function()
 						'<p>' + data[i].team + '</p></br>' +
 						'<p>' + data[i].location + '</p></br>';
 				}
-				jQuery('body').html(schedule);
+				var link = '<a class="announcements" href="#">Announcements</a>'
+				jQuery('body').html(schedule + link);
+			},
+			error: function(request, status, error)
+			{
+				if(error == 'Unauthorized')
+				{
+					// set error msg here
+					login_page();
+					return;
+				}
+			}
+		});
+	}
+
+		function announcements_page()
+	{
+		if (localStorage.getItem('login') === null)
+		{
+			login_page();
+			return;
+		}
+
+		var endpoint = 'announcements';
+
+		var login = localStorage.getItem('login');
+
+		jQuery.ajax(
+		{
+			url: 'http://localhost/tinderbox/app/' + endpoint,
+			contentType: 'application/json',
+			type: 'GET',
+			beforeSend: function(ajax)
+			{
+				ajax.setRequestHeader(
+					'Authorization', login
+				);
+			},
+			success: function(data, status, response)
+			{
+				var announcements = '';
+				for(var i in data)
+				{
+					announcements += '<div';
+					announcements += (data[i].pinned ? ' class="pinned"' : '');
+					announcements += '><p>' + data[i].fname + '</p></br>' +
+						'<p>' + data[i].lname + '</p></br>' +
+						'<p>' + data[i].datetime + '</p></br>' +
+						'<p>' + data[i].role + '</p></br>' +
+						'<p>' + data[i].content + '</p></br>' +
+						'</div>';
+				}
+				jQuery('body').html(announcements);
 			},
 			error: function(request, status, error)
 			{
@@ -89,5 +141,10 @@ jQuery(function()
 			schedule_page();
 		}
 
+	});
+
+	jQuery('body').on('click', '.announcements', function(event){
+		event.preventDefault();
+		announcements_page();
 	});
 });
