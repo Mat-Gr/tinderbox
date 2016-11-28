@@ -143,6 +143,116 @@ jQuery(function()
 		});
 	}
 
+	function locations_page()
+	{
+		if (localStorage.getItem('login') === null)
+		{
+			login_page();
+			return;
+		}
+
+		var endpoint = 'locations';
+
+		var login = localStorage.getItem('login');
+
+		jQuery.ajax(
+		{
+			url: 'http://localhost/tinderbox/app/' + endpoint,
+			contentType: 'application/json',
+			type: 'GET',
+			beforeSend: function(ajax)
+			{
+				ajax.setRequestHeader(
+					'Authorization', login
+				);
+			},
+			success: function(data, status, response)
+			{
+				// Get template from server
+				jQuery.get("http://localhost/tinderbox/public/templates/app_pages_template.html").done(function(response) {
+
+					var content = jQuery(jQuery.parseHTML(response));
+
+					//Compile main template
+					var page_template = Handlebars.compile(content.filter('#page_template').html());
+					var announcements_template = Handlebars.compile(content.filter('#locations_template').html());
+
+					// check if the page template already exists
+					if(!jQuery('body').hasClass('site'))
+					{
+						jQuery('body').html(page_template);
+						jQuery('body').addClass('site');
+					}
+					jQuery('main').html(locations_template(data));
+				});
+			},
+			error: function(request, status, error)
+			{
+				if(error == 'Unauthorized')
+				{
+					// set error msg here
+					login_page();
+					return;
+				}
+			}
+		});
+	}
+
+	function info_page()
+	{
+		if (localStorage.getItem('login') === null)
+		{
+			login_page();
+			return;
+		}
+
+		var endpoint = 'info';
+
+		var login = localStorage.getItem('login');
+
+		jQuery.ajax(
+		{
+			url: 'http://localhost/tinderbox/app/' + endpoint,
+			contentType: 'application/json',
+			type: 'GET',
+			beforeSend: function(ajax)
+			{
+				ajax.setRequestHeader(
+					'Authorization', login
+				);
+			},
+			success: function(data, status, response)
+			{
+				// Get template from server
+				jQuery.get("http://localhost/tinderbox/public/templates/app_pages_template.html").done(function(response) {
+
+					var content = jQuery(jQuery.parseHTML(response));
+
+					//Compile main template
+					var page_template = Handlebars.compile(content.filter('#page_template').html());
+					var announcements_template = Handlebars.compile(content.filter('#info_template').html());
+
+					// check if the page template already exists
+					if(!jQuery('body').hasClass('site'))
+					{
+						jQuery('body').html(page_template);
+						jQuery('body').addClass('site');
+					}
+					jQuery('main').html(info_template(data));
+				});
+			},
+			error: function(request, status, error)
+			{
+				if(error == 'Unauthorized')
+				{
+					// set error msg here
+					login_page();
+					return;
+				}
+			}
+		});
+	}
+
 	// declare all function BEFORE this point!!!!
 	// run on document start
 	if (localStorage.getItem('login') === null) // if local storage login not set
