@@ -3,13 +3,32 @@ jQuery(function()
 	// Declare all functions here
 	function login_page()
 	{
-		// set html content
-		var content = '<form method="post" id="login_form">' +
-				'<div><label>Email</label><input id="email" type="text" name="email"></div>' +
-				'<div><label>Password</label><input id="password" type="password" name="password"></div>' +
-				'<input type="submit"></form>';
+		//Get template from server
+		jQuery.get("http://localhost/tinderbox/public/templates/login_signup_template.html").done(function(response) {
 
-		jQuery('body').html(content);
+			var content = jQuery(jQuery.parseHTML(response));
+
+			//Compile main template
+			var login_template = Handlebars.compile(content.filter('#login_template').html());
+
+			// set html content
+			jQuery('body').html(login_template);
+		});
+	}
+
+	function signup_page()
+	{
+		//Get template from server
+		jQuery.get("http://localhost/tinderbox/public/templates/login_signup_template.html").done(function(response) {
+
+			var content = jQuery(jQuery.parseHTML(response));
+
+			//Compile main template
+			var signup_template = Handlebars.compile(content.filter('#signup_template').html());
+
+			// set html content
+			jQuery('body').html(signup_template);
+		});
 	}
 
 	function schedule_page()
@@ -37,17 +56,23 @@ jQuery(function()
 			},
 			success: function(data, status, response)
 			{
-				var schedule = '';
-				for(var i in data)
-				{
-					schedule += '<p>' + data[i].start + '</p></br>' +
-						'<p>' + data[i].end + '</p></br>' +
-						'<p>' + data[i].task + '</p></br>' +
-						'<p>' + data[i].team + '</p></br>' +
-						'<p>' + data[i].location + '</p></br>';
-				}
-				var link = '<a class="announcements" href="#">Announcements</a>';
-				jQuery('body').html(schedule + link);
+				// Get template from server
+				jQuery.get("http://localhost/tinderbox/public/templates/app_pages_template.html").done(function(response) {
+
+					var content = jQuery(jQuery.parseHTML(response));
+
+					//Compile templates
+					var page_template = Handlebars.compile(content.filter('#page_template').html());
+					var schedule_template = Handlebars.compile(content.filter('#schedule_template').html());
+
+					// check if the page template already exists
+					if(!jQuery('body').hasClass('site'))
+					{
+						jQuery('body').html(page_template);
+						jQuery('body').addClass('site');
+					}
+					jQuery('main').html(schedule_template(data));
+				});
 			},
 			error: function(request, status, error)
 			{
@@ -86,19 +111,23 @@ jQuery(function()
 			},
 			success: function(data, status, response)
 			{
-				var announcements = '';
-				for(var i in data)
-				{
-					announcements += '<div';
-					announcements += (data[i].pinned ? ' class="pinned"' : '');
-					announcements += '><p>' + data[i].fname + '</p></br>' +
-						'<p>' + data[i].lname + '</p></br>' +
-						'<p>' + data[i].datetime + '</p></br>' +
-						'<p>' + data[i].role + '</p></br>' +
-						'<p>' + data[i].content + '</p></br>' +
-						'</div>';
-				}
-				jQuery('body').html(announcements);
+				// Get template from server
+				jQuery.get("http://localhost/tinderbox/public/templates/app_pages_template.html").done(function(response) {
+
+					var content = jQuery(jQuery.parseHTML(response));
+
+					//Compile main template
+					var page_template = Handlebars.compile(content.filter('#page_template').html());
+					var announcements_template = Handlebars.compile(content.filter('#announcements_template').html());
+
+					// check if the page template already exists
+					if(!jQuery('body').hasClass('site'))
+					{
+						jQuery('body').html(page_template);
+						jQuery('body').addClass('site');
+					}
+					jQuery('main').html(announcements_template(data));
+				});
 			},
 			error: function(request, status, error)
 			{

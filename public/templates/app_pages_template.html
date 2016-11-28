@@ -1,0 +1,36 @@
+<!-- main template for app pages -->
+<script id="page_template" type="text/x-handlebars-template">
+    <header>
+        <h1>hello</h1>
+    </header>
+    <main>
+    </main>
+</script>
+
+<!-- sub templates for page content -->
+<script id="schedule_template" type="text/x-handlebars-template">
+    {{#each .}}
+        <p>{{start}}</p></br>
+        <p>{{end}}</p></br>
+        <p>{{task}}</p></br>
+        <p>{{team}}</p></br>
+        <p>{{location}}</p></br></br></br>
+    {{/each}}
+    <a class="announcements" href="#">Announcements</a>
+</script>
+
+<script id="announcements_template" type="text/x-handlebars-template">
+    {{#each .}}
+        {{#if pinned}}
+            <div class="pinned">
+        {{else}}
+            <div>
+        {{/if}}
+                <p>{{fname}}</p></br>
+                <p>{{lname}}</p></br>
+                <p>{{datetime}}</p></br>
+                <p>{{role}}</p></br>
+                <p>{{content}}</p></br>
+            </div>
+    {{/each}}
+</script>
