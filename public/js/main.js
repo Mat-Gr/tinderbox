@@ -3,6 +3,7 @@ jQuery(function()
 	// Declare all functions here
 	function login_page()
 	{
+		jQuery('body').removeClass('site');
 		//Get template from server
 		jQuery.get("http://localhost/tinderbox/public/templates/login_signup_template.html").done(function(response) {
 
@@ -18,6 +19,7 @@ jQuery(function()
 
 	function signup_page()
 	{
+		jQuery('body').removeClass('site');
 		//Get template from server
 		jQuery.get("http://localhost/tinderbox/public/templates/login_signup_template.html").done(function(response) {
 
