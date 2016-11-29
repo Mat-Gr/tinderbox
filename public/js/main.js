@@ -18,7 +18,8 @@ function login_page()
 
 function signup_page()
 {
-	jQuery('body').removeClass('site');
+	jQuery('body').removeClass();
+	jQuery('body').addClass('signup');
 	//Get template from server
 	jQuery.get("http://localhost/tinderbox/public/templates/login_signup_template.html").done(function(response) {
 
@@ -70,8 +71,9 @@ function schedule_page()
 				if(!jQuery('body').hasClass('site'))
 				{
 					jQuery('body').html(page_template);
-					jQuery('body').addClass('site');
 				}
+				jQuery('body').removeClass();
+				jQuery('body').addClass('site schedule');
 				jQuery('main').html(schedule_template(data));
 			});
 		},
@@ -268,6 +270,38 @@ else
 {
 	schedule_page();
 }
+
+// some handlebars helpers
+Handlebars.registerHelper('get_time', function(timestamp) { // returns time like this -> 7.15
+	var date = new Date(timestamp);
+	return ((date.getHours()<10?'0':'') + date.getHours()) + '.' + ((date.getMinutes()<10?'0':'') + date.getMinutes());
+});
+
+Handlebars.registerHelper('get_day', function(timestamp) { // returns tommorow or date
+	var date = timestamp.split(' ');
+	date = new Date(date[0]);
+	var today = new Date();
+	if(date.getFullYear() == today.getFullYear() && date.getMonth() == today.getMonth())
+	{
+		if(date.getDate() == (today.getDate()))
+		{
+			return 'Today';
+		}
+		else if(date.getDate() == (today.getDate() + 1))
+		{
+			return 'Tomorrow';
+		}
+		else if(date.getDate() == (today.getDate() + 2))
+		{
+			return 'Day After Tomorrow';
+		}
+	}
+	else
+	{
+		var result = (date.toString()).split(' ');
+		return result[0] + ' ' + result[1] + ' ' + result[2];
+	}
+});
 
 // event listeners
 jQuery('body').on('submit', '#login_form', function(event)
