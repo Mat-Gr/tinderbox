@@ -17,6 +17,16 @@ class App extends CI_Controller
         $this->load->model('schedule_model');
         $model_res = $this->schedule_model->get_schedule($token);
 
+        foreach($model_res as $item)
+        {
+            $current = date("Y-m-d");
+            $start = explode(' ', $item->start);
+            if($start[0] === $current)
+            {
+                $item->today = 'true';
+            }
+        }
+
         if($model_res === false)
         {
             $this->rest_lib->http_response(204, 'No Content', 'No schedule');
