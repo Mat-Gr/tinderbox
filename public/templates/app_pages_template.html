@@ -1,22 +1,164 @@
 <!-- main template for app pages -->
 <script id="page_template" type="text/x-handlebars-template">
-    <header>
-        <h1>hello</h1>
+    <div class="menu">
+        <div class="app-menu">
+            <div class="menu-profile">
+                <div class="image"><img src="public/imgs/profile-img.png" alt="profile-img"></div>
+                <h3 class="h3">Maria Pedersen</h3>
+                <p class="small-p">Bartender</p>
+            </div>
+
+            <div>
+                <a href="schedule.html" class="menu-item">
+                    <div>
+                        <h1>Home</h1>
+                    </div>
+                </a>
+                <a href="schedule.html" class="menu-item">
+                    <div>
+                        <h1>SCHEDULE</h1>
+                    </div>
+                </a>
+                <a href="locations.html" class="menu-item">
+                    <div>
+                        <h1>LOCATIONS</h1>
+                    </div>
+                </a>
+                <a href="announcements.html" class="menu-item">
+                    <div>
+                        <h1>ANNOUNCEMENTS</h1>
+                    </div>
+                </a>
+                <a href="info.html" class="menu-item">
+                    <div>
+                        <h1>INFO</h1>
+                    </div>
+                </a>
+            </div>
+            <div>
+                <object class="logo menu-logo" type="image/svg+xml" data="public/imgs/logo-teal.svg">Your browser does not support SVGs</object>
+            </div>
+        </div>
+    </div>
+
+    <header class="top-nav">
+        <object class="top-nav-logo" type="image/svg+xml" data="public/imgs/logo-teal.svg">Your browser does not support SVGs</object>
+        <h1>SCHEDULE</h1>
+        <i class="fa fa-bars fa-2x menu-icon" aria-hidden="true"></i>
     </header>
-    <main>
+
+    <main class="content">
+        <!-- content goes here -->
     </main>
+
+    <nav class="main-nav small-p">
+        <ul>
+            <li>
+                <a href="schedule.html"><i class="fa fa-sticky-note-o fa-2x menu-icon" aria-hidden="true"></i><br/>Schedule</a>
+            </li>
+
+            <li>
+                <a href="announcements.html"><i class="fa fa-newspaper-o fa-2x menu-icon" aria-hidden="true"></i><br/>Announcements</a>
+            </li>
+
+            <li>
+                <a href="locations.html"><i class="fa fa-map-marker fa-2x menu-icon" aria-hidden="true"></i><br/>Locations</a>
+            </li>
+
+            <li>
+                <a href="info.html"><i class="fa fa-newspaper-o fa-2x menu-icon" aria-hidden="true"></i><br/>Information</a>
+            </li>
+        </ul>
+    </nav>
 </script>
 
 <!-- sub templates for page content -->
 <script id="schedule_template" type="text/x-handlebars-template">
-    {{#each .}}
-        <p>{{start}}</p></br>
-        <p>{{end}}</p></br>
-        <p>{{task}}</p></br>
-        <p>{{team}}</p></br>
-        <p>{{location}}</p></br></br></br>
+    <div class="wrapper wrapper-beige">
+        <div class="calendar">
+            <ul class="weekdays">
+                <li class="h3">Mon</li>
+                <li>Tue</li>
+                <li>Wed</li>
+                <li>Thu</li>
+                <li>Fri</li>
+                <li>Sat</li>
+                <li>Sun</li>
+            </ul>
+
+            <ul class="days ">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li><span class="active">7</span></li>
+            </ul>
+
+            <ul class="days-schedule ">
+                <li></li>
+                <li></li>
+                <li>&bull;</li>
+                <li>&bull;</li>
+                <li>&bull;</li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <div class="wrapper wrapper-yellow">
+        <h3 class="schedule-title">Today's Schedule</h3>
+        {{#each .}}
+            {{#if today}}
+                <div class="schedule-current">
+                    <div class="sc-details">
+                        <div class="sc-primary">
+                            <h4>{{get_day start}}</h4>
+                            <div>
+                                <p class="large-p">{{get_time start}}</p>
+                                <hr class="vertical"/>
+                                <p class="large-p">{{get_time end}}</p>
+                            </div>
+                        </div>
+
+                        <div class="sc-secondary">
+                            <h2>{{task}}</h2>
+                            <p class="sc-desc h4"><span class="small-p">Team:</span> {{team}} </p>
+                            <p class="sc-desc"><span class="small-p">Place:</span> {{location}} <i class="fa fa-map-marker menu-icon" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
+        {{/each}}
+        <h3 class="schedule-title">Upcoming Schedule</h3>
+        {{#each .}}
+            {{#unless today}}
+                <div class="schedule-upcoming">
+                    <div class="su-details">
+                        <div class="su-primary">
+                            <h3>{{task}}</h3>
+                            <p>Place: {{location}}</p>
+                        </div>
+
+                        <div class="su-secondary">
+                            <p class="su-date">{{get_day start}}</p>
+                            <p class="su-hour">{{get_time start}}</p>
+                        </div>
+                    </div>
+                </div>
+            {{/unless}}
+        {{/each}}
+    </div>
+
+    <!-- {{#each .}}
+    <p>{{start}}</p></br>
+    <p>{{end}}</p></br>
+    <p>{{task}}</p></br>
+    <p>{{team}}</p></br>
+    <p>{{location}}</p></br></br></br>
     {{/each}}
-    <a class="announcements" href="#">Announcements</a>
+    <a class="announcements" href="#">Announcements</a> -->
 </script>
 
 <script id="announcements_template" type="text/x-handlebars-template">
