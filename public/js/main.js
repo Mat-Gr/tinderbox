@@ -155,7 +155,7 @@ function locations_page()
 		return;
 	}
 
-	var endpoint = 'locations';
+	var endpoint = 'userinfo';
 
 	var login = localStorage.getItem('login');
 
@@ -179,7 +179,7 @@ function locations_page()
 
 				//Compile main template
 				var page_template = Handlebars.compile(content.filter('#page_template').html());
-				var announcements_template = Handlebars.compile(content.filter('#locations_template').html());
+				var locations_template = Handlebars.compile(content.filter('#locations_template').html());
 
 				// check if the page template already exists
 				if(!jQuery('body').hasClass('site'))
@@ -212,7 +212,7 @@ function info_page()
 		return;
 	}
 
-	var endpoint = 'info';
+	var endpoint = 'userinfo';
 
 	var login = localStorage.getItem('login');
 
@@ -236,7 +236,7 @@ function info_page()
 
 				//Compile main template
 				var page_template = Handlebars.compile(content.filter('#page_template').html());
-				var announcements_template = Handlebars.compile(content.filter('#info_template').html());
+				var info_template = Handlebars.compile(content.filter('#info_template').html());
 
 				// check if the page template already exists
 				if(!jQuery('body').hasClass('site'))
@@ -330,7 +330,11 @@ jQuery('body').on('submit', '#login_form', function(event)
 
 });
 
-jQuery('body').on('click', '.announcements', function(event){
+// link event listeners below
+jQuery('body').on('click', '.link', function(event){
 	event.preventDefault();
-	announcements_page();
+	var function_name = jQuery(this).attr('href');
+	window[function_name]();
 });
+
+// url watchers below
