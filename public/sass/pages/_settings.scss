@@ -1,0 +1,59 @@
+
+.profile {
+   background-image: url(../imgs/color-bg.jpg);
+   width: 100%;
+   text-align: center;
+   padding: 2rem;
+   background-repeat: no-repeat;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+   background-size: cover;
+
+}
+
+.account-information{
+	padding: 35px;
+    border-bottom:1px solid  #b6d9cf;
+}
+.Email {
+	display: flex;
+	justify-content: space-between;
+}
+.password{
+	display: flex;
+	justify-content: space-between;
+	}
+
+.general-information{
+	padding: 35px;
+    border-bottom:1px solid  #b6d9cf;
+}
+.shoe {
+	display: flex; 
+	margin-top: 9px;
+	justify-content: space-between;
+}	
+.shirt{
+	display: flex;
+	justify-content: space-between;
+}
+
+.notification{
+    padding: 35px;
+    border-bottom:1px solid  #b6d9cf;
+}
+.push {
+	display: flex; 
+	margin-top: 9px;
+	justify-content: space-between;
+}
+.email{
+	display: flex;
+	justify-content: space-between;
+}
+.sign-out{
+	display: flex;
+	margin: 20px;
+	padding: 1px;
+}
