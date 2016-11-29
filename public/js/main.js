@@ -3,7 +3,8 @@ jQuery(function()
 	// Declare all functions here
 	function login_page()
 	{
-		jQuery('body').removeClass('site');
+		jQuery('body').removeClass();
+		jQuery('body').addClass('login');
 		//Get template from server
 		jQuery.get("http://localhost/tinderbox/public/templates/login_signup_template.html").done(function(response) {
 
@@ -251,6 +252,12 @@ jQuery(function()
 				}
 			}
 		});
+	}
+
+	function log_out()
+	{
+		localStorage.removeItem('login');
+		login_page();
 	}
 
 	// declare all function BEFORE this point!!!!
