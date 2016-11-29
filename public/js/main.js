@@ -74,6 +74,7 @@ function schedule_page()
 				}
 				jQuery('body').removeClass();
 				jQuery('body').addClass('site schedule');
+				jQuery('header h1').html('schedule');
 				jQuery('main').html(schedule_template(data));
 			});
 		},
@@ -127,8 +128,10 @@ function announcements_page()
 				if(!jQuery('body').hasClass('site'))
 				{
 					jQuery('body').html(page_template);
-					jQuery('body').addClass('site');
 				}
+				jQuery('body').removeClass();
+				jQuery('body').addClass('site announcements');
+				jQuery('header h1').html('announcements');
 				jQuery('main').html(announcements_template(data));
 			});
 		},
@@ -182,8 +185,10 @@ function locations_page()
 				if(!jQuery('body').hasClass('site'))
 				{
 					jQuery('body').html(page_template);
-					jQuery('body').addClass('site');
 				}
+				jQuery('body').removeClass();
+				jQuery('body').addClass('site locations');
+				jQuery('header h1').html('locations');
 				jQuery('main').html(locations_template(data));
 			});
 		},
@@ -237,8 +242,10 @@ function info_page()
 				if(!jQuery('body').hasClass('site'))
 				{
 					jQuery('body').html(page_template);
-					jQuery('body').addClass('site');
 				}
+				jQuery('body').removeClass();
+				jQuery('body').addClass('site info');
+				jQuery('header h1').html('info');
 				jQuery('main').html(info_template(data));
 			});
 		},
