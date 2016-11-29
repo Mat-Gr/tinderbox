@@ -1,53 +1,34 @@
-// menu
-function toggleClassMenu() {
-	myMenu.classList.add("menu--animatable");
-	if(!myMenu.classList.contains("menu--visible")) {
-		myMenu.classList.add("menu--visible");
-	} else {
-		myMenu.classList.remove('menu--visible');
+// slide in menu
+jQuery('body').on('click', '#menu-icon', function(e){
+    var menu = jQuery('.menu');
+	menu.addClass('menu--animatable');
+
+	if(menu.hasClass('menu--visible')){
+		menu.removeClass('menu--visible');
+	}else{
+		menu.addClass('menu--visible');
 	}
-}
 
-function OnTransitionEnd() {
-	myMenu.classList.remove("menu--animatable");
-}
+	menu.on('transitionend webkitTransitionEnd oTransitionEnd', function(){
+		menu.removeClass('menu--animatable');
+	});
+});
 
-var myMenu = document.querySelector(".menu");
-var oppMenu = document.querySelector(".menu-icon");
-myMenu.addEventListener("transitionend", OnTransitionEnd, false);
-oppMenu.addEventListener("click", toggleClassMenu, false);
-
-
-
-
-
-$('.post').click(function(e){
+// drop down post
+jQuery('body').on('click', '.post', function(e){
 
 	e.preventDefault();
 
-    var $this = $(this);
-    
-	$this.addClass('post--animatable');
+    var post = jQuery(this);
+	post.addClass('post--animatable');
 
-	if($this.hasClass('post--visible')){
-
-		$this.removeClass('post--visible');
-
+	if(post.hasClass('post--visible')){
+		post.removeClass('post--visible');
 	}else{
-		
-		$this.addClass('post--visible');
-
+		post.addClass('post--visible');
 	}
-    
 
-    $this.bind( 'transitionend', function() {
-
-		$this.removeClass('post--animatable');
-
-    });
-
-		
-
-
-
+	post.on('transitionend webkitTransitionEnd oTransitionEnd', function(){
+		post.removeClass('post--animatable');
+	});
 });
