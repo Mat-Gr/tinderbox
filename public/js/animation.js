@@ -19,40 +19,35 @@ oppMenu.addEventListener("click", toggleClassMenu, false);
 
 
 
-/*
+
 
 $('.post').click(function(e){
 
 	e.preventDefault();
 
+    var $this = $(this);
+    
+	$this.addClass('post--animatable');
 
-    var $this = $(this).find('.post-content');
+	if($this.hasClass('post--visible')){
 
-    if($this.hasClass('.contact-active')){
+		$this.removeClass('post--visible');
+
+	}else{
 		
-		$this.removeClass('.contact-active');
-		$this.slideToggle( "fast", function() {
+		$this.addClass('post--visible');
 
-			
-			
-		  });
+	}
+    
 
+    $this.bind( 'transitionend', function() {
 
-    } else {
+		$this.removeClass('post--animatable');
 
-		    //$(".contact-active").toggle();
-		    $this.slideToggle( "fast", function() {
-		    	$this.addClass('.contact-active');
-		    	//$this.toggleClass('contact-active', $(this).is(':visible'));
-		  });
-    }
-  
+    });
+
+		
 
 
 
-
- 
-
-
-
-});*/
+});
