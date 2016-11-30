@@ -1,4 +1,13 @@
 <!-- main template for app pages -->
+<!--
+##     ##    ###    #### ##    ##
+###   ###   ## ##    ##  ###   ##
+#### ####  ##   ##   ##  ####  ##
+## ### ## ##     ##  ##  ## ## ##
+##     ## #########  ##  ##  ####
+##     ## ##     ##  ##  ##   ###
+##     ## ##     ## #### ##    ##
+ -->
 <script id="page_template" type="text/x-handlebars-template">
     <div class="menu">
         <div class="app-menu">
@@ -73,6 +82,15 @@
 </script>
 
 <!-- sub templates for page content -->
+<!--
+ ######   ######  ##     ## ######## ########  ##     ## ##       ########
+##    ## ##    ## ##     ## ##       ##     ## ##     ## ##       ##
+##       ##       ##     ## ##       ##     ## ##     ## ##       ##
+ ######  ##       ######### ######   ##     ## ##     ## ##       ######
+      ## ##       ##     ## ##       ##     ## ##     ## ##       ##
+##    ## ##    ## ##     ## ##       ##     ## ##     ## ##       ##
+ ######   ######  ##     ## ######## ########   #######  ######## ########
+ -->
 <script id="schedule_template" type="text/x-handlebars-template">
     <div class="wrapper wrapper-beige">
         <div class="calendar">
@@ -107,7 +125,7 @@
             </ul>
         </div>
     </div>
-    <div class="wrapper wrapper-yellow">
+    <div class="wrapper wrapper-gradient-yellow-rosa">
         <h3 class="schedule-title">Today's Schedule</h3>
         {{#each .}}
             {{#if today}}
@@ -151,27 +169,80 @@
         {{/each}}
     </div>
 </script>
-
+<!--
+   ###    ##    ## ##    ##  #######  ##     ## ##    ##  ######  ########
+  ## ##   ###   ## ###   ## ##     ## ##     ## ###   ## ##    ## ##
+ ##   ##  ####  ## ####  ## ##     ## ##     ## ####  ## ##       ##
+##     ## ## ## ## ## ## ## ##     ## ##     ## ## ## ## ##       ######
+######### ##  #### ##  #### ##     ## ##     ## ##  #### ##       ##
+##     ## ##   ### ##   ### ##     ## ##     ## ##   ### ##    ## ##
+##     ## ##    ## ##    ##  #######   #######  ##    ##  ######  ########
+ -->
 <script id="announcements_template" type="text/x-handlebars-template">
     {{#each .}}
         {{#if pinned}}
-            <div class="pinned">
-        {{else}}
-            <div>
-        {{/if}}
-                <p>{{fname}}</p></br>
-                <p>{{lname}}</p></br>
-                <p>{{datetime}}</p></br>
-                <p>{{role}}</p></br>
-                <p>{{content}}</p></br>
+        <div class="wrapper wrapper-gradient-rosa-yellow">
+            <div class="pinned-post">
+                <div class="pp-headline">
+                    <div class="pp-details">
+                        <div>
+                            <h3 class="pp-author h3">{{fname}} {{lname}}</h3>
+                            <span class="pp-date small-p">{{time_since datetime}} ago</span>
+                            <span  class="pp-team h3">{{role}}</span>
+                        </div>
+                    </div>
+                    <div class="pp-indicator"><p class="p">Pinned</p></div>
+                </div>
+                <div class="pp-content">
+                    <p>{{content}}</p>
+                </div>
             </div>
+        </div>
+        {{/if}}
     {{/each}}
+    <div class="wrapper wrapper-beige">
+    {{#each .}}
+        {{#unless pinned}}
+        <div class="post">
+            <div class="post-headline">
+                <div class="post-image"><img src="public/imgs/profile-img.png" alt="profile-img"></div>
+                <div class="post-details">
+                    <div>
+                        <h3 class="post-author h3">{{fname}} {{lname}}</h3>
+                        <span class="p-date small-p">{{time_since datetime}} ago</span>
+                        <span  class="p-team h4">{{role}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>{{content}}</p>
+            </div>
+        </div>
+        {{/unless}}
+    {{/each}}
+    </div>
 </script>
-
+<!--
+##        #######   ######     ###    ######## ####  #######  ##    ##
+##       ##     ## ##    ##   ## ##      ##     ##  ##     ## ###   ##
+##       ##     ## ##        ##   ##     ##     ##  ##     ## ####  ##
+##       ##     ## ##       ##     ##    ##     ##  ##     ## ## ## ##
+##       ##     ## ##       #########    ##     ##  ##     ## ##  ####
+##       ##     ## ##    ## ##     ##    ##     ##  ##     ## ##   ###
+########  #######   ######  ##     ##    ##    ####  #######  ##    ##
+ -->
 <script id="locations_template" type="text/x-handlebars-template">
     <!--Put Handlebars stuff in here-->
 </script>
-
+<!--
+#### ##    ## ########  #######
+ ##  ###   ## ##       ##     ##
+ ##  ####  ## ##       ##     ##
+ ##  ## ## ## ######   ##     ##
+ ##  ##  #### ##       ##     ##
+ ##  ##   ### ##       ##     ##
+#### ##    ## ##        #######
+ -->
 <script id="info_template" type="text/x-handlebars-template">
     <!--Put Handlebars stuff in here-->
 </script>
