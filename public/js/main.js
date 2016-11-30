@@ -416,7 +416,7 @@ function settings_page()
 				jQuery('body').removeClass();
 				jQuery('body').addClass('site settings');
 				jQuery('header h1').html('contacts');
-				jQuery('main').html(settings_template());
+				jQuery('main').html(settings_template(data));
 			});
 		},
 		error: function(request, status, error)
