@@ -281,7 +281,7 @@ if (localStorage.getItem('login') === null) // if local storage login not set
 }
 else
 {
-	schedule_page();
+	url_change();
 }
 
 // some handlebars helpers
@@ -367,7 +367,7 @@ function url_change()
 			break;
 
 		default:
-			login_page();
+			schedule_page();
 			break;
 	}
 }
