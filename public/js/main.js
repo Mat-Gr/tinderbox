@@ -3,8 +3,6 @@ var base_url = 'http://localhost/tinderbox';
 // Declare all functions here
 function login_page()
 {
-	jQuery('body').removeClass();
-	jQuery('body').addClass('login');
 	//Get template from server
 	jQuery.get(base_url + "/public/templates/login_signup_template.html").done(function(response) {
 
@@ -13,16 +11,17 @@ function login_page()
 		//Compile main template
 		var login_template = Handlebars.compile(content.filter('#login_template').html());
 
-		document.location.hash = 'login';
 		// set html content
+		jQuery('body').removeClass();
+		jQuery('body').addClass('login');
 		jQuery('body').html(login_template);
+		window.scrollTo(0, 0);
+		jQuery('body').hide().fadeIn();
 	});
 }
 
 function signup_page()
 {
-	jQuery('body').removeClass();
-	jQuery('body').addClass('site signup');
 	//Get template from server
 	jQuery.get(base_url + "/public/templates/login_signup_template.html").done(function(response) {
 
@@ -31,9 +30,12 @@ function signup_page()
 		//Compile main template
 		var signup_template = Handlebars.compile(content.filter('#signup_template').html());
 
-		document.location.hash = 'signup';
 		// set html content
+		jQuery('body').removeClass();
+		jQuery('body').addClass('site signup');
 		jQuery('body').html(signup_template);
+		window.scrollTo(0, 0);
+		jQuery('body').hide().fadeIn();
 	});
 }
 
@@ -98,7 +100,6 @@ function schedule_page()
 				var page_template = Handlebars.compile(content.filter('#page_template').html());
 				var schedule_template = Handlebars.compile(content.filter('#schedule_template').html());
 
-				document.location.hash = endpoint;
 				// check if the page template already exists
 				if(!jQuery('body').hasClass('site'))
 				{
@@ -108,6 +109,8 @@ function schedule_page()
 				jQuery('body').addClass('site schedule');
 				jQuery('header h1').html('schedule');
 				jQuery('main').html(schedule_template(data));
+				window.scrollTo(0, 0);
+				jQuery('main').hide().fadeIn();
 			});
 		},
 		error: function(request, status, error)
@@ -156,7 +159,6 @@ function announcements_page()
 				var page_template = Handlebars.compile(content.filter('#page_template').html());
 				var announcements_template = Handlebars.compile(content.filter('#announcements_template').html());
 
-				document.location.hash = endpoint;
 				// check if the page template already exists
 				if(!jQuery('body').hasClass('site'))
 				{
@@ -166,6 +168,8 @@ function announcements_page()
 				jQuery('body').addClass('site announcements');
 				jQuery('header h1').html('announcements');
 				jQuery('main').html(announcements_template(data));
+				window.scrollTo(0, 0);
+				jQuery('main').hide().fadeIn();
 			});
 		},
 		error: function(request, status, error)
@@ -214,7 +218,6 @@ function locations_page()
 				var page_template = Handlebars.compile(content.filter('#page_template').html());
 				var locations_template = Handlebars.compile(content.filter('#locations_template').html());
 
-				document.location.hash = 'locations';
 				// check if the page template already exists
 				if(!jQuery('body').hasClass('site'))
 				{
@@ -224,6 +227,8 @@ function locations_page()
 				jQuery('body').addClass('site locations');
 				jQuery('header h1').html('locations');
 				jQuery('main').html(locations_template());
+				window.scrollTo(0, 0);
+				jQuery('main').hide().fadeIn();
 			});
 		},
 		error: function(request, status, error)
@@ -272,8 +277,6 @@ function info_page()
 				var page_template = Handlebars.compile(content.filter('#page_template').html());
 				var info_template = Handlebars.compile(content.filter('#info_template').html());
 
-				document.location.hash = 'information';
-
 				var page = {
 					contact: {
 						letter: "C",
@@ -305,6 +308,8 @@ function info_page()
 				jQuery('body').addClass('site information');
 				jQuery('header h1').html('info');
 				jQuery('main').html(info_template(page));
+				window.scrollTo(0, 0);
+				jQuery('main').hide().fadeIn();
 			});
 		},
 		error: function(request, status, error)
@@ -353,7 +358,6 @@ function contacts_page()
 				var page_template = Handlebars.compile(content.filter('#page_template').html());
 				var contacts_template = Handlebars.compile(content.filter('#contacts_template').html());
 
-				document.location.hash = 'contacts';
 				// check if the page template already exists
 				if(!jQuery('body').hasClass('site'))
 				{
@@ -363,6 +367,8 @@ function contacts_page()
 				jQuery('body').addClass('site contacts');
 				jQuery('header h1').html('contacts');
 				jQuery('main').html(contacts_template());
+				window.scrollTo(0, 0);
+				jQuery('main').hide().fadeIn();
 			});
 		},
 		error: function(request, status, error)
@@ -411,7 +417,6 @@ function settings_page()
 				var page_template = Handlebars.compile(content.filter('#page_template').html());
 				var settings_template = Handlebars.compile(content.filter('#settings_template').html());
 
-				document.location.hash = 'settings';
 				// check if the page template already exists
 				if(!jQuery('body').hasClass('site'))
 				{
@@ -421,6 +426,8 @@ function settings_page()
 				jQuery('body').addClass('site settings');
 				jQuery('header h1').html('contacts');
 				jQuery('main').html(settings_template(data));
+				window.scrollTo(0, 0);
+				jQuery('main').hide().fadeIn();
 			});
 		},
 		error: function(request, status, error)
