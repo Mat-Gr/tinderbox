@@ -15,96 +15,186 @@
     <link rel="stylesheet" href="../css/style.min.css">
     <!-- Fontawesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-
-
 </head>
 
-<body class="site setting">
-    <div class="menu">
-    <div class="app-menu">
-    <div class="menu-profile">
-    <div class="image"><img src="../imgs/profile-img.png" alt="profile-img"></div>
+<body class="site settings">
+        <div class="menu">
+        <div class="app-menu">
+            <div class="menu-profile">
+                <div class="image"><img src="../imgs/profile-img.png" alt="profile-img"></div>
+                 <h3 class="h3">Maria Pedersen</h3>
+                 <p class="small-p">Bartender</p>
+            </div>
 
-
-        <h3 class="h3">Maria Pedersen</h3>
-        <p class="small-p">Bartender</p>
+         <div>
+            <a href="schedule.html" class="menu-item">
+                <div>
+                    <h1>Home</h1>
+                </div>
+            </a>
+            <a href="schedule.html" class="menu-item">
+                <div>
+                    <h1>SCHEDULE</h1>
+                </div>
+            </a>
+            <a href="locations.html" class="menu-item">
+                <div>
+                    <h1>LOCATIONS</h1>
+                </div>
+            </a>
+            <a href="announcements.html" class="menu-item">
+                <div>
+                    <h1>ANNOUNCEMENTS</h1>
+                </div>
+            </a>
+            <a href="info.html" class="menu-item">
+                <div>
+                    <h1>INFO</h1>
+                </div>
+            </a>
+            </div>
+            <div>
+            <object class="logo menu-logo" type="image/svg+xml" data="../imgs/logo-teal.svg">Your browser does not support SVGs</object>
+            </div>
         </div>
-
-    <div> <a href="schedule.html" class="menu-item">
-    <div> <h1>Home</h1> </div> </a>
-    <a href="schedule.html" class="menu-item">
-    <div> <h1>SCHEDULE</h1> </div> </a>
-    <a href="locations.html" class="menu-item">
-    <div> <h1>LOCATIONS</h1> </div> </a>
-    <a href="announcements.html" class="menu-item">
-    <div> <h1>ANNOUNCEMENTS</h1> </div> </a>
-    <a href="info.html" class="menu-item">
-    <div> <h1>INFO</h1></div></a>
     </div>
-    <div>
-    <object class="logo menu-logo" type="image/svg+xml" data="../imgs/logo-teal.svg">Your browser does not support SVGs</object> </div></div></div>
 
     <header class="top-nav">
-    <i class="fa fa-chevron-left" aria-hidden="true"></i>
-    <h1>Settings</h1>
-    <i class="fa fa-bars fa-2x menu-icon" aria-hidden="true"></i>
+            <object class="top-nav-logo" type="image/svg+xml" data="../imgs/logo-teal.svg">Your browser does not support SVGs</object>
+            <h1>Settings</h1>
+            <i class="fa fa-bars fa-2x menu-icon" aria-hidden="true"></i>
     </header>
 
-    <main class="content">
-    <div class="profile">
-    <img src="../imgs/profile-img.png" alt="profile-img">
-    <h3 class="h3">david jensen</h3>
-    <p class="small-p">davidjensen@gmail.com</p>
-        </div></div></div></div>
-    </div>
+     <main class="content">
+
+        <div class="wrapper wrapper-gradient-rosa-yellow">
+
+            <div class='login-hero signup-hero'>
+                <h2>Jens Pedersen</h2>
+                <p class="small-p">jenspedersen@gmail.com</p>
+                <h4>Bartender</h4>
+            </div>
+
+        </div>
+
+        <div class="wrapper wrapper-beige">
+
+                <div class="menu-profile">
+                    <div class="image"><img src="../imgs/profile-img.png" alt="profile-img"></div>
+                </div>
+
+            <div class="signup-form">
+                   <form action="signup.html">
+                    
 
 
+                    <div class="form-fix">
 
-    <div class="wrapper wrapper-beige">
+                        <div>
+                              <h2>Account Information</h2>
+                        </div>
+                        <div>
+                              <i class="fa fa-envelope menu-icon" aria-hidden="true"></i>
+                              <input type="text" name="email" id="email" placeholder="E-mail">
+                        </div>
 
-    <div class="account-information">
-    <div class="information-1"><h3>account information</h3>
-    <div class="Email">
-    <i class="fa fa-envelope-o" aria-hidden="true"></i>
-    <h6>post</h6>
-    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-    </div>
+                        <div>
+                           <i class="fa fa-lock menu-icon" aria-hidden="true"></i>
+                            <input type="password" name="password" id="password" placeholder="Password">
+                        </div>
+                    </div>
 
-    <div class="password">
-    <i class="fa fa-envelope-o" aria-hidden="true"></i>
-    <h6>password</h6>
-    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-    </div></div></div>
 
-    <div class="general-information">
-    <div class="general-information1"><h3>general information</h3>
-    <div class="shoe"><h6>shoe size</h6><h6>42</h6></div>
-    <div class="shirt"><h6>shirt size</h6><h6>L</h6>
-    </div></div></div>
+                    <div class="form-fix">
 
-    <div class="notification">
-    <div class="notificatio1"><h3>notification</h3>
-    <div class="push"><h6>Push-Notifications</h6><h6>ON</h6>
-    <i class="fa fa-toggle-off" aria-hidden="true"></i></div>
-    <div class="email"><h6>E-mail Notification</h6><h6>ON</h6>
-    <i class="fa fa-toggle-off" aria-hidden="true"></i>
+                        <div>
+                              <h2>General Information</h2>
+                        </div>
+                        <div>
+                                <div class="option">
+                                    <p>Shirt size</p>
+                                               <select>
+                                                  <option value="s">S</option>
+                                                  <option value="m">M</option>
+                                                  <option value="l">L</option>
+                                                  <option value="xl">XL</option>
+                                                </select> 
+                                </div>
+                              
+                        </div>
 
-    </div></div></div></div>
+                        <div>
+                           
+                            <div class="option">
+                                    <p>Shoe size</p>
+                                               <select>
+                                                  <option value="37">37</option>
+                                                  <option value="38">38</option>
+                                                  <option value="39">39</option>
+                                                  <option value="40">40</option>
+                                                  <option value="41">41</option>
+                                                  <option value="42">42</option>
+                                                  <option value="43">43</option>
+                                                  <option value="44">44</option>
+                                                  <option value="45">45</option>
+                                                </select> 
+                                </div>
+                              
+                        </div>
+                    </div>
 
-   <div class="sign-out">
-   <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-   <h5>Sign-Out</h5></div></main>
+                    <div class="form-fix">
+
+                        <div>
+                              <h2>Notifications</h2>
+                        </div>
+                        <div>
+                              
+                             <div class="option">
+                                    <p>Push Notifications</p>
+                                               <ul class="tg-list">
+                                                  <li class="tg-list-item">
+                                                    <input id="cb1" type="checkbox" class="tgl tgl-light"/>
+                                                    <label for="cb1" class="tgl-btn"></label>
+                                                  </li>
+                                                  </ul>
+                                </div>
+                              
+                        </div>
+
+            
+                    </div>
+
+                    <div class="signup-button-fix">
+                        <a href="signup-2.html"><input type="submit" value="Save" class="button h3"></a>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+
+    </main>
 
     <nav class="main-nav small-p">
-    <ul><li>
-    <a href="schedule.html"><i class="fa fa-sticky-note-o fa-2x menu-icon" aria-hidden="true"></i><br/>Schedule</a>
-    </li>
-    <li><a href="announcements.html"><i class="fa fa-newspaper-o fa-2x menu-icon" aria-hidden="true"></i><br/>News</a></li>
-    <li><a href="locations.html"><i class="fa fa-map-marker fa-2x menu-icon" aria-hidden="true"></i><br/>Locations</a></li>
-    <li><a href="info.html"><i class="fa fa-newspaper-o fa-2x menu-icon" aria-hidden="true"></i><br/>Information</a></li> </ul> </nav>
+          <ul>
+                      <li>
+                    <a href="schedule.html"><i class="fa fa-sticky-note-o fa-2x menu-icon" aria-hidden="true"></i><br/>Schedule</a>
+                </li>
 
+                <li>
+                    <a href="announcements.html"><i class="fa fa-newspaper-o fa-2x menu-icon" aria-hidden="true"></i><br/>News</a>
+                </li>
 
+                <li>
+                    <a href="locations.html"><i class="fa fa-map-marker fa-2x menu-icon" aria-hidden="true"></i><br/>Locations</a>
+                </li>
 
+                <li>
+                    <a href="info.html"><i class="fa fa-newspaper-o fa-2x menu-icon" aria-hidden="true"></i><br/>Information</a>
+                </li>        </ul>
+    </nav>
 
 </body>
 <script type="text/javascript" src="../js/animation.js"></script>
