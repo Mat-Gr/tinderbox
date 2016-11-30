@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Tinderbox volunteer app</title>
 	<link rel="manifest" href="<?php echo base_url('public/manifest.json'); ?>">
-	<meta name="theme-color" content="#043540">
+	<meta name="theme-color" content="#fff9f4">
 	<meta name="description" content="Tinderbox Volunteer App">
 	<link rel="icon" sizes="192x192" href="<?php echo base_url('public/imgs/icons/tinder-teal-192.png'); ?>">
 	<link rel="icon" sizes="256x256" href="<?php echo base_url('public/imgs/icons/tinder-teal-256.png'); ?>">

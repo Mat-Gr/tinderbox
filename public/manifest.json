@@ -23,9 +23,9 @@
         "type": "image/png"
         }
         ],
-    "start_url": "index.html",
+    "start_url": "http://localhost/tinderbox/#schedule",
     "display": "standalone",
     "orientation": "portrait",
-    "theme_color": "#043540",
+    "theme_color": "#fff9f4",
     "background_color": "#fff9f4"
 }
