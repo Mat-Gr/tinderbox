@@ -1,4 +1,13 @@
 <!-- html template for login and signup pages -->
+<!--
+##        #######   ######   #### ##    ##
+##       ##     ## ##    ##   ##  ###   ##
+##       ##     ## ##         ##  ####  ##
+##       ##     ## ##   ####  ##  ## ## ##
+##       ##     ## ##    ##   ##  ##  ####
+##       ##     ## ##    ##   ##  ##   ###
+########  #######   ######   #### ##    ##
+ -->
 <script id="login_template" type="text/x-handlebars-template">
     <div class=tb-colors>
         <div class="color-yellow">&nbsp;</div>
@@ -17,8 +26,8 @@
         <main>
             <form id="login_form" method="post">
                 <div>
-                    <input type="email" name="email" id="email" placeholder="Email address">
-                    <input type="password" name="password" id="password" placeholder="Password">
+                    <input type="email" name="email" id="email" placeholder="Email address" required>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
                     <a href="#">Forgot your password?</a>
                 </div>
                 <input type="submit" value="SIGN IN" class="submit">
@@ -30,7 +39,66 @@
         </footer>
     </div>
 </script>
-
+<!--
+ ######  ####  ######   ##    ## ##     ## ########
+##    ##  ##  ##    ##  ###   ## ##     ## ##     ##
+##        ##  ##        ####  ## ##     ## ##     ##
+ ######   ##  ##   #### ## ## ## ##     ## ########
+      ##  ##  ##    ##  ##  #### ##     ## ##
+##    ##  ##  ##    ##  ##   ### ##     ## ##
+ ######  ####  ######   ##    ##  #######  ##
+ -->
 <script id="signup_template" type="text/x-handlebars-template">
-    <h1>Signup page</h1>
+    <div class="wrapper wrapper-color">
+        <header class='login-hero signup-hero'>
+            <h4 class="large-p">Sign Up</h4>
+            <object class="login-main-logo" id="logo" type="image/svg+xml" data="public/imgs/tinderbox-logo.svg">Your browser does not support SVGs</object>
+            <h3>22nd - 24th June 2017 <span class="slash">/</span> Odense</h3>
+        </header>
+    </div>
+    <main class="content">
+        <div class="wrapper wrapper-beige">
+            <div class="signup-form">
+                <form id="signup_form" method="post">
+                    <div class="form-fix">
+                        <div>
+                            <i class="fa fa-user menu-icon" aria-hidden="true"></i>
+                            <input type="text" name="fname" id="fname" placeholder="First Name" required>
+                        </div>
+                        <div>
+                            <i class="fa fa-user menu-icon" aria-hidden="true"></i>
+                            <input type="text" name="lname" id="lname" placeholder="Last Name" required>
+                        </div>
+                        <div>
+                            <i class="fa fa-envelope-o menu-icon" aria-hidden="true"></i>
+                            <input type="email" name="email" id="email" placeholder="Email address" required>
+                        </div>
+                        <div>
+                            <i class="fa fa-phone menu-icon" aria-hidden="true"></i>
+                            <input type="number" name="phone" id="phone" placeholder="Phone Number" required>
+                        </div>
+                        <div>
+                            <i class="fa fa-calendar-o menu-icon" aria-hidden="true"></i>
+                            <input type="date" name="birthdate" id="birthdate" placeholder="Date of Birth" required>
+                        </div>
+                        <div>
+                            <i class="fa fa-unlock-alt menu-icon" aria-hidden="true"></i>
+                            <input type="password" name="password" id="password" placeholder="Password" required>
+                        </div>
+                        <div>
+                            <i class="fa fa-user menu-icon" aria-hidden="true"></i>
+                            <input type="text" name="shirt_size" id="shirt_size" placeholder="Shirt Size" required>
+                        </div>
+                        <div>
+                            <i class="fa fa-envelope-o menu-icon" aria-hidden="true"></i>
+                            <input type="text" name="shoe_size" id="shoe_size" placeholder="Shoe Size" required>
+                        </div>
+                    </div>
+                    <div class="signup-button-fix">
+                        <a><input type="submit" value="Sign Up" class="button h3"></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
 </script>
