@@ -1,10 +1,12 @@
+var base_url = 'http://localhost/tinderbox';
+
 // Declare all functions here
 function login_page()
 {
 	jQuery('body').removeClass();
 	jQuery('body').addClass('login');
 	//Get template from server
-	jQuery.get("http://localhost/tinderbox/public/templates/login_signup_template.html").done(function(response) {
+	jQuery.get(base_url + "/public/templates/login_signup_template.html").done(function(response) {
 
 		var content = jQuery(jQuery.parseHTML(response));
 
@@ -20,9 +22,9 @@ function login_page()
 function signup_page()
 {
 	jQuery('body').removeClass();
-	jQuery('body').addClass('signup');
+	jQuery('body').addClass('site signup');
 	//Get template from server
-	jQuery.get("http://localhost/tinderbox/public/templates/login_signup_template.html").done(function(response) {
+	jQuery.get(base_url + "/public/templates/login_signup_template.html").done(function(response) {
 
 		var content = jQuery(jQuery.parseHTML(response));
 
@@ -40,7 +42,7 @@ function schedule_page()
 	if (localStorage.getItem('login') === null)
 	{
 		login_page();
-		return;
+		return false;
 	}
 
 	var endpoint = 'schedule';
@@ -49,7 +51,7 @@ function schedule_page()
 
 	jQuery.ajax(
 	{
-		url: 'http://localhost/tinderbox/app/' + endpoint,
+		url: base_url + '/app/' + endpoint,
 		contentType: 'application/json',
 		type: 'GET',
 		beforeSend: function(ajax)
@@ -61,7 +63,7 @@ function schedule_page()
 		success: function(data, status, response)
 		{
 			// Get template from server
-			jQuery.get("http://localhost/tinderbox/public/templates/app_pages_template.html").done(function(response) {
+			jQuery.get(base_url + "/public/templates/app_pages_template.html").done(function(response) {
 
 				var content = jQuery(jQuery.parseHTML(response));
 
@@ -87,7 +89,7 @@ function schedule_page()
 			{
 				// set error msg here
 				login_page();
-				return;
+				return false;
 			}
 		}
 	});
@@ -98,7 +100,7 @@ function announcements_page()
 	if (localStorage.getItem('login') === null)
 	{
 		login_page();
-		return;
+		return false;
 	}
 
 	var endpoint = 'announcements';
@@ -107,7 +109,7 @@ function announcements_page()
 
 	jQuery.ajax(
 	{
-		url: 'http://localhost/tinderbox/app/' + endpoint,
+		url: base_url + '/app/' + endpoint,
 		contentType: 'application/json',
 		type: 'GET',
 		beforeSend: function(ajax)
@@ -119,7 +121,7 @@ function announcements_page()
 		success: function(data, status, response)
 		{
 			// Get template from server
-			jQuery.get("http://localhost/tinderbox/public/templates/app_pages_template.html").done(function(response) {
+			jQuery.get(base_url + "/public/templates/app_pages_template.html").done(function(response) {
 
 				var content = jQuery(jQuery.parseHTML(response));
 
@@ -145,7 +147,7 @@ function announcements_page()
 			{
 				// set error msg here
 				login_page();
-				return;
+				return false;
 			}
 		}
 	});
@@ -156,7 +158,7 @@ function locations_page()
 	if (localStorage.getItem('login') === null)
 	{
 		login_page();
-		return;
+		return false;
 	}
 
 	var endpoint = 'userinfo';
@@ -165,7 +167,7 @@ function locations_page()
 
 	jQuery.ajax(
 	{
-		url: 'http://localhost/tinderbox/app/' + endpoint,
+		url: base_url + '/app/' + endpoint,
 		contentType: 'application/json',
 		type: 'GET',
 		beforeSend: function(ajax)
@@ -177,7 +179,7 @@ function locations_page()
 		success: function(data, status, response)
 		{
 			// Get template from server
-			jQuery.get("http://localhost/tinderbox/public/templates/app_pages_template.html").done(function(response) {
+			jQuery.get(base_url + "/public/templates/app_pages_template.html").done(function(response) {
 
 				var content = jQuery(jQuery.parseHTML(response));
 
@@ -203,7 +205,7 @@ function locations_page()
 			{
 				// set error msg here
 				login_page();
-				return;
+				return false;
 			}
 		}
 	});
@@ -214,7 +216,7 @@ function info_page()
 	if (localStorage.getItem('login') === null)
 	{
 		login_page();
-		return;
+		return false;
 	}
 
 	var endpoint = 'userinfo';
@@ -223,7 +225,7 @@ function info_page()
 
 	jQuery.ajax(
 	{
-		url: 'http://localhost/tinderbox/app/' + endpoint,
+		url: base_url + '/app/' + endpoint,
 		contentType: 'application/json',
 		type: 'GET',
 		beforeSend: function(ajax)
@@ -235,7 +237,7 @@ function info_page()
 		success: function(data, status, response)
 		{
 			// Get template from server
-			jQuery.get("http://localhost/tinderbox/public/templates/app_pages_template.html").done(function(response) {
+			jQuery.get(base_url + "/public/templates/app_pages_template.html").done(function(response) {
 
 				var content = jQuery(jQuery.parseHTML(response));
 
@@ -261,7 +263,7 @@ function info_page()
 			{
 				// set error msg here
 				login_page();
-				return;
+				return false;
 			}
 		}
 	});
@@ -275,14 +277,8 @@ function log_out()
 
 // declare all function BEFORE this point!!!!
 // run on document start
-if (localStorage.getItem('login') === null) // if local storage login not set
-{
-	login_page();
-}
-else
-{
-	url_change();
-}
+url_change();
+
 
 // some handlebars helpers
 Handlebars.registerHelper('get_time', function(timestamp) { // returns time like this -> 7.15
@@ -361,8 +357,8 @@ jQuery('body').on('submit', '#login_form', function(event)
 	event.preventDefault();
 	if(jQuery('#email').val() === '' || jQuery('#password').val() === '')
 	{
-		// msg user -> email and password required
-		return;
+		alert('Email and Password required');
+		return false;
 	}
 	else
 	{
@@ -372,9 +368,44 @@ jQuery('body').on('submit', '#login_form', function(event)
 
 		schedule_page();
 	}
-
 });
 
+jQuery('body').on('submit', '#signup_form', function(event){
+	event.preventDefault();
+	if(
+		jQuery('#fname').val() === '' ||
+		jQuery('#lname').val() === '' ||
+		jQuery('#email').val() === '' ||
+		jQuery('#phone').val() === '' ||
+		jQuery('#birthdate').val() === '' ||
+		jQuery('#password').val() === '' ||
+		jQuery('#shirt_size').val() === '' ||
+		jQuery('#shoe_size').val() === '')
+	{
+		alert('All fields are required');
+		return false;
+	}
+	else
+	{
+		var date_pattern = /^(0?[1-9]|[12][0-9]|3[01])([ \/\-])(0?[1-9]|1[012])\2([0-9][0-9][0-9][0-9])$/;
+		if(date_pattern.test(jQuery('#birthdate').val()) === false)
+		{
+			alert('Please fill out birthdate in following format: dd/mm/yyyy');
+			return false;
+		}
+	}
+	var userinfo = {
+		fname: jQuery('#fname').val(),
+		lname: jQuery('#lname').val(),
+		email: jQuery('#email').val(),
+		phone: jQuery('#phone').val(),
+		birthdate: jQuery('#birthdate').val(),
+		password: jQuery('#password').val(),
+		shirt_size: jQuery('#shirt_size').val(),
+		shoe_size: jQuery('#shoe_size').val()
+	};
+	signup(userinfo);
+});
 
 // url switch case
 function url_change()
