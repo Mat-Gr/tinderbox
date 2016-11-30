@@ -37,6 +37,29 @@ function signup_page()
 	});
 }
 
+function signup(userinfo)
+{
+	var endpoint = 'signup';
+
+	jQuery.ajax(
+	{
+		url: base_url + '/app/' + endpoint,
+		contentType: 'application/json',
+		type: 'POST',
+		data: JSON.stringify(userinfo),
+		success: function(date, status, response)
+		{
+			alert('Signup successfull');
+			login_page();
+		},
+		error: function(request, status, error)
+		{
+			signup_page();
+			return false;
+		}
+	});
+}
+
 function schedule_page()
 {
 	if (localStorage.getItem('login') === null)
