@@ -41,6 +41,10 @@ function signup(userinfo)
 {
 	var endpoint = 'signup';
 
+	var input_date = userinfo.birthdate;
+	var output_date = input_date.split('/');
+	userinfo.birthdate = output_date[2] + '-' + output_date[1] + '-' + output_date[0];
+
 	jQuery.ajax(
 	{
 		url: base_url + '/app/' + endpoint,
