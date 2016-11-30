@@ -11,6 +11,7 @@ function login_page()
 		//Compile main template
 		var login_template = Handlebars.compile(content.filter('#login_template').html());
 
+		document.location.hash = 'login';
 		// set html content
 		jQuery('body').html(login_template);
 	});
@@ -28,6 +29,7 @@ function signup_page()
 		//Compile main template
 		var signup_template = Handlebars.compile(content.filter('#signup_template').html());
 
+		document.location.hash = 'signup';
 		// set html content
 		jQuery('body').html(signup_template);
 	});
@@ -67,6 +69,7 @@ function schedule_page()
 				var page_template = Handlebars.compile(content.filter('#page_template').html());
 				var schedule_template = Handlebars.compile(content.filter('#schedule_template').html());
 
+				document.location.hash = endpoint;
 				// check if the page template already exists
 				if(!jQuery('body').hasClass('site'))
 				{
@@ -124,6 +127,7 @@ function announcements_page()
 				var page_template = Handlebars.compile(content.filter('#page_template').html());
 				var announcements_template = Handlebars.compile(content.filter('#announcements_template').html());
 
+				document.location.hash = endpoint;
 				// check if the page template already exists
 				if(!jQuery('body').hasClass('site'))
 				{
@@ -181,6 +185,7 @@ function locations_page()
 				var page_template = Handlebars.compile(content.filter('#page_template').html());
 				var locations_template = Handlebars.compile(content.filter('#locations_template').html());
 
+				document.location.hash = 'locations';
 				// check if the page template already exists
 				if(!jQuery('body').hasClass('site'))
 				{
@@ -238,6 +243,7 @@ function info_page()
 				var page_template = Handlebars.compile(content.filter('#page_template').html());
 				var info_template = Handlebars.compile(content.filter('#info_template').html());
 
+				document.location.hash = 'information';
 				// check if the page template already exists
 				if(!jQuery('body').hasClass('site'))
 				{
@@ -330,11 +336,52 @@ jQuery('body').on('submit', '#login_form', function(event)
 
 });
 
-// link event listeners below
-jQuery('body').on('click', '.link', function(event){
-	event.preventDefault();
-	var function_name = jQuery(this).attr('href');
-	window[function_name]();
-});
 
-// url watchers below
+// url switch case
+function url_change()
+{
+	var hash = window.location.hash;
+	switch(hash) {
+		case '#login':
+			login_page();
+			break;
+
+		case '#signup':
+			signup_page();
+			break;
+
+		case '#schedule':
+			schedule_page();
+			break;
+
+		case '#announcements':
+			announcements_page();
+			break;
+
+		case '#information':
+			info_page();
+			break;
+
+		case '#locations':
+			locations_page();
+			break;
+
+		default:
+			login_page();
+			break;
+	}
+}
+
+// if page refreshed
+if(window.performance)
+{
+	if(performance.navigation.type  == 1)
+	{
+		url_change();
+	}
+}
+
+// if url changes
+window.onhashchange = function(){
+	url_change();
+};
