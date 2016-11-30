@@ -72,6 +72,10 @@ main.content{
 }
 
 
+a{
+    text-decoration: none;
+}
+
 
 
 body.site {
@@ -86,6 +90,24 @@ body.site {
 
     .wrapper.wrapper-yellow{
         background-color: $yellow;
+        
+    }
+
+     .wrapper.wrapper-gradient-yellow-rosa{
+        background: $yellow; /* Old browsers */
+        background: -moz-linear-gradient(top, $yellow 0%, $rosa 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, $yellow 0%,$rosa 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, $yellow 0%,$rosa 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$yellow, endColorstr=$rosa,GradientType=0 ); /* IE6-9 */
+        
+    }
+
+     .wrapper.wrapper-gradient-rosa-yellow{
+        background: $rosa; /* Old browsers */
+        background: -moz-linear-gradient(top, $rosa 0%, $yellow 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, $rosa 0%,$yellow 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, $rosa 0%,$yellow 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$rosa, endColorstr=$yellow,GradientType=0 ); /* IE6-9 */
         
     }
 
