@@ -315,6 +315,122 @@ function info_page()
 	});
 }
 
+function contacts_page()
+{
+	if (localStorage.getItem('login') === null)
+	{
+		login_page();
+		return false;
+	}
+
+	var endpoint = 'userinfo';
+
+	var login = localStorage.getItem('login');
+
+	jQuery.ajax(
+	{
+		url: base_url + '/app/' + endpoint,
+		contentType: 'application/json',
+		type: 'GET',
+		beforeSend: function(ajax)
+		{
+			ajax.setRequestHeader(
+				'Authorization', login
+			);
+		},
+		success: function(data, status, response)
+		{
+			// Get template from server
+			jQuery.get(base_url + "/public/templates/app_pages_template.html").done(function(response) {
+
+				var content = jQuery(jQuery.parseHTML(response));
+
+				//Compile main template
+				var page_template = Handlebars.compile(content.filter('#page_template').html());
+				var contacts_template = Handlebars.compile(content.filter('#contacts_template').html());
+
+				document.location.hash = 'contacts';
+				// check if the page template already exists
+				if(!jQuery('body').hasClass('site'))
+				{
+					jQuery('body').html(page_template);
+				}
+				jQuery('body').removeClass();
+				jQuery('body').addClass('site contacts');
+				jQuery('header h1').html('contacts');
+				jQuery('main').html(contacts_template());
+			});
+		},
+		error: function(request, status, error)
+		{
+			if(error == 'Unauthorized')
+			{
+				// set error msg here
+				login_page();
+				return false;
+			}
+		}
+	});
+}
+
+function settings_page()
+{
+	if (localStorage.getItem('login') === null)
+	{
+		login_page();
+		return false;
+	}
+
+	var endpoint = 'userinfo';
+
+	var login = localStorage.getItem('login');
+
+	jQuery.ajax(
+	{
+		url: base_url + '/app/' + endpoint,
+		contentType: 'application/json',
+		type: 'GET',
+		beforeSend: function(ajax)
+		{
+			ajax.setRequestHeader(
+				'Authorization', login
+			);
+		},
+		success: function(data, status, response)
+		{
+			// Get template from server
+			jQuery.get(base_url + "/public/templates/app_pages_template.html").done(function(response) {
+
+				var content = jQuery(jQuery.parseHTML(response));
+
+				//Compile main template
+				var page_template = Handlebars.compile(content.filter('#page_template').html());
+				var settings_template = Handlebars.compile(content.filter('#settings_template').html());
+
+				document.location.hash = 'settings';
+				// check if the page template already exists
+				if(!jQuery('body').hasClass('site'))
+				{
+					jQuery('body').html(page_template);
+				}
+				jQuery('body').removeClass();
+				jQuery('body').addClass('site settings');
+				jQuery('header h1').html('contacts');
+				jQuery('main').html(settings_template());
+			});
+		},
+		error: function(request, status, error)
+		{
+			if(error == 'Unauthorized')
+			{
+				// set error msg here
+				login_page();
+				return false;
+			}
+		}
+	});
+}
+
 function log_out()
 {
 	localStorage.removeItem('login');
@@ -395,6 +511,13 @@ Handlebars.registerHelper('time_since', function(datetime){
 	}
 
 	return Math.floor(seconds) + ' seconds';
+});
+
+Handlebars.registerHelper('times', function(n, block) {
+    var accum = '';
+    for(var i = 0; i < n; ++i)
+        accum += block.fn(i);
+    return accum;
 });
 
 // event listeners
@@ -480,6 +603,14 @@ function url_change()
 
 		case '#locations':
 			locations_page();
+			break;
+
+		case '#contacts':
+			contacts_page();
+			break;
+
+		case '#settings':
+			settings_page();
 			break;
 
 		default:

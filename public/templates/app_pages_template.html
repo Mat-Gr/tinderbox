@@ -267,3 +267,170 @@
         {{/each}}
     </div>
 </script>
+<!--
+ ######   #######  ##    ## ########    ###     ######  ########  ######
+##    ## ##     ## ###   ##    ##      ## ##   ##    ##    ##    ##    ##
+##       ##     ## ####  ##    ##     ##   ##  ##          ##    ##
+##       ##     ## ## ## ##    ##    ##     ## ##          ##     ######
+##       ##     ## ##  ####    ##    ######### ##          ##          ##
+##    ## ##     ## ##   ###    ##    ##     ## ##    ##    ##    ##    ##
+ ######   #######  ##    ##    ##    ##     ##  ######     ##     ######
+-->
+<script id="contacts_template" type="text/x-handlebars-template">
+    <div class="wrapper wrapper-yellow">
+        <div class="search-bar">
+            <input type="text" name="search-bar" id="search-bar" placeholder="Search">
+        </div>
+    </div>
+    <div class="wrapper wrapper-yellow">
+        <div class="letter">
+            <h2>A</h2>
+        </div>
+        <div class="wrapper wrapper-beige">
+        {{#times 3}}
+            <div class="post">
+                <div class="post-headline">
+                    <div class="post-image"><img src="public/imgs/profile-img.png" alt="profile-img"></div>
+                    <div class="post-details">
+                        <div>
+                            <p class="post-author normal-p">Maria Pedersen</p>
+                            <span  class="p-team h4">Team Coordinator</span>
+                        </div>
+                            <div class="post-icon">
+                            <i class="fa fa-phone fa-2x" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <div class="post-mail">
+                        <div>
+                            <p>+45 1234 5678</p>
+                            <p>maria.pedersen@tinderbox.dk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/times}}
+        </div>
+        <div class="letter">
+            <h2>B</h2>
+        </div>
+        <div class="wrapper wrapper-beige">
+        {{#times 5}}
+            <div class="post">
+                <div class="post-headline">
+                    <div class="post-image"><img src="public/imgs/profile-img.png" alt="profile-img"></div>
+                    <div class="post-details">
+                        <div>
+                            <p class="post-author normal-p">Maria Pedersen</p>
+                            <span  class="p-team h4">Team Coordinator</span>
+                        </div>
+                            <div class="post-icon">
+                            <i class="fa fa-phone fa-2x" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <div class="post-mail">
+                        <div>
+                            <p>+45 1234 5678</p>
+                            <p>maria.pedersen@tinderbox.dk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/times}}
+        </div>
+    </div>
+</script>
+<!--
+ ######  ######## ######## ######## #### ##    ##  ######    ######
+##    ## ##          ##       ##     ##  ###   ## ##    ##  ##    ##
+##       ##          ##       ##     ##  ####  ## ##        ##
+ ######  ######      ##       ##     ##  ## ## ## ##   ####  ######
+      ## ##          ##       ##     ##  ##  #### ##    ##        ##
+##    ## ##          ##       ##     ##  ##   ### ##    ##  ##    ##
+ ######  ########    ##       ##    #### ##    ##  ######    ######
+-->
+<script id="settings_template" type="text/x-handlebars-template">
+    <div class="wrapper wrapper-gradient-rosa-yellow">
+        <div class='login-hero signup-hero'>
+            <h2>Jens Pedersen</h2>
+            <p class="small-p">jenspedersen@gmail.com</p>
+            <h4>Bartender</h4>
+        </div>
+    </div>
+    <div class="wrapper wrapper-beige">
+        <div class="menu-profile">
+            <div class="image"><img src="public/imgs/profile-img.png" alt="profile-img"></div>
+        </div>
+        <div class="signup-form">
+            <form action="signup.html">
+                <div class="form-fix">
+                    <div>
+                        <h2>Account Information</h2>
+                    </div>
+                    <div>
+                        <i class="fa fa-envelope menu-icon" aria-hidden="true"></i>
+                        <input type="text" name="email" id="email" placeholder="E-mail">
+                    </div>
+                    <div>
+                        <i class="fa fa-lock menu-icon" aria-hidden="true"></i>
+                        <input type="password" name="password" id="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-fix">
+                    <div>
+                        <h2>General Information</h2>
+                    </div>
+                    <div>
+                        <div class="option">
+                            <p>Shirt size</p>
+                            <select>
+                                <option value="s">S</option>
+                                <option value="m">M</option>
+                                <option value="l">L</option>
+                                <option value="xl">XL</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="option">
+                            <p>Shoe size</p>
+                            <select>
+                                <option value="37">37</option>
+                                <option value="38">38</option>
+                                <option value="39">39</option>
+                                <option value="40">40</option>
+                                <option value="41">41</option>
+                                <option value="42">42</option>
+                                <option value="43">43</option>
+                                <option value="44">44</option>
+                                <option value="45">45</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-fix">
+                    <div>
+                        <h2>Notifications</h2>
+                    </div>
+                    <div>
+                        <div class="option">
+                            <p>Push Notifications</p>
+                            <ul class="tg-list">
+                                <li class="tg-list-item">
+                                    <input id="cb1" type="checkbox" class="tgl tgl-light"/>
+                                    <label for="cb1" class="tgl-btn"></label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="signup-button-fix">
+                    <a href="signup-2.html"><input type="submit" value="Save" class="button h3"></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</script>
