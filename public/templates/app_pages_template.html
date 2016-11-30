@@ -232,7 +232,7 @@
 ########  #######   ######  ##     ##    ##    ####  #######  ##    ##
  -->
 <script id="locations_template" type="text/x-handlebars-template">
-    <!--Put Handlebars stuff in here-->
+    <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=10.333811044692995%2C55.37690380755264%2C10.342029333114626%2C55.38043924945604&amp;layer=transportmap&amp;marker=55.378671568002055%2C10.337920188903809"></iframe>
 </script>
 <!--
 #### ##    ## ########  #######
@@ -244,5 +244,26 @@
 #### ##    ## ##        #######
  -->
 <script id="info_template" type="text/x-handlebars-template">
-    <!--Put Handlebars stuff in here-->
+    <div class="wrapper wrapper-gradient-yellow-rosa wrapper-info">
+        {{#each .}}
+            <div class="info-wrapper">
+                <div class="info-bar">
+                    <div class="bar-content">
+                        <div class="bar-icon">
+                            <div class="bar-icon-gradient">
+                                <h2>{{letter}}</h2>
+                            </div>
+                        </div>
+                        <div class="bar-text">
+                            <h1>{{tittle}}</h1>
+                            <p>{{text}}</p>
+                        </div>
+                    </div>
+                    <div class="bar-next">
+                        <i class="fa fa-angle-right fa-2x" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
 </script>

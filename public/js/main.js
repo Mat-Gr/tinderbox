@@ -219,7 +219,7 @@ function locations_page()
 				jQuery('body').removeClass();
 				jQuery('body').addClass('site locations');
 				jQuery('header h1').html('locations');
-				jQuery('main').html(locations_template(data));
+				jQuery('main').html(locations_template());
 			});
 		},
 		error: function(request, status, error)
@@ -269,15 +269,38 @@ function info_page()
 				var info_template = Handlebars.compile(content.filter('#info_template').html());
 
 				document.location.hash = 'information';
+
+				var page = {
+					contact: {
+						letter: "C",
+						tittle: "contact",
+						text: "Get in touch with the management"
+					},
+					general: {
+						letter: "G",
+						tittle: "general info",
+						text: "Basic information about the festival"
+					},
+					team: {
+						letter: "Y",
+						tittle: "your team",
+						text: "See who your teammates are"
+					},
+					rules: {
+						letter: "R",
+						tittle: "rules",
+						text: "Important rules you should keep in mind"
+					}
+				};
 				// check if the page template already exists
 				if(!jQuery('body').hasClass('site'))
 				{
 					jQuery('body').html(page_template);
 				}
 				jQuery('body').removeClass();
-				jQuery('body').addClass('site info');
+				jQuery('body').addClass('site information');
 				jQuery('header h1').html('info');
-				jQuery('main').html(info_template(data));
+				jQuery('main').html(info_template(page));
 			});
 		},
 		error: function(request, status, error)
