@@ -119,10 +119,11 @@ body.contacts{
 
 .wrapper-beige{
   background-color: $beige;
+ border-radius: 2px; 
 }
 
   .letter{
-    background-color: $yellow;
+  
     padding: 0.750em 1em;
     
   }
@@ -139,6 +140,7 @@ body.contacts{
     .post-details{
       flex-direction: row;
       justify-content: space-between;
+      align-items: center;
       width: 100%;
 
       i{
