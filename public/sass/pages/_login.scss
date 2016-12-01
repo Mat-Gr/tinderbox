@@ -116,11 +116,11 @@ body.login {
 
                 &[type="submit"] {
                     line-height: 2.5em;
-                    
                     color: $teal;
                     background-color: $yellow;
                     border: none;
                     border-radius: 2px;
+                    -webkit-appearance: none;
                 }
 
                 &:focus {
