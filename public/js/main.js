@@ -105,6 +105,7 @@ function schedule_page()
 				{
 					jQuery('body').html(page_template);
 				}
+				nav('schedule');
 				jQuery('body').removeClass();
 				jQuery('body').addClass('site schedule');
 				jQuery('header h1').html('schedule');
@@ -164,6 +165,7 @@ function announcements_page()
 				{
 					jQuery('body').html(page_template);
 				}
+				nav('announcements');
 				jQuery('body').removeClass();
 				jQuery('body').addClass('site announcements');
 				jQuery('header h1').html('announcements');
@@ -223,6 +225,7 @@ function locations_page()
 				{
 					jQuery('body').html(page_template);
 				}
+				nav('locations');
 				jQuery('body').removeClass();
 				jQuery('body').addClass('site locations');
 				jQuery('header h1').html('locations');
@@ -308,6 +311,7 @@ function info_page()
 				{
 					jQuery('body').html(page_template);
 				}
+				nav('information');
 				jQuery('body').removeClass();
 				jQuery('body').addClass('site information');
 				jQuery('header h1').html('info');
@@ -549,6 +553,7 @@ jQuery('body').on('submit', '#login_form', function(event)
 		var password = jQuery('#password').val();
 		localStorage.setItem('login', ('Basic ' + btoa(email + ':' + password) + '=='));
 
+		document.location.hash = 'schedule';
 		schedule_page();
 	}
 });
@@ -589,6 +594,35 @@ jQuery('body').on('submit', '#signup_form', function(event){
 	};
 	signup(userinfo);
 });
+
+// bottom nav color manipulation
+function nav(site)
+{
+	jQuery('nav ul li a').removeClass('active');
+	jQuery('nav ul li a[href^="#' + site + '"]').addClass('active');
+
+	// var icons = {
+	// 	schedule: "fa-calendar",
+	// 	announcements: "fa-comment",
+	// 	locations: "fa-map",
+	// 	information: "fa-info"
+	// };
+	//
+	// jQuery('nav ul li a i').each(function(){
+	// 	if((jQuery(this).attr('class')).indexOf(icons[site]) > -1)
+	// 	{
+	// 		var i_class = (jQuery(this).attr('class')).replace('-o ', ' ');
+	// 		jQuery(this).removeClass();
+	// 		jQuery(this).addClass(i_class);
+	// 	}
+	// 	else
+	// 	{
+	// 		var o_class = jQuery('[class^="fa-"], :not([class$="x"])');
+	// 		jQuery(this).removeClass(o_class);
+	// 		jQuery(this).addClass(o_class + '-o ');
+	// 	}
+	// });
+}
 
 // url switch case
 function url_change()
