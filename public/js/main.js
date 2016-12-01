@@ -486,11 +486,11 @@ Handlebars.registerHelper('get_day', function(timestamp) { // returns tommorow o
 		{
 			return 'Day After Tomorrow';
 		}
-	}
-	else
-	{
-		var result = (date.toString()).split(' ');
-		return result[0] + ' ' + result[1] + ' ' + result[2];
+		else
+		{
+			var result = (date.toString()).split(' ');
+			return result[0] + ' ' + result[1] + ' ' + result[2];
+		}
 	}
 });
 
