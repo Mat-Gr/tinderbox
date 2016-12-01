@@ -288,7 +288,8 @@ body.site {
         .menu-profile{
              width: 100%;
              text-align: center;
-             padding: 5.95rem 2rem;
+             padding: 5.15rem 2rem;
+
              
 
                   background: url('../imgs/color-bg.jpg') no-repeat center center;
@@ -296,6 +297,11 @@ body.site {
           -moz-background-size: cover;
           -o-background-size: cover;
           background-size: cover;
+
+          h3{
+            margin-top: 1em;
+            color: $rosa
+          }
              
         }
 
