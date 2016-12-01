@@ -229,23 +229,31 @@ body.information{
 
   .wrapper-info{
 
-      
+      .link{
+        color: $teal;
+        margin-bottom: 1rem;
+
+
+          &:first-of-type{
+          margin-top: 1rem;
+
+
+          }
+
+     
 
     }
 
   
   .info-wrapper{
     border-radius: 2px;
-    margin-bottom: 1em;
     display: flex;
     flex-direction: columnm;
     align-content: center;
     background-color: $beige;
-    padding: 2em 1.250em;
+    padding: 2rem 1.250rem;
 
-    &:first-of-type{
-      margin-top: 1em;
-    }
+  
 
 
     .info-bar{
@@ -301,5 +309,5 @@ body.information{
   }
 
 
-
+ }
 }
