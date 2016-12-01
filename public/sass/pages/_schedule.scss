@@ -49,6 +49,16 @@ body.schedule{
 
 .content{
 
+.wrapper-gradient-yellow-rosa{
+	        $a: 100vh;
+    $b: 14.65em; //tb-colors height + tb-colors margin
+    min-height: -webkit-calc(#{$a} - #{$b});
+    min-height:    -moz-calc(#{$a} - #{$b});
+    min-height:         calc(#{$a} - #{$b});
+
+}
+
+
 	.wrapper{
 		
 		.schedule-title{

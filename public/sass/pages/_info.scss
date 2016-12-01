@@ -245,6 +245,11 @@ body.contacts{
 body.information{
 
   .wrapper-info{
+        $a: 100vh;
+    $b: 5em; //tb-colors height + tb-colors margin
+    min-height: -webkit-calc(#{$a} - #{$b});
+    min-height:    -moz-calc(#{$a} - #{$b});
+    min-height:         calc(#{$a} - #{$b});
 
       .link{
         cursor: pointer;
@@ -310,6 +315,7 @@ body.information{
 
               h1{
                 margin-bottom: 0.5em;
+                line-height: 1;
               }
           }
 
