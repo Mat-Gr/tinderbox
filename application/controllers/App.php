@@ -11,7 +11,7 @@ class App extends CI_Controller
 
     public function schedule()
     {
-        $this->rest_lib->method('GET');
+        $this->rest_lib->http_method('GET');
         $token = $this->user_lib->authorize();
 
         $this->load->model('schedule_model');
@@ -36,7 +36,7 @@ class App extends CI_Controller
 
     public function announcements()
     {
-        $this->rest_lib->method('GET');
+        $this->rest_lib->http_method('GET');
         $this->user_lib->authorize();
 
         $this->load->model('announcement_model');
@@ -62,7 +62,7 @@ class App extends CI_Controller
 
     public function userinfo()
     {
-        $this->rest_lib->method('GET');
+        $this->rest_lib->http_method('GET');
         $token = $this->user_lib->authorize();
         $userinfo = $this->user_lib->get_userinfo($token);
 
@@ -75,7 +75,7 @@ class App extends CI_Controller
 
     public function signup()
     {
-        $this->rest_lib->method('POST');
+        $this->rest_lib->http_method('POST');
 
         $post = file_get_contents('php://input');
         $post = json_decode($post);
@@ -124,7 +124,7 @@ class App extends CI_Controller
 
     public function edit_user()
     {
-        $this->rest_lib->method('PUT');
+        $this->rest_lib->http_method('PUT');
 
         // check user credentials in database with User-lib
         $token = $this->user_lib->authorize();
@@ -169,7 +169,7 @@ class App extends CI_Controller
 
     public function delete_user()
     {
-        $this->rest_lib->method('DELETE');
+        $this->rest_lib->http_method('DELETE');
         $token = $this->user_lib->authorize();
 
         if(empty($token) || !is_string($token))
