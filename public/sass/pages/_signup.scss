@@ -34,7 +34,7 @@ body.signup{
 	.form-fix{
 		margin-bottom: 2em;
 	
-		div{
+		> div{
 			margin-bottom: 2em;
 			display: flex;
 			flex-direction: row;
@@ -99,8 +99,32 @@ body.signup{
 
 	}
 
+	.option{
+		width: 100%;
+		display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			padding-left: 0.75em;
+			color: $teal-b2;
 
-	
+
+
+					select{
+							background-color: $beige;
+							border:1px solid $teal-b3;
+							color: $azur;
+						}
+
+						option{
+
+							
+							width: 4em;
+
+						}
+	}
+
+
+
 
 
 }

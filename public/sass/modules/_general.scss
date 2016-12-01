@@ -199,6 +199,7 @@ body.site {
     //border-bottom: 1px solid $teal-b3;
 
     .fa-bars {
+        cursor: pointer;
         color: $teal;
         z-index: 9999;
     }
