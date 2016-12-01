@@ -2,10 +2,10 @@
 -- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
--- Vært: localhost
--- Genereringstid: 23. 11 2016 kl. 15:45:06
--- Serverversion: 5.7.16-0ubuntu0.16.04.1
--- PHP-version: 7.0.8-0ubuntu0.16.04.3
+-- Host: localhost
+-- Generation Time: Dec 01, 2016 at 11:36 PM
+-- Server version: 5.7.16-0ubuntu0.16.04.1
+-- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,13 +19,11 @@ SET time_zone = "+00:00";
 --
 -- Database: `tinderbox`
 --
--- DROP DATABASE IF EXISTS 'tinderbox';
--- CREATE DATABASE IF NOT EXISTS DBName;
--- USE DBName - Creater DB såfremt denne ikke findes i forvejen
+
 -- --------------------------------------------------------
 
 --
--- Struktur-dump for tabellen `announcements`
+-- Table structure for table `announcements`
 --
 
 CREATE TABLE `announcements` (
@@ -36,10 +34,22 @@ CREATE TABLE `announcements` (
   `status` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
 
+--
+-- Dumping data for table `announcements`
+--
+
+INSERT INTO `announcements` (`a_id`, `u_id`, `content`, `datetime`, `status`) VALUES
+(1, 2, 'To all social media managers!!!\r\nRemember to share the tinderbox facebook page on all social media, and use the hashtag #tinderbox', '2016-11-28 11:36:20', 1),
+(2, 3, 'Remember to use the official tinderbox hashtag: #tinderbox', '2016-11-21 13:18:38', 1),
+(3, 3, 'Guys, i forgot the password to the tinderbox instagram account, PLS HALP!!', '2016-11-30 12:14:23', 0),
+(4, 2, 'You really know nothing Jon Snow', '2016-11-30 12:17:26', 0),
+(5, 3, 'Never mind, I found it again, had it written down somewhere.', '2016-11-30 12:19:10', 0),
+(6, 1, 'To all other bartenders, remember to check if everyone you serve, is over 18', '2016-12-01 16:25:32', 0);
+
 -- --------------------------------------------------------
 
 --
--- Struktur-dump for tabellen `role`
+-- Table structure for table `role`
 --
 
 CREATE TABLE `role` (
@@ -48,19 +58,18 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
 
 --
--- Data dump for tabellen `role`
+-- Dumping data for table `role`
 --
 
 INSERT INTO `role` (`r_id`, `role`) VALUES
-(1, 'role1'),
-(2, 'role2'),
-(3, 'role1'),
-(4, 'role2');
+(1, 'facebook manager'),
+(2, 'instagram ambassador'),
+(3, 'bartender');
 
 -- --------------------------------------------------------
 
 --
--- Struktur-dump for tabellen `schedule`
+-- Table structure for table `schedule`
 --
 
 CREATE TABLE `schedule` (
@@ -69,19 +78,20 @@ CREATE TABLE `schedule` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
 
 --
--- Data dump for tabellen `schedule`
+-- Dumping data for table `schedule`
 --
 
 INSERT INTO `schedule` (`u_id`, `si_id`) VALUES
-(5, 1),
-(6, 2),
-(5, 3),
-(5, 4);
+(3, 1),
+(3, 2),
+(3, 3),
+(3, 4),
+(3, 5);
 
 -- --------------------------------------------------------
 
 --
--- Struktur-dump for tabellen `schedule_item`
+-- Table structure for table `schedule_item`
 --
 
 CREATE TABLE `schedule_item` (
@@ -94,19 +104,20 @@ CREATE TABLE `schedule_item` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
 
 --
--- Data dump for tabellen `schedule_item`
+-- Dumping data for table `schedule_item`
 --
 
 INSERT INTO `schedule_item` (`si_id`, `t_id`, `task`, `start`, `end`, `location`) VALUES
-(1, 1, 'Rake furiously', '2016-11-24 12:00:00', '2016-11-24 17:00:00', 'Rune\'s yard'),
-(2, 1, 'rake leaves', '2016-11-25 09:00:00', '2016-11-26 06:00:00', 'Odense banegård'),
-(3, 1, 'sweep streets', '2016-11-22 09:00:00', '2016-11-22 15:00:00', 'everywhere'),
-(4, 1, 'Dance', '2016-11-25 07:00:00', '2016-11-25 16:00:00', 'everywhere');
+(1, 2, 'SCRUM meeting', '2016-12-01 06:00:00', '2016-12-01 23:59:00', 'social media office'),
+(2, 2, 'SCRUM meeting', '2016-12-02 06:00:00', '2016-12-02 07:00:00', 'social media office'),
+(3, 2, 'SCRUM meeting', '2016-12-03 06:00:00', '2016-12-03 07:00:00', 'social media office'),
+(4, 2, 'SCRUM meeting', '2016-12-04 06:00:00', '2016-12-04 07:00:00', 'social media office'),
+(5, 2, 'SCRUM meeting', '2016-12-05 06:00:00', '2016-12-05 07:00:00', 'social media office');
 
 -- --------------------------------------------------------
 
 --
--- Struktur-dump for tabellen `team`
+-- Table structure for table `team`
 --
 
 CREATE TABLE `team` (
@@ -115,23 +126,23 @@ CREATE TABLE `team` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
 
 --
--- Data dump for tabellen `team`
+-- Dumping data for table `team`
 --
 
 INSERT INTO `team` (`t_id`, `team`) VALUES
-(1, 'team1'),
-(2, 'team2');
+(1, 'service team'),
+(2, 'social media team');
 
 -- --------------------------------------------------------
 
 --
--- Struktur-dump for tabellen `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `u_id` int(11) NOT NULL,
-  `t_id` int(11) NOT NULL,
-  `r_id` int(11) NOT NULL,
+  `t_id` int(11) NOT NULL DEFAULT '1',
+  `r_id` int(11) NOT NULL DEFAULT '1',
   `fname` varchar(50) COLLATE utf8_danish_ci NOT NULL,
   `lname` varchar(50) COLLATE utf8_danish_ci NOT NULL,
   `email` varchar(50) COLLATE utf8_danish_ci NOT NULL,
@@ -143,16 +154,18 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
 
 --
--- Data dump for tabellen `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`u_id`, `t_id`, `r_id`, `fname`, `lname`, `email`, `password`, `birthdate`, `phone`, `shirt_size`, `shoe_size`) VALUES
-(5, 1, 1, 'John', 'McClane', 'notacop@awesome.org', '$2y$10$ecq2KPTOCBEZW8qr6N1b/OkQJYL0kYsD5NXt2YGwIsU2LIvqVRxK2', '1965-01-01', '88888888', 'XL', '90');
+(1, 1, 3, 'John', 'Doe', 'john@doe.com', '$2y$10$0X21pVdIxeol6Goh2lX/o.kDSHdIrPtMvb4SnZHnnqd2nXCfQB7Em', '1969-06-06', '12345678', 'l', '42'),
+(2, 2, 1, 'Jane', 'Doe', 'jane@doe.com', '$2y$10$RhmjZSGObPyJkOY0xAAmuOsFP9s5eKjJ1iHwSuLje0c1A7nkBz9Hy', '1975-08-12', '87654321', 'm', '39'),
+(3, 2, 2, 'Jon', 'Snow', 'jon@snow.com', '$2y$10$slz7mD9iyrQLoRU0aenwwO4yHFvHAtwHvetMrcORU.59VnW36GJiy', '1955-03-27', '12348765', 'xl', '45');
 
 -- --------------------------------------------------------
 
 --
--- Struktur-dump for tabellen `user_tokens`
+-- Table structure for table `user_tokens`
 --
 
 CREATE TABLE `user_tokens` (
@@ -161,82 +174,84 @@ CREATE TABLE `user_tokens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Data dump for tabellen `user_tokens`
+-- Dumping data for table `user_tokens`
 --
 
 INSERT INTO `user_tokens` (`token`, `u_id`) VALUES
-('d77b729e9ca10e07a887ddb77de9e448', 5);
+('164940bd33bf209c0f99e82683e0ff08', 2),
+('a21b1661dbd28b61d8b4c9631b0ce563', 1),
+('c082f8ef7edb7975f89f6ab489b9caf9', 3);
 
 --
--- Begrænsninger for dumpede tabeller
+-- Indexes for dumped tables
 --
 
 --
--- Indeks for tabel `announcements`
+-- Indexes for table `announcements`
 --
 ALTER TABLE `announcements`
   ADD PRIMARY KEY (`a_id`);
 
 --
--- Indeks for tabel `role`
+-- Indexes for table `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`r_id`);
 
 --
--- Indeks for tabel `schedule_item`
+-- Indexes for table `schedule_item`
 --
 ALTER TABLE `schedule_item`
   ADD PRIMARY KEY (`si_id`);
 
 --
--- Indeks for tabel `team`
+-- Indexes for table `team`
 --
 ALTER TABLE `team`
   ADD PRIMARY KEY (`t_id`);
 
 --
--- Indeks for tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`u_id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indeks for tabel `user_tokens`
+-- Indexes for table `user_tokens`
 --
 ALTER TABLE `user_tokens`
   ADD UNIQUE KEY `tokens` (`token`);
 
 --
--- Brug ikke AUTO_INCREMENT for slettede tabeller
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- Tilføj AUTO_INCREMENT i tabel `announcements`
+-- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
-  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
--- Tilføj AUTO_INCREMENT i tabel `role`
+-- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
-  MODIFY `r_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `r_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- Tilføj AUTO_INCREMENT i tabel `schedule_item`
+-- AUTO_INCREMENT for table `schedule_item`
 --
 ALTER TABLE `schedule_item`
-  MODIFY `si_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `si_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- Tilføj AUTO_INCREMENT i tabel `team`
+-- AUTO_INCREMENT for table `team`
 --
 ALTER TABLE `team`
   MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- Tilføj AUTO_INCREMENT i tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
