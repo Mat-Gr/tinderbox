@@ -60,6 +60,23 @@
 
 body.settings{
 
+	main{
+			.menu-profile{
+		display: flex;
+		justify-content: center;
+		margin-top: -2.5em;
+
+		img{
+			height: 5em;
+			width: 5em;
+			border: 3px solid $beige;
+                    border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    -moz-border-radius: 50%;
+		}
+	}
+	}
+
 	.wrapper-beige{
 		padding:0;
 	}
@@ -93,20 +110,7 @@ body.settings{
 	}
 
 
-	.menu-profile{
-		display: flex;
-		justify-content: center;
-		margin-top: -2.5em;
 
-		img{
-			height: 5em;
-			width: 5em;
-			border: 3px solid $beige;
-                    border-radius: 50%;
-                    -webkit-border-radius: 50%;
-                    -moz-border-radius: 50%;
-		}
-	}
 
 .signup-form{
 	
