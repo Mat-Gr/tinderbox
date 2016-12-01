@@ -445,7 +445,7 @@ function settings_page()
 function log_out()
 {
 	localStorage.removeItem('login');
-	login_page();
+	document.location.hash = '#login';
 }
 
 // declare all function BEFORE this point!!!!
@@ -598,6 +598,10 @@ function url_change()
 
 		case '#signup':
 			signup_page();
+			break;
+
+		case '#logout':
+			log_out();
 			break;
 
 		case '#schedule':
