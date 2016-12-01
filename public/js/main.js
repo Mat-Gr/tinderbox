@@ -56,6 +56,7 @@ function signup(userinfo)
 		success: function(date, status, response)
 		{
 			alert('Signup successfull');
+			window.location.hash = "#login";
 			login_page();
 		},
 		error: function(request, status, error)
@@ -453,7 +454,7 @@ function settings_page()
 function log_out()
 {
 	localStorage.removeItem('login');
-	document.location.hash = '#login';
+	window.location.hash = '#login';
 }
 
 // declare all function BEFORE this point!!!!
@@ -553,7 +554,7 @@ jQuery('body').on('submit', '#login_form', function(event)
 		var password = jQuery('#password').val();
 		localStorage.setItem('login', ('Basic ' + btoa(email + ':' + password) + '=='));
 
-		document.location.hash = 'schedule';
+		window.location.hash = 'schedule';
 		schedule_page();
 	}
 });
