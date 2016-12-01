@@ -459,7 +459,7 @@ url_change();
 
 // some handlebars helpers
 Handlebars.registerHelper('get_time', function(timestamp) { // returns time like this -> 7.15
-	var date = new Date(timestamp);
+	var date = new Date(timestamp.replace(' ', 'T'));
 	return ((date.getHours()<10?'0':'') + date.getHours()) + '.' + ((date.getMinutes()<10?'0':'') + date.getMinutes());
 });
 
@@ -490,8 +490,7 @@ Handlebars.registerHelper('get_day', function(timestamp) { // returns tommorow o
 });
 
 Handlebars.registerHelper('time_since', function(datetime){
-	var time = datetime;
-	time = new Date(time);
+	var time = new Date(datetime.replace(' ', 'T'));
 
 	var seconds = Math.floor((new Date() - time) / 1000);
 
