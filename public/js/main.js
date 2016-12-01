@@ -595,6 +595,45 @@ jQuery('body').on('submit', '#signup_form', function(event){
 	signup(userinfo);
 });
 
+jQuery('body').on('click', '#delete_user', function(event){
+	event.preventDefault();
+	if(confirm('Are you sure, you want to delete this account?'))
+	{
+		if (localStorage.getItem('login') === null)
+		{
+			login_page();
+			return false;
+		}
+
+		var endpoint = 'delete_user';
+
+		var login = localStorage.getItem('login');
+
+		jQuery.ajax(
+		{
+			url: base_url + '/app/' + endpoint,
+			contentType: 'application/json',
+			type: 'DELETE',
+			beforeSend: function(ajax)
+			{
+				ajax.setRequestHeader(
+					'Authorization', login
+				);
+			},
+			success: function(data, status, response)
+			{
+				//succesfully deleted
+				window.location.hash = '#login';
+				login_page();
+			},
+			error: function(request, status, error)
+			{
+				//something went wrong
+			}
+		});
+	}
+});
+
 // bottom nav color manipulation
 function nav(site)
 {
@@ -617,7 +656,9 @@ function nav(site)
 	// 	}
 	// 	else
 	// 	{
-	// 		var o_class = jQuery('[class^="fa-"], :not([class$="x"])');
+	// 		// var o_class = jQuery(this).find('[class^="fa-"], :not([class$="x"])');
+	// 		var o_class = jQuery(this).attr('class').split(' ');
+	// 		console.log(o_class);
 	// 		jQuery(this).removeClass(o_class);
 	// 		jQuery(this).addClass(o_class + '-o ');
 	// 	}
