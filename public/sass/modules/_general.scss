@@ -70,6 +70,10 @@ html, body {
 
 }
 
+   .scrolling-disabled{
+        height: 100%; overflow: hidden
+    }
+
 
 main.content{
     margin-bottom: 3em;
@@ -123,6 +127,9 @@ body.site {
           background-size: cover;
         
     }
+
+ 
+
 }
 
 .wrapper {
@@ -230,6 +237,10 @@ body.site {
     pointer-events: none;
     z-index: 999;
 
+    .login-main-logo{
+        height: 1.875rem;
+    }
+
     .app-menu {
         background-color: $beige;
         position: relative;
@@ -269,7 +280,7 @@ body.site {
         .menu-profile{
              width: 100%;
              text-align: center;
-             padding: 2rem;
+             padding: 5.95rem 2rem;
              
 
                   background: url('../imgs/color-bg.jpg') no-repeat center center;
@@ -331,6 +342,7 @@ body.site {
     }
 }
 
+
 .menu--animatable {
     .app-menu { transition: all 130ms ease-in; }
 }
@@ -369,6 +381,17 @@ body.site {
                 display: block;
                 color: $teal;
                 text-decoration: none;
+            }
+
+
+            i{
+                color: $teal;
+            }
+
+
+            .active{
+                color: $rosa !important;
+                i {color: $rosa !important;}
             }
         }
     }

@@ -1,12 +1,18 @@
 // slide in menu
 jQuery('body').on('click', '#menu-icon', function(e){
     var menu = jQuery('.menu');
+    var body = jQuery('body');
+    var html = jQuery('html');
 	menu.addClass('menu--animatable');
 
 	if(menu.hasClass('menu--visible')){
 		menu.removeClass('menu--visible');
+		html.removeClass('scrolling-disabled');
+		body.removeClass('scrolling-disabled');
 	}else{
 		menu.addClass('menu--visible');
+		html.addClass('scrolling-disabled');
+		body.addClass('scrolling-disabled');
 	}
 
 	menu.on('transitionend webkitTransitionEnd oTransitionEnd', function(){
