@@ -185,12 +185,17 @@ body.settings{
 		
 		.button{
 				width: auto;
-				background-color: $yellow;
 				border: medium none;
 			    border-radius: 2px;
 			    color: $teal;
 			    padding: 0 1em;
 			    line-height: 2.5em;
+
+			     background: $yellow; /* Old browsers */
+                              background: -moz-linear-gradient(left, $yellow 0%, $rosa 98%); /* FF3.6-15 */
+                            background: -webkit-linear-gradient(left, $yellow 0%,$rosa 98%); /* Chrome10-25,Safari5.1-6 */
+                              background: linear-gradient(to right, $yellow 0%,$rosa 98%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$yellow', endColorstr='$rosa',GradientType=1 ); /* IE6-9 */
 		}
 
 	}
