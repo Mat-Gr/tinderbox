@@ -23,7 +23,7 @@
         "type": "image/png"
         }
         ],
-    "start_url": "http://localhost/tinderbox/#schedule",
+    "start_url": "http://localhost/tinderbox/",
     "display": "standalone",
     "orientation": "portrait",
     "theme_color": "#fff9f4",
