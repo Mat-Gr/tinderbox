@@ -59,10 +59,12 @@ table {
 
 html{
     overflow: auto;
+
 }
 
 
 html, body {
+
     color: $teal;
     background-color: $beige;
     height: 100%;
@@ -71,7 +73,12 @@ html, body {
 }
 
    .scrolling-disabled{
-        height: 100%; overflow: hidden
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    position: fixed;
+        margin:0 !important; height: 100% !important; overflow: hidden !important;
     }
 
 
@@ -209,6 +216,7 @@ body.site {
         cursor: pointer;
         color: $teal;
         z-index: 9999;
+
     }
     .top-nav-logo {
         width: 10%;
