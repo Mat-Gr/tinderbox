@@ -279,21 +279,25 @@ function info_page()
 
 				var page = {
 					contact: {
+						link : "#contacts",
 						letter: "C",
 						tittle: "contact",
 						text: "Get in touch with the management"
 					},
 					general: {
+						link : "",
 						letter: "G",
 						tittle: "general info",
 						text: "Basic information about the festival"
 					},
 					team: {
+						link : "",
 						letter: "Y",
 						tittle: "your team",
 						text: "See who your teammates are"
 					},
 					rules: {
+						link : "",
 						letter: "R",
 						tittle: "rules",
 						text: "Important rules you should keep in mind"
@@ -424,7 +428,7 @@ function settings_page()
 				}
 				jQuery('body').removeClass();
 				jQuery('body').addClass('site settings');
-				jQuery('header h1').html('contacts');
+				jQuery('header h1').html('settings');
 				jQuery('main').html(settings_template(data));
 				window.scrollTo(0, 0);
 				jQuery('main').hide().fadeIn();
