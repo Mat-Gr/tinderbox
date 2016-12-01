@@ -567,7 +567,7 @@ jQuery('body').on('submit', '#signup_form', function(event){
 	}
 	else
 	{
-		var date_pattern = /^(0?[1-9]|[12][0-9]|3[01])([ \/\-])(0?[1-9]|1[012])\2([0-9][0-9][0-9][0-9])$/;
+		var date_pattern = /^(0?[1-9]|[12][0-9]|3[01])([ \/])(0?[1-9]|1[012])\2([0-9][0-9][0-9][0-9])$/;
 		if(date_pattern.test(jQuery('#birthdate').val()) === false)
 		{
 			alert('Please fill out birthdate in following format: dd/mm/yyyy');
