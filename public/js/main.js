@@ -13,6 +13,7 @@ function login_page()
 
 		// set html content
 		jQuery('body').removeClass();
+		jQuery('html').removeClass();
 		jQuery('body').addClass('login');
 		jQuery('body').html(login_template);
 		window.scrollTo(0, 0);
