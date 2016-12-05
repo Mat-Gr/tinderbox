@@ -67,6 +67,43 @@ function signup(userinfo)
 	});
 }
 
+function edit_user(userinfo)
+{
+	if (localStorage.getItem('login') === null)
+	{
+		login_page();
+		return false;
+	}
+
+	var login = localStorage.getItem('login');
+
+	var endpoint = 'edit_user';
+
+	jQuery.ajax(
+	{
+		url: base_url + '/app/' + endpoint,
+		contentType: 'application/json',
+		type: 'PUT',
+		data: JSON.stringify(userinfo),
+		beforeSend: function(ajax)
+		{
+			ajax.setRequestHeader(
+				'Authorization', login
+			);
+		},
+		success: function(date, status, response)
+		{
+			alert('Changes were successfull');
+			settings_page();
+		},
+		error: function(request, status, error)
+		{
+			alert('Something went wrong');
+			settings_page();
+		}
+	});
+}
+
 function schedule_page()
 {
 	if (localStorage.getItem('login') === null)
@@ -539,6 +576,13 @@ Handlebars.registerHelper('times', function(n, block) {
     return accum;
 });
 
+Handlebars.registerHelper('options', function(value1, value2) {
+	if(value1 == value2)
+	{
+		return "selected";
+	}
+});
+
 // event listeners
 jQuery('body').on('submit', '#login_form', function(event)
 {
@@ -594,6 +638,27 @@ jQuery('body').on('submit', '#signup_form', function(event){
 		shoe_size: jQuery('#shoe_size').val()
 	};
 	signup(userinfo);
+});
+
+jQuery('body').on('submit', '#edit_user_form', function(event){
+	event.preventDefault();
+	if(
+		jQuery('#phone').val() === '' ||
+		jQuery('#password').val() === '' ||
+		jQuery('#shirt_size').val() === '' ||
+		jQuery('#shoe_size').val() === '')
+	{
+		alert('All fields are required');
+		return false;
+	}
+
+	var userinfo = {
+		phone: jQuery('#phone').val(),
+		password: jQuery('#password').val(),
+		shirt_size: jQuery('#shirt_size').val(),
+		shoe_size: jQuery('#shoe_size').val()
+	};
+	edit_user(userinfo);
 });
 
 jQuery('body').on('click', '#delete_user', function(event){

@@ -355,18 +355,18 @@
             <div class="image"><img src="public/imgs/profile-img.png" alt="profile-img"></div>
         </div>
         <div class="signup-form">
-            <form action="signup.html">
+            <form id="edit_user_form" method="post">
                 <div class="form-fix">
                     <div>
-                        <h2>Account Information</h2>
-                    </div>
-                    <div>
-                        <i class="fa fa-envelope menu-icon" aria-hidden="true"></i>
-                        <input type="text" name="email" id="email" placeholder="E-mail">
+                        <h2>Change Account Information</h2>
                     </div>
                     <div>
                         <i class="fa fa-lock menu-icon" aria-hidden="true"></i>
-                        <input type="password" name="password" id="password" placeholder="Password">
+                        <input type="password" name="password" id="password" placeholder="Password" required>
+                    </div>
+                    <div>
+                        <i class="fa fa-phone menu-icon" aria-hidden="true"></i>
+                        <input type="number" name="phone" id="phone" placeholder="Phone number" value="{{phone}}" required>
                     </div>
                 </div>
                 <div class="form-fix">
@@ -376,27 +376,27 @@
                     <div>
                         <div class="option">
                             <p>Shirt size</p>
-                            <select>
-                                <option value="s">S</option>
-                                <option value="m">M</option>
-                                <option value="l">L</option>
-                                <option value="xl">XL</option>
+                            <select id="shirt_size" required>
+                                <option value="s"{{#options shirt_size "s"}}{{/options}}>S</option>
+                                <option value="m"{{#options shirt_size "m"}}{{/options}}>M</option>
+                                <option value="l"{{#options shirt_size "l"}}{{/options}}>L</option>
+                                <option value="xl"{{#options shirt_size "xl"}}{{/options}}>XL</option>
                             </select>
                         </div>
                     </div>
                     <div>
                         <div class="option">
                             <p>Shoe size</p>
-                            <select>
-                                <option value="37">37</option>
-                                <option value="38">38</option>
-                                <option value="39">39</option>
-                                <option value="40">40</option>
-                                <option value="41">41</option>
-                                <option value="42">42</option>
-                                <option value="43">43</option>
-                                <option value="44">44</option>
-                                <option value="45">45</option>
+                            <select id="shoe_size" required>
+                                <option value="37"{{#options shoe_size 37}}{{/options}}>37</option>
+                                <option value="38"{{#options shoe_size 38}}{{/options}}>38</option>
+                                <option value="39"{{#options shoe_size 39}}{{/options}}>39</option>
+                                <option value="40"{{#options shoe_size 40}}{{/options}}>40</option>
+                                <option value="41"{{#options shoe_size 41}}{{/options}}>41</option>
+                                <option value="42"{{#options shoe_size 42}}{{/options}}>42</option>
+                                <option value="43"{{#options shoe_size 43}}{{/options}}>43</option>
+                                <option value="44"{{#options shoe_size 44}}{{/options}}>44</option>
+                                <option value="45"{{#options shoe_size 45}}{{/options}}>45</option>
                             </select>
                         </div>
                     </div>
