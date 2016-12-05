@@ -703,32 +703,18 @@ jQuery('body').on('click', '#delete_user', function(event){
 // bottom nav color manipulation
 function nav(site)
 {
-	jQuery('nav ul li a').removeClass('active');
-	jQuery('nav ul li a[href^="#' + site + '"]').addClass('active');
+	jQuery('nav ul li a').each(function(){
+		jQuery(this).removeClass('active');
+		jQuery(this).find('i.fa').removeClass((jQuery(this).attr('data-active')));
+		jQuery(this).find('i.fa').addClass((jQuery(this).attr('data-inactive')));
+	});
 
-	// var icons = {
-	// 	schedule: "fa-calendar",
-	// 	announcements: "fa-comment",
-	// 	locations: "fa-map",
-	// 	information: "fa-info"
-	// };
-	//
-	// jQuery('nav ul li a i').each(function(){
-	// 	if((jQuery(this).attr('class')).indexOf(icons[site]) > -1)
-	// 	{
-	// 		var i_class = (jQuery(this).attr('class')).replace('-o ', ' ');
-	// 		jQuery(this).removeClass();
-	// 		jQuery(this).addClass(i_class);
-	// 	}
-	// 	else
-	// 	{
-	// 		// var o_class = jQuery(this).find('[class^="fa-"], :not([class$="x"])');
-	// 		var o_class = jQuery(this).attr('class').split(' ');
-	// 		console.log(o_class);
-	// 		jQuery(this).removeClass(o_class);
-	// 		jQuery(this).addClass(o_class + '-o ');
-	// 	}
-	// });
+	var active_nav = jQuery('nav ul li a[href^="#' + site + '"]');
+	var active_i = jQuery('nav ul li a[href^="#' + site + '"] i');
+
+	active_nav.addClass('active');
+	active_i.removeClass((active_nav.attr('data-inactive')));
+	active_i.addClass((active_nav.attr('data-active')));
 }
 
 // url switch case
