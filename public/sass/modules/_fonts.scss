@@ -1,0 +1,97 @@
+@font-face {
+    font-family: Eveleth;
+    font-weight: normal;
+    src: url("../fonts/eveleth-thin.otf");
+}
+
+@font-face {
+    font-family: Eveleth;
+    font-weight: bold;
+    src: url("../fonts/eveleth-regular.otf");
+}
+
+@font-face {
+    font-family: Brown;
+    src: url("../fonts/brown-regular.otf");
+}
+
+h1 {
+    font-family: Eveleth;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+h2 {
+    font-family: Eveleth;
+    font-weight: bold;
+    font-size: 0.875em;
+}
+
+h3 {
+    font-family: Eveleth;
+    font-weight: bold;
+    font-size: 0.750em;
+    letter-spacing: 0.5px;
+}
+
+h4 {
+    font-family: Eveleth;
+    font-weight: normal;
+    font-size: 0.875em;
+}
+
+.large-p {
+    font-size: 1.25em;
+}
+
+p, a {
+    font-size: 0.875em;
+
+}
+
+.small-p {
+    font-size: 0.750em;
+}
+
+.normal-p{
+    font-size: 1em;
+}
+
+.submit{
+    font-family: Eveleth;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+
+.p{
+    font-family: Eveleth;
+    font-weight: normal;
+    font-size: 0.875em;
+}
+
+.h1 {
+    font-family: Eveleth;
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+.h2 {
+    font-family: Eveleth;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.h3 {
+    font-family: Eveleth;
+    font-weight: bold;
+    font-size: 0.750em;
+    letter-spacing: 0.5px;
+}
+
+.h4 {
+    font-family: Eveleth;
+    font-weight: normal;
+    font-size: 0.750em;
+}
+

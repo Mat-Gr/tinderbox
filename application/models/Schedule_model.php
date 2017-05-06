@@ -24,7 +24,8 @@ class Schedule_model extends CI_Model
             ON schedule_item.t_id = team.t_id
             WHERE token = "%s"
             AND schedule_item.end > NOW()
-            ORDER BY schedule_item.start ASC',
+            ORDER BY schedule_item.start ASC
+            LIMIT 10',
             $this->db->escape_like_str($token));
 
         $res = $this->db->query($query);

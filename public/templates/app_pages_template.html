@@ -1,44 +1,436 @@
 <!-- main template for app pages -->
+<!--
+##     ##    ###    #### ##    ##
+###   ###   ## ##    ##  ###   ##
+#### ####  ##   ##   ##  ####  ##
+## ### ## ##     ##  ##  ## ## ##
+##     ## #########  ##  ##  ####
+##     ## ##     ##  ##  ##   ###
+##     ## ##     ## #### ##    ##
+ -->
 <script id="page_template" type="text/x-handlebars-template">
-    <header>
-        <h1>hello</h1>
+    <div class="menu">
+        <div class="app-menu">
+            <div class="menu-profile">
+                         <object class="login-main-logo" id="logo" type="image/svg+xml" data="public/imgs/tinderbox-logo.svg">Your browser does not support SVGs</object>
+                         <h3>22nd - 24th June 2017 <span class="slash">/</span> Odense</h3>
+            </div>
+
+            <div>
+                <a href="#settings" class="menu-item">
+                    <div>
+                        <h1>Settings</h1>
+                    </div>
+                </a>
+                <a href="#logout" class="menu-item">
+                    <div>
+                        <h1>Logout</h1>
+                    </div>
+                </a>
+
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+
+    <header class="top-nav">
+        <object class="top-nav-logo" type="image/svg+xml" data="public/imgs/logo-teal.svg">Your browser does not support SVGs</object>
+        <h1>SCHEDULE</h1>
+        <i id="menu-icon" class="fa fa-bars fa-2x menu-icon" aria-hidden="true"></i>
     </header>
-    <main>
+
+    <main class="content">
+        <!-- content goes here -->
     </main>
+
+    <nav class="main-nav small-p">
+        <ul>
+            <li>
+                <a href="#schedule" data-inactive="fa-calendar-o" data-active="fa-calendar" class="active"><i class="fa fa-calendar-o fa-2x menu-icon" aria-hidden="true"></i><br/>Schedule</a>
+            </li>
+
+            <li>
+                <a href="#announcements" data-inactive="fa-comment-o" data-active="fa-comment"><i class="fa fa-comment-o fa-2x menu-icon" aria-hidden="true"></i><br/>Announcements</a>
+            </li>
+
+            <li>
+                <a href="#locations" data-inactive="fa-map-o" data-active="fa-map"><i class="fa fa-map-o fa-2x menu-icon" aria-hidden="true"></i><br/>Locations</a>
+            </li>
+
+            <li>
+                <a href="#information" data-inactive="fa-info" data-active="fa-info-circle"><i class="fa fa-info  fa-2x menu-icon" aria-hidden="true"></i><br/>Information</a>
+            </li>
+        </ul>
+    </nav>
 </script>
 
 <!-- sub templates for page content -->
+<!--
+ ######   ######  ##     ## ######## ########  ##     ## ##       ########
+##    ## ##    ## ##     ## ##       ##     ## ##     ## ##       ##
+##       ##       ##     ## ##       ##     ## ##     ## ##       ##
+ ######  ##       ######### ######   ##     ## ##     ## ##       ######
+      ## ##       ##     ## ##       ##     ## ##     ## ##       ##
+##    ## ##    ## ##     ## ##       ##     ## ##     ## ##       ##
+ ######   ######  ##     ## ######## ########   #######  ######## ########
+ -->
 <script id="schedule_template" type="text/x-handlebars-template">
-    {{#each .}}
-        <p>{{start}}</p></br>
-        <p>{{end}}</p></br>
-        <p>{{task}}</p></br>
-        <p>{{team}}</p></br>
-        <p>{{location}}</p></br></br></br>
-    {{/each}}
-    <a class="announcements" href="#">Announcements</a>
-</script>
+    <div class="wrapper wrapper-beige">
+        <div class="calendar">
+            <ul class="weekdays">
+                <li class="h3">Mon</li>
+                <li>Tue</li>
+                <li>Wed</li>
+                <li>Thu</li>
+                <li>Fri</li>
+                <li>Sat</li>
+                <li>Sun</li>
+            </ul>
 
+            <ul class="days ">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li><span class="active">7</span></li>
+            </ul>
+
+            <ul class="days-schedule ">
+                <li></li>
+                <li></li>
+                <li>&bull;</li>
+                <li>&bull;</li>
+                <li>&bull;</li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <div class="wrapper wrapper-gradient-yellow-rosa">
+        <h3 class="schedule-title">Today's Schedule</h3>
+        {{#each .}}
+            {{#if today}}
+                <div class="schedule-current">
+                    <div class="sc-details">
+                        <div class="sc-primary">
+                            <h4>{{get_day start}}</h4>
+                            <div>
+                                <p class="large-p">{{get_time start}}</p>
+                                <hr class="vertical"/>
+                                <p class="large-p">{{get_time end}}</p>
+                            </div>
+                        </div>
+
+                        <div class="sc-secondary">
+                            <h2>{{task}}</h2>
+                            <p class="sc-desc h4"><span class="small-p">Team:</span> {{team}} </p>
+                            <p class="sc-desc"><span class="small-p">Place:</span> {{location}} <i class="fa fa-map-marker menu-icon" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
+        {{/each}}
+        <h3 class="schedule-title">Upcoming Schedule</h3>
+        {{#each .}}
+            {{#unless today}}
+                <div class="schedule-upcoming">
+                    <div class="su-details">
+                        <div class="su-primary">
+                            <h3>{{task}}</h3>
+                            <p>Place: {{location}}</p>
+                        </div>
+
+                        <div class="su-secondary">
+                            <p class="su-date">{{get_day start}}</p>
+                            <p class="su-hour">{{get_time start}}</p>
+                        </div>
+                    </div>
+                </div>
+            {{/unless}}
+        {{/each}}
+    </div>
+</script>
+<!--
+   ###    ##    ## ##    ##  #######  ##     ## ##    ##  ######  ########
+  ## ##   ###   ## ###   ## ##     ## ##     ## ###   ## ##    ## ##
+ ##   ##  ####  ## ####  ## ##     ## ##     ## ####  ## ##       ##
+##     ## ## ## ## ## ## ## ##     ## ##     ## ## ## ## ##       ######
+######### ##  #### ##  #### ##     ## ##     ## ##  #### ##       ##
+##     ## ##   ### ##   ### ##     ## ##     ## ##   ### ##    ## ##
+##     ## ##    ## ##    ##  #######   #######  ##    ##  ######  ########
+ -->
 <script id="announcements_template" type="text/x-handlebars-template">
     {{#each .}}
         {{#if pinned}}
-            <div class="pinned">
-        {{else}}
-            <div>
-        {{/if}}
-                <p>{{fname}}</p></br>
-                <p>{{lname}}</p></br>
-                <p>{{datetime}}</p></br>
-                <p>{{role}}</p></br>
-                <p>{{content}}</p></br>
+        <div class="wrapper wrapper-gradient-rosa-yellow">
+            <div class="pinned-post">
+                <div class="pp-headline">
+                    <div class="pp-details">
+                        <div>
+                            <h3 class="pp-author h3">{{fname}} {{lname}}</h3>
+                            <span class="pp-date small-p">{{time_since datetime}} ago</span>
+                            <span  class="pp-team h3">{{role}}</span>
+                        </div>
+                    </div>
+                    <div class="pp-indicator"><p class="p">Pinned</p></div>
+                </div>
+                <div class="pp-content">
+                    <p>{{content}}</p>
+                </div>
             </div>
+        </div>
+        {{/if}}
     {{/each}}
+    <div class="wrapper wrapper-beige">
+    {{#each .}}
+        {{#unless pinned}}
+        <div class="post">
+            <div class="post-headline">
+                <div class="post-image"><img src="public/imgs/profile-img.png" alt="profile-img"></div>
+                <div class="post-details">
+                    <div>
+                        <h3 class="post-author h3">{{fname}} {{lname}}</h3>
+                        <span class="p-date small-p">{{time_since datetime}} ago</span>
+                        <span  class="p-team h4">{{role}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>{{content}}</p>
+            </div>
+        </div>
+        {{/unless}}
+    {{/each}}
+    </div>
 </script>
-
+<!--
+##        #######   ######     ###    ######## ####  #######  ##    ##
+##       ##     ## ##    ##   ## ##      ##     ##  ##     ## ###   ##
+##       ##     ## ##        ##   ##     ##     ##  ##     ## ####  ##
+##       ##     ## ##       ##     ##    ##     ##  ##     ## ## ## ##
+##       ##     ## ##       #########    ##     ##  ##     ## ##  ####
+##       ##     ## ##    ## ##     ##    ##     ##  ##     ## ##   ###
+########  #######   ######  ##     ##    ##    ####  #######  ##    ##
+ -->
 <script id="locations_template" type="text/x-handlebars-template">
-    <!--Put Handlebars stuff in here-->
+    <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=10.333811044692995%2C55.37690380755264%2C10.342029333114626%2C55.38043924945604&amp;layer=transportmap&amp;marker=55.378671568002055%2C10.337920188903809"></iframe>
 </script>
-
+<!--
+#### ##    ## ########  #######
+ ##  ###   ## ##       ##     ##
+ ##  ####  ## ##       ##     ##
+ ##  ## ## ## ######   ##     ##
+ ##  ##  #### ##       ##     ##
+ ##  ##   ### ##       ##     ##
+#### ##    ## ##        #######
+ -->
 <script id="info_template" type="text/x-handlebars-template">
-    <!--Put Handlebars stuff in here-->
+    <div class="wrapper wrapper-gradient-yellow-rosa wrapper-info">
+        {{#each .}}
+        <a href="{{link}}" class="link">
+            <div class="info-wrapper">
+                <div class="info-bar">
+                    <div class="bar-content">
+                        <div class="bar-icon">
+                            <div class="bar-icon-gradient">
+                                <h2>{{letter}}</h2>
+                            </div>
+                        </div>
+                        <div class="bar-text">
+                            <h1>{{tittle}}</h1>
+                            <p>{{text}}</p>
+                        </div>
+                    </div>
+                    <div class="bar-next">
+                        <i class="fa fa-angle-right fa-2x" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            </a>
+        {{/each}}
+    </div>
+</script>
+<!--
+ ######   #######  ##    ## ########    ###     ######  ########  ######
+##    ## ##     ## ###   ##    ##      ## ##   ##    ##    ##    ##    ##
+##       ##     ## ####  ##    ##     ##   ##  ##          ##    ##
+##       ##     ## ## ## ##    ##    ##     ## ##          ##     ######
+##       ##     ## ##  ####    ##    ######### ##          ##          ##
+##    ## ##     ## ##   ###    ##    ##     ## ##    ##    ##    ##    ##
+ ######   #######  ##    ##    ##    ##     ##  ######     ##     ######
+-->
+<script id="contacts_template" type="text/x-handlebars-template">
+    <div class="wrapper wrapper-yellow">
+        <div class="search-bar">
+            <input type="text" name="search-bar" id="search-bar" placeholder="Search">
+        </div>
+    </div>
+    <div class="wrapper wrapper-gradient-yellow-rosa">
+        <div class="letter">
+            <h2>A</h2>
+        </div>
+        <div class="wrapper wrapper-beige">
+        {{#times 3}}
+            <div class="post">
+                <div class="post-headline">
+                    <div class="post-image"><img src="public/imgs/profile-img.png" alt="profile-img"></div>
+                    <div class="post-details">
+                        <div>
+                            <p class="post-author h3">Maria Pedersen <i class="fa fa-chevron-down" aria-hidden="true"></i></p>
+                            <span  class="p-team h4">Team Coordinator</span>
+
+                        </div>
+                            <div class="post-icon">
+                            <i class="fa fa-phone fa-2x" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <div class="post-mail">
+                        <div>
+                            <p>+45 1234 5678</p>
+                            <p>maria.pedersen@tinderbox.dk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/times}}
+        </div>
+        <div class="letter">
+            <h2>B</h2>
+        </div>
+        <div class="wrapper wrapper-beige">
+        {{#times 5}}
+            <div class="post">
+                <div class="post-headline">
+                    <div class="post-image"><img src="public/imgs/profile-img.png" alt="profile-img"></div>
+                    <div class="post-details">
+                        <div>
+                            <p class="post-author h3">Maria Pedersen <i class="fa fa-chevron-down" aria-hidden="true"></i></p>
+                            <span  class="p-team h4">Team Coordinator</span>
+
+                        </div>
+                            <div class="post-icon">
+
+                            <i class="fa fa-phone fa-2x" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <div class="post-mail">
+                        <div>
+                            <p>+45 1234 5678</p>
+                            <p>maria.pedersen@tinderbox.dk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/times}}
+        </div>
+    </div>
+</script>
+<!--
+ ######  ######## ######## ######## #### ##    ##  ######    ######
+##    ## ##          ##       ##     ##  ###   ## ##    ##  ##    ##
+##       ##          ##       ##     ##  ####  ## ##        ##
+ ######  ######      ##       ##     ##  ## ## ## ##   ####  ######
+      ## ##          ##       ##     ##  ##  #### ##    ##        ##
+##    ## ##          ##       ##     ##  ##   ### ##    ##  ##    ##
+ ######  ########    ##       ##    #### ##    ##  ######    ######
+-->
+<script id="settings_template" type="text/x-handlebars-template">
+    <div class="wrapper wrapper-gradient-rosa-yellow">
+        <div class='login-hero signup-hero'>
+            <h2>{{fname}} {{lname}}</h2>
+            <p class="small-p">{{team}}</p>
+            <h4>{{role}}</h4>
+        </div>
+    </div>
+    <div class="wrapper wrapper-beige">
+        <div class="menu-profile">
+            <div class="image"><img src="public/imgs/profile-img.png" alt="profile-img"></div>
+        </div>
+        <div class="signup-form">
+            <form id="edit_user_form" method="post">
+                <div class="form-fix">
+                    <div>
+                        <h2>Change Account Information</h2>
+                    </div>
+                    <div>
+                        <i class="fa fa-lock menu-icon" aria-hidden="true"></i>
+                        <input type="password" name="password" id="password" placeholder="Password" required>
+                    </div>
+                    <div>
+                        <i class="fa fa-phone menu-icon" aria-hidden="true"></i>
+                        <input type="number" name="phone" id="phone" placeholder="Phone number" value="{{phone}}" required>
+                    </div>
+                </div>
+                <div class="form-fix">
+                    <div>
+                        <h2>General Information</h2>
+                    </div>
+                    <div>
+                        <div class="option">
+                            <p>Shirt size</p>
+                            <select id="shirt_size" required>
+                                <option value="s"{{#options shirt_size "s"}}{{/options}}>S</option>
+                                <option value="m"{{#options shirt_size "m"}}{{/options}}>M</option>
+                                <option value="l"{{#options shirt_size "l"}}{{/options}}>L</option>
+                                <option value="xl"{{#options shirt_size "xl"}}{{/options}}>XL</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="option">
+                            <p>Shoe size</p>
+                            <select id="shoe_size" required>
+                                <option value="37"{{#options shoe_size 37}}{{/options}}>37</option>
+                                <option value="38"{{#options shoe_size 38}}{{/options}}>38</option>
+                                <option value="39"{{#options shoe_size 39}}{{/options}}>39</option>
+                                <option value="40"{{#options shoe_size 40}}{{/options}}>40</option>
+                                <option value="41"{{#options shoe_size 41}}{{/options}}>41</option>
+                                <option value="42"{{#options shoe_size 42}}{{/options}}>42</option>
+                                <option value="43"{{#options shoe_size 43}}{{/options}}>43</option>
+                                <option value="44"{{#options shoe_size 44}}{{/options}}>44</option>
+                                <option value="45"{{#options shoe_size 45}}{{/options}}>45</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-fix">
+                    <div>
+                        <h2>Notifications</h2>
+                    </div>
+                    <div>
+                        <div class="option">
+                            <p>Push Notifications</p>
+                            <ul class="tg-list">
+                                <li class="tg-list-item">
+                                    <input id="cb1" type="checkbox" class="tgl tgl-light"/>
+                                    <label for="cb1" class="tgl-btn"></label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-fix">
+                    <div>
+                        <h2>Delete User</h2>
+                    </div>
+                    <div>
+                        <i class="fa fa-trash-o menu-icon" aria-hidden="true"></i>
+                        <a id="delete_user">Delete User</a>
+                    </div>
+
+                </div>
+                <div class="signup-button-fix">
+                    <a href="signup-2.html"><input type="submit" value="Save" class="button h3"></a>
+                </div>
+            </form>
+        </div>
+    </div>
 </script>

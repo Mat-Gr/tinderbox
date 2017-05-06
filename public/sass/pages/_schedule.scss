@@ -1,0 +1,158 @@
+body.schedule{
+
+.calendar{
+
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	width: 100%;
+	padding: 4%;
+	margin: 3em 0;
+
+	ul{
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		list-style-type: none;
+		text-transform: uppercase;
+		padding-bottom: 1em;
+
+		li{
+			text-align: center;
+			width: 14%;
+		}
+	}
+
+		ul.days, ul.days-schedule{
+			padding-bottom: 0;
+		}
+
+	ul.weekdays li{
+		font-family: Eveleth;
+	    font-weight: bold;
+	    font-size: 0.750em;
+	}
+
+
+	ul.days li{
+		font-family: Eveleth;
+		font-weight: normal;
+		font-size: 0.875em;
+
+	}
+
+	ul.days-schedule li{
+		color: $rosa;
+	}
+	
+}
+
+.content{
+
+.wrapper-gradient-yellow-rosa{
+	        $a: 100vh;
+    $b: 14.65em; //tb-colors height + tb-colors margin
+    min-height: -webkit-calc(#{$a} - #{$b});
+    min-height:    -moz-calc(#{$a} - #{$b});
+    min-height:         calc(#{$a} - #{$b});
+
+}
+
+
+	.wrapper{
+		
+		.schedule-title{
+			margin: 2em 0 1em 0;
+		}
+
+		.schedule-upcoming, .schedule-current{
+		background-color: $beige;
+		border-radius: 2px;
+		margin-bottom: 0.750em;
+
+			.su-details, .sc-details{
+				display: flex;
+				justify-content: space-between;
+			}
+
+			.sc-details{
+				padding: 1rem;	
+
+				.sc-primary{
+					text-align: center;
+					flex: 1 0 0;
+					padding-top: 0.500rem;
+					padding-bottom: 0.500rem;
+					
+					h4{
+						padding-bottom: 1.250rem;
+					}
+					hr.vertical
+						{
+						   width: 0px;
+						   height: 2rem; /* or height in PX */
+						} 
+				}
+
+				.sc-secondary{
+					flex: 2 0 0;
+					border-left: 1px solid $rosa;
+					padding-top: 0.500rem;
+					padding-left: 1rem;
+					padding-bottom: 0.500rem;
+
+					h2{
+						padding-bottom: 1rem;
+					}
+
+					.sc-desc{
+						line-height: 1.5em;
+
+						.small-p{
+						color: $rosa;
+						padding-right: 0.5rem;
+						text-align: right;
+						}
+					}
+
+					
+				}
+			}
+
+			.su-details{
+				padding: 1.5rem 1rem;
+
+				.su-primary{
+					h3{
+						padding-bottom: 0.25rem;
+					}
+				}
+
+				.su-secondary{
+				text-align: right;
+
+					.su-date{
+						color: $rosa;
+						padding-bottom: 0.2rem;
+					}
+
+					.su-hour{
+						color: $azur;
+					}
+				}
+
+
+	
+			}
+			
+
+
+		}
+	}
+
+	
+
+}
+
+
+}

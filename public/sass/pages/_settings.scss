@@ -1,0 +1,306 @@
+
+.profile {
+   background-image: url(../imgs/color-bg.jpg);
+   width: 100%;
+   text-align: center;
+   padding: 2rem;
+   background-repeat: no-repeat;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+   background-size: cover;
+
+}
+
+.account-information{
+	padding: 35px;
+    border-bottom:1px solid  #b6d9cf;
+}
+.Email {
+	display: flex;
+	justify-content: space-between;
+}
+.password{
+	display: flex;
+	justify-content: space-between;
+	}
+
+.general-information{
+	padding: 35px;
+    border-bottom:1px solid  #b6d9cf;
+}
+.shoe {
+	display: flex; 
+	margin-top: 9px;
+	justify-content: space-between;
+}	
+.shirt{
+	display: flex;
+	justify-content: space-between;
+}
+
+.notification{
+    padding: 35px;
+    border-bottom:1px solid  #b6d9cf;
+}
+.push {
+	display: flex; 
+	margin-top: 9px;
+	justify-content: space-between;
+}
+.email{
+	display: flex;
+	justify-content: space-between;
+}
+.sign-out{
+	display: flex;
+	margin: 20px;
+	padding: 1px;
+}
+
+body.settings{
+
+	main{
+			.menu-profile{
+		display: flex;
+		justify-content: center;
+		margin-top: -2.5em;
+
+		img{
+			height: 5em;
+			width: 5em;
+			border: 3px solid $beige;
+                    border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    -moz-border-radius: 50%;
+		}
+	}
+	}
+
+	.wrapper-beige{
+		padding:0;
+	}
+
+	.wrapper-gradient-rosa-yellow{
+		padding-bottom: 2.5rem;
+		padding-top: 1rem;
+	}
+
+	.login-hero{
+		min-height: 20vh;
+		margin-bottom: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		align-content: center;
+
+
+		*{
+			padding-bottom: 0.750rem;
+
+		} 
+
+		p{
+			color: $beige;
+		}
+		h4{
+			color:$teal;
+			
+		}
+	}
+
+
+
+
+.signup-form{
+	
+	padding: 2rem 0 0 0;
+	background-color: $beige;
+	border-radius: 2px;	
+	
+
+	.form-fix{
+		margin-bottom: 2em;
+	
+		> div{
+			margin-bottom: 0.5em;
+			display: flex;
+			flex-direction: row;
+			border-bottom: 1px solid $teal-b3;
+			padding: 0 1em 0.500em 1em;
+			
+
+			i{
+				cursor: default;
+				color: $teal-b3;
+				min-width: 1.5em;
+			}
+
+
+			> input{
+				width: 100%;
+				background-color: $beige;
+				
+				border:0;
+
+				 &:not(.submit){
+				 	
+					color: $teal;
+					margin-bottom: 0;
+				}
+
+				 &:invalid {
+				 	 box-shadow: none;
+				}
+
+
+			}
+
+			&:last-of-type{
+				margin-bottom: 0;
+			}
+
+			>div{
+				align-items:  center;
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+			}
+
+	
+		}
+
+		a{
+			color: $rosa;
+		}
+
+
+	}
+
+	.signup-button-fix{
+		padding: 0 1em 1em 1em;
+		overflow: hidden;
+
+		
+		.button{
+				width: auto;
+				border: medium none;
+			    border-radius: 2px;
+			    color: $teal;
+			    padding: 0 1em;
+			    line-height: 2.5em;
+
+			     background: $yellow; /* Old browsers */
+                              background: -moz-linear-gradient(left, $yellow 0%, $rosa 98%); /* FF3.6-15 */
+                            background: -webkit-linear-gradient(left, $yellow 0%,$rosa 98%); /* Chrome10-25,Safari5.1-6 */
+                              background: linear-gradient(to right, $yellow 0%,$rosa 98%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$yellow', endColorstr='$rosa',GradientType=1 ); /* IE6-9 */
+		}
+
+	}
+
+	select{
+		background-color: $beige;
+		border:1px solid $teal-b3;
+		color: $azur;
+	}
+
+	option{
+
+		height: 2em;
+		width: 4em;
+
+	}
+
+
+	
+
+
+}
+
+/* TOGGLE */
+
+.tg-list {
+	text-align: center;
+	display: flex;
+	align-items: center;
+}
+
+.tg-list-item {
+	margin: 0;
+}
+
+
+.tgl {
+	display: none;
+  
+	// add default box-sizing for this scope
+	&,
+  &:after,
+  &:before,
+	& *,
+  & *:after,
+  & *:before,
+	& + .tgl-btn {
+		box-sizing: border-box;
+		&::selection {
+			background: none;
+		}
+	}
+  
+	+ .tgl-btn {
+		outline: 0;
+		display: block;
+		width: 4em;
+		height: 2em;
+		position: relative;
+		cursor: pointer;
+    user-select: none;
+		&:after,
+    &:before {
+			position: relative;
+			display: block;
+			content: "";
+			width: 50%;
+			height: 100%;
+		}
+    
+		&:after {
+			left: 0;
+		}
+    
+		&:before {
+			display: none;
+		}
+	}
+  
+	&:checked + .tgl-btn:after {
+		left: 50%;
+	}
+}
+
+// themes
+.tgl-light {
+	+ .tgl-btn {
+		background: $teal-b3;
+		border-radius: 2em;
+		padding: 2px;
+		transition: all .4s ease;
+		&:after {
+			border-radius: 50%;
+			background: $beige;
+			transition: all .2s ease;
+		}
+	}
+  
+	&:checked + .tgl-btn {
+		background: $azur;
+	}
+}
+
+
+
+
+
+}

@@ -10,7 +10,7 @@ class Rest_lib
     }
 
     // check request method
-    public function method($allowed_method = 'GET') // set default value to get
+    public function http_method($allowed_method = 'GET') // set default value to get
     {
         // Validate
         if(!isset($_SERVER['REQUEST_METHOD']) // if not set

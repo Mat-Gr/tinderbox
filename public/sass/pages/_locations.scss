@@ -1,0 +1,11 @@
+body.locations{
+
+	main.content{
+		    $a: 100vh;
+		    $b: 5em; //tb-colors height + tb-colors margin
+		    height: -webkit-calc(#{$a} - #{$b});
+		    height:    -moz-calc(#{$a} - #{$b});
+		    height:         calc(#{$a} - #{$b});
+
+	}
+}

@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 01, 2016 at 11:36 PM
+-- Generation Time: Dec 05, 2016 at 08:39 PM
 -- Server version: 5.7.16-0ubuntu0.16.04.1
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tinderbox`
+-- Database: `opbwu16eintg8_my_eal_dk`
 --
 
 -- --------------------------------------------------------
@@ -86,7 +86,55 @@ INSERT INTO `schedule` (`u_id`, `si_id`) VALUES
 (3, 2),
 (3, 3),
 (3, 4),
-(3, 5);
+(3, 5),
+(3, 6),
+(3, 7),
+(3, 8),
+(3, 9),
+(3, 10),
+(3, 11),
+(3, 12),
+(3, 13),
+(3, 14),
+(3, 15),
+(3, 16),
+(3, 17),
+(3, 18),
+(3, 19),
+(3, 20),
+(3, 21),
+(3, 22),
+(3, 23),
+(3, 24),
+(3, 25),
+(3, 26),
+(3, 27),
+(3, 28),
+(3, 29),
+(3, 30),
+(3, 31),
+(3, 32),
+(3, 33),
+(3, 34),
+(3, 35),
+(3, 36),
+(3, 37),
+(3, 38),
+(3, 39),
+(3, 40),
+(3, 41),
+(3, 42),
+(3, 43),
+(3, 44),
+(3, 45),
+(3, 46),
+(3, 47),
+(3, 48),
+(3, 49),
+(3, 50),
+(3, 51),
+(3, 52),
+(3, 53);
 
 -- --------------------------------------------------------
 
@@ -108,11 +156,59 @@ CREATE TABLE `schedule_item` (
 --
 
 INSERT INTO `schedule_item` (`si_id`, `t_id`, `task`, `start`, `end`, `location`) VALUES
-(1, 2, 'SCRUM meeting', '2016-12-01 06:00:00', '2016-12-01 23:59:00', 'social media office'),
-(2, 2, 'SCRUM meeting', '2016-12-02 06:00:00', '2016-12-02 07:00:00', 'social media office'),
-(3, 2, 'SCRUM meeting', '2016-12-03 06:00:00', '2016-12-03 07:00:00', 'social media office'),
-(4, 2, 'SCRUM meeting', '2016-12-04 06:00:00', '2016-12-04 07:00:00', 'social media office'),
-(5, 2, 'SCRUM meeting', '2016-12-05 06:00:00', '2016-12-05 07:00:00', 'social media office');
+(1, 2, 'SCRUM meeting', '2016-12-05 06:00:00', '2016-12-05 23:59:00', 'social media office'),
+(2, 2, 'SCRUM meeting', '2016-12-06 06:00:00', '2016-12-06 07:00:00', 'social media office'),
+(3, 2, 'SCRUM meeting', '2016-12-07 06:00:00', '2016-12-07 07:00:00', 'social media office'),
+(4, 2, 'SCRUM meeting', '2016-12-08 06:00:00', '2016-12-08 07:00:00', 'social media office'),
+(5, 2, 'SCRUM meeting', '2016-12-09 06:00:00', '2016-12-09 07:00:00', 'social media office'),
+(6, 2, 'SCRUM meeting', '2016-12-10 06:00:00', '2016-12-10 23:59:00', 'social media office'),
+(7, 2, 'SCRUM meeting', '2016-12-11 06:00:00', '2016-12-11 07:00:00', 'social media office'),
+(8, 2, 'SCRUM meeting', '2016-12-12 06:00:00', '2016-12-12 07:00:00', 'social media office'),
+(9, 2, 'SCRUM meeting', '2016-12-13 06:00:00', '2016-12-13 07:00:00', 'social media office'),
+(10, 2, 'SCRUM meeting', '2016-12-14 06:00:00', '2016-12-14 07:00:00', 'social media office'),
+(11, 2, 'SCRUM meeting', '2016-12-15 06:00:00', '2016-12-15 23:59:00', 'social media office'),
+(12, 2, 'SCRUM meeting', '2016-12-16 06:00:00', '2016-12-16 07:00:00', 'social media office'),
+(13, 2, 'SCRUM meeting', '2016-12-17 06:00:00', '2016-12-17 07:00:00', 'social media office'),
+(14, 2, 'SCRUM meeting', '2016-12-18 06:00:00', '2016-12-18 07:00:00', 'social media office'),
+(15, 2, 'SCRUM meeting', '2016-12-19 06:00:00', '2016-12-19 07:00:00', 'social media office'),
+(16, 2, 'SCRUM meeting', '2016-12-20 06:00:00', '2016-12-20 23:59:00', 'social media office'),
+(17, 2, 'SCRUM meeting', '2016-12-21 06:00:00', '2016-12-21 07:00:00', 'social media office'),
+(18, 2, 'SCRUM meeting', '2016-12-22 06:00:00', '2016-12-22 07:00:00', 'social media office'),
+(19, 2, 'SCRUM meeting', '2016-12-23 06:00:00', '2016-12-23 07:00:00', 'social media office'),
+(20, 2, 'SCRUM meeting', '2016-12-24 06:00:00', '2016-12-24 07:00:00', 'social media office'),
+(21, 2, 'SCRUM meeting', '2016-12-25 06:00:00', '2016-12-25 23:59:00', 'social media office'),
+(22, 2, 'SCRUM meeting', '2016-12-26 06:00:00', '2016-12-26 07:00:00', 'social media office'),
+(23, 2, 'SCRUM meeting', '2016-12-27 06:00:00', '2016-12-27 07:00:00', 'social media office'),
+(24, 2, 'SCRUM meeting', '2016-12-28 06:00:00', '2016-12-28 07:00:00', 'social media office'),
+(25, 2, 'SCRUM meeting', '2016-12-29 06:00:00', '2016-12-29 07:00:00', 'social media office'),
+(26, 2, 'SCRUM meeting', '2016-12-30 06:00:00', '2016-12-30 23:59:00', 'social media office'),
+(27, 2, 'SCRUM meeting', '2016-12-31 06:00:00', '2016-12-31 07:00:00', 'social media office'),
+(28, 2, 'SCRUM meeting', '2017-01-01 06:00:00', '2017-01-01 07:00:00', 'social media office'),
+(29, 2, 'SCRUM meeting', '2017-01-02 06:00:00', '2017-01-02 07:00:00', 'social media office'),
+(30, 2, 'SCRUM meeting', '2017-01-03 06:00:00', '2017-01-03 07:00:00', 'social media office'),
+(31, 2, 'SCRUM meeting', '2017-01-04 06:00:00', '2017-01-04 23:59:00', 'social media office'),
+(32, 2, 'SCRUM meeting', '2017-01-05 06:00:00', '2017-01-05 07:00:00', 'social media office'),
+(33, 2, 'SCRUM meeting', '2017-01-06 06:00:00', '2017-01-06 07:00:00', 'social media office'),
+(34, 2, 'SCRUM meeting', '2017-01-07 06:00:00', '2017-01-07 07:00:00', 'social media office'),
+(35, 2, 'SCRUM meeting', '2017-01-08 06:00:00', '2017-01-08 07:00:00', 'social media office'),
+(36, 2, 'SCRUM meeting', '2017-01-09 06:00:00', '2017-01-09 23:59:00', 'social media office'),
+(37, 2, 'SCRUM meeting', '2017-01-10 06:00:00', '2017-01-10 07:00:00', 'social media office'),
+(38, 2, 'SCRUM meeting', '2017-01-11 06:00:00', '2017-01-11 07:00:00', 'social media office'),
+(39, 2, 'SCRUM meeting', '2017-01-12 06:00:00', '2017-01-12 07:00:00', 'social media office'),
+(40, 2, 'SCRUM meeting', '2017-01-13 06:00:00', '2017-01-13 07:00:00', 'social media office'),
+(41, 2, 'SCRUM meeting', '2017-01-14 06:00:00', '2017-01-14 07:00:00', 'social media office'),
+(42, 2, 'SCRUM meeting', '2017-01-15 06:00:00', '2017-01-15 07:00:00', 'social media office'),
+(43, 2, 'SCRUM meeting', '2017-01-16 06:00:00', '2017-01-16 07:00:00', 'social media office'),
+(44, 2, 'SCRUM meeting', '2017-01-17 06:00:00', '2017-01-17 23:59:00', 'social media office'),
+(45, 2, 'SCRUM meeting', '2017-01-18 06:00:00', '2017-01-18 07:00:00', 'social media office'),
+(46, 2, 'SCRUM meeting', '2017-01-19 06:00:00', '2017-01-19 07:00:00', 'social media office'),
+(47, 2, 'SCRUM meeting', '2017-01-20 06:00:00', '2017-01-20 07:00:00', 'social media office'),
+(48, 2, 'SCRUM meeting', '2017-01-21 06:00:00', '2017-01-21 07:00:00', 'social media office'),
+(49, 2, 'SCRUM meeting', '2017-01-22 06:00:00', '2017-01-22 23:59:00', 'social media office'),
+(50, 2, 'SCRUM meeting', '2017-01-23 06:00:00', '2017-01-23 07:00:00', 'social media office'),
+(51, 2, 'SCRUM meeting', '2017-01-24 06:00:00', '2017-01-24 07:00:00', 'social media office'),
+(52, 2, 'SCRUM meeting', '2017-01-25 06:00:00', '2017-01-25 07:00:00', 'social media office'),
+(53, 2, 'SCRUM meeting', '2017-01-26 06:00:00', '2017-01-26 07:00:00', 'social media office');
 
 -- --------------------------------------------------------
 
@@ -158,7 +254,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`u_id`, `t_id`, `r_id`, `fname`, `lname`, `email`, `password`, `birthdate`, `phone`, `shirt_size`, `shoe_size`) VALUES
-(1, 1, 3, 'John', 'Doe', 'john@doe.com', '$2y$10$0X21pVdIxeol6Goh2lX/o.kDSHdIrPtMvb4SnZHnnqd2nXCfQB7Em', '1969-06-06', '12345678', 'l', '42'),
+(1, 1, 3, 'John', 'Doe', 'john@doe.com', '$2y$10$4bs64O7ZWUgD8Snz35BNF.JZEdhLcM9FZPHcx8uhVob/ZvcTUtj7a', '1969-06-06', '12345678', 'm', '42'),
 (2, 2, 1, 'Jane', 'Doe', 'jane@doe.com', '$2y$10$RhmjZSGObPyJkOY0xAAmuOsFP9s5eKjJ1iHwSuLje0c1A7nkBz9Hy', '1975-08-12', '87654321', 'm', '39'),
 (3, 2, 2, 'Jon', 'Snow', 'jon@snow.com', '$2y$10$slz7mD9iyrQLoRU0aenwwO4yHFvHAtwHvetMrcORU.59VnW36GJiy', '1955-03-27', '12348765', 'xl', '45');
 
@@ -241,7 +337,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `schedule_item`
 --
 ALTER TABLE `schedule_item`
-  MODIFY `si_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `si_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 --
 -- AUTO_INCREMENT for table `team`
 --
@@ -251,7 +347,7 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

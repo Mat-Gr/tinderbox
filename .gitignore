@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .DS_Store
 
 application/cache/*
@@ -25,3 +26,12 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.stTheme.cache
 *.sublime-workspace
 *.sublime-project
+=======
+/build/OpenLayers.js
+/tools/closure-compiler.jar
+/tools/*.pyc
+/apidoc_config/Data/
+/doc/apidocs/
+/examples/example-list.js
+/examples/example-list.xml
+>>>>>>> Frontend

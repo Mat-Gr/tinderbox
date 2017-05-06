@@ -1,0 +1,138 @@
+
+
+
+.signup-hero{
+	min-height: 25vh;
+	margin-bottom: 2rem;
+
+	h4{
+		color: beige;
+	}
+
+	h3{
+		color: $rosa;
+
+		span{
+			color: $teal;
+		}
+	}
+
+	.login-main-logo{
+		height: 1.875rem;
+	}
+
+}
+body.signup{
+
+.signup-form{
+	margin-top: -2rem;
+	padding: 2rem 2rem 0 2rem;
+	background-color: $beige;
+	border-radius: 2px;	
+	
+
+	.form-fix{
+		margin-bottom: 2em;
+	
+		> div{
+			margin-bottom: 2em;
+			display: flex;
+			flex-direction: row;
+			border-bottom: 1px solid $teal-b3;
+			padding-bottom: 0.500em;
+
+			i{
+				cursor: default;
+				text-align: center;
+				padding-left: 0.850em;
+				color: $teal-b3;
+				min-width: 2em;
+			}
+
+
+			> input{
+				width: 100%;
+				background-color: $beige;
+				padding: 0 0.850em;
+				border:0;
+
+				 &:not(.submit){
+				 	
+					color: $teal;
+					margin-bottom: 0;
+				}
+
+				 &:invalid {
+				 	 box-shadow: none;
+				}
+
+
+			}
+
+			&:last-of-type{
+				margin-bottom: 0;
+			}
+
+	
+		}
+
+
+	}
+
+	.signup-button-fix{
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+
+
+		
+		.button{
+				width: auto;
+				border: medium none;
+			    border-radius: 2px;
+			    color: $teal;
+			    padding: 0 1em;
+			    line-height: 2.5em;
+
+
+
+			     background: $yellow; /* Old browsers */
+                              background: -moz-linear-gradient(left, $yellow 0%, $rosa 98%); /* FF3.6-15 */
+                            background: -webkit-linear-gradient(left, $yellow 0%,$rosa 98%); /* Chrome10-25,Safari5.1-6 */
+                              background: linear-gradient(to right, $yellow 0%,$rosa 98%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$yellow', endColorstr='$rosa',GradientType=1 ); /* IE6-9 */
+		}
+
+	}
+
+	.option{
+		width: 100%;
+		display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			padding-left: 0.75em;
+			color: $teal-b2;
+
+
+
+					select{
+							background-color: $beige;
+							border:1px solid $teal-b3;
+							color: $azur;
+						}
+
+						option{
+
+							width: 4em;
+
+						}
+	}
+
+
+
+
+
+}
+
+}

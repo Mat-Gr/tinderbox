@@ -1,13 +1,125 @@
 <!-- html template for login and signup pages -->
+<!--
+##        #######   ######   #### ##    ##
+##       ##     ## ##    ##   ##  ###   ##
+##       ##     ## ##         ##  ####  ##
+##       ##     ## ##   ####  ##  ## ## ##
+##       ##     ## ##    ##   ##  ##  ####
+##       ##     ## ##    ##   ##  ##   ###
+########  #######   ######   #### ##    ##
+ -->
 <script id="login_template" type="text/x-handlebars-template">
-    <h1>Login page</h1>
-    <form method="post" id="login_form">
-        <div><label>Email</label><input id="email" type="text" name="email"></div>
-        <div><label>Password</label><input id="password" type="password" name="password"></div>
-        <input type="submit">
-    </form>
-</script>
+    <div class=tb-colors>
+        <div class="color-gradient">&nbsp;</div>
+    </div>
 
+    <div class="wrapper login-fix">
+    <div>
+        <header class='login-hero'>
+            <h4>Welcome to</h4>
+            <object class="login-main-logo" id="logo" type="image/svg+xml" data="public/imgs/tinderbox-logo.svg">Your browser does not support SVGs</object>
+            <h2>Volunteer app</h2>
+        </header>
+
+        <main>
+            <form id="login_form" method="post">
+                <div>
+                    <input type="email" name="email" id="email" placeholder="Email address" required>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                    <a href="#">Forgot your password?</a>
+                </div>
+                <input type="submit" value="SIGN IN" class="submit">
+            </form>
+        </main>
+        </div>
+        <footer>
+            <p>Don't have an account?&nbsp;</p>
+            <a href="#signup">Register</a>
+        </footer>
+    </div>
+</script>
+<!--
+ ######  ####  ######   ##    ## ##     ## ########
+##    ##  ##  ##    ##  ###   ## ##     ## ##     ##
+##        ##  ##        ####  ## ##     ## ##     ##
+ ######   ##  ##   #### ## ## ## ##     ## ########
+      ##  ##  ##    ##  ##  #### ##     ## ##
+##    ##  ##  ##    ##  ##   ### ##     ## ##
+ ######  ####  ######   ##    ##  #######  ##
+ -->
 <script id="signup_template" type="text/x-handlebars-template">
-    <h1>Signup page</h1>
+    <div class="wrapper wrapper-color">
+        <header class='login-hero signup-hero'>
+            <h4 class="large-p">Sign Up</h4>
+            <object class="login-main-logo" id="logo" type="image/svg+xml" data="public/imgs/tinderbox-logo.svg">Your browser does not support SVGs</object>
+            <h3>22nd - 24th June 2017 <span class="slash">/</span> Odense</h3>
+        </header>
+    </div>
+    <main class="content">
+        <div class="wrapper wrapper-beige">
+            <div class="signup-form">
+                <form id="signup_form" method="post">
+                    <div class="form-fix">
+                        <div>
+                            <i class="fa fa-user menu-icon" aria-hidden="true"></i>
+                            <input type="text" name="fname" id="fname" placeholder="First Name" required>
+                        </div>
+                        <div>
+                            <i class="fa fa-user menu-icon" aria-hidden="true"></i>
+                            <input type="text" name="lname" id="lname" placeholder="Last Name" required>
+                        </div>
+                        <div>
+                            <i class="fa fa-envelope-o menu-icon" aria-hidden="true"></i>
+                            <input type="email" name="email" id="email" placeholder="Email address" required>
+                        </div>
+                        <div>
+                            <i class="fa fa-phone menu-icon" aria-hidden="true"></i>
+                            <input type="number" name="phone" id="phone" placeholder="Phone Number" required>
+                        </div>
+                        <div>
+                            <i class="fa fa-calendar-o menu-icon" aria-hidden="true"></i>
+                            <input type="text" name="birthdate" id="birthdate" placeholder="Date of Birth dd/mm/yyyy" required>
+                        </div>
+                        <div>
+                            <i class="fa fa-unlock-alt menu-icon" aria-hidden="true"></i>
+                            <input type="password" name="password" id="password" placeholder="Password" required>
+                        </div>
+                        <div>
+                            <i class="fa fa-user menu-icon" aria-hidden="true"></i>
+
+                            <div class="option">
+                                    <p>Shirt size</p>
+                                               <select id="shirt_size">
+                                                  <option value="s">S</option>
+                                                  <option value="m">M</option>
+                                                  <option value="l">L</option>
+                                                  <option value="xl">XL</option>
+                                                </select>
+                                </div>
+                        </div>
+                        <div>
+                            <i class="fa fa-envelope-o menu-icon" aria-hidden="true"></i>
+                            <div class="option">
+                                    <p>Shoe size</p>
+                                               <select id="shoe_size">
+                                                  <option value="37">37</option>
+                                                  <option value="38">38</option>
+                                                  <option value="39">39</option>
+                                                  <option value="40">40</option>
+                                                  <option value="41">41</option>
+                                                  <option value="42">42</option>
+                                                  <option value="43">43</option>
+                                                  <option value="44">44</option>
+                                                  <option value="45">45</option>
+                                                </select>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="signup-button-fix">
+                        <a><input type="submit" value="Sign Up" class="button h3"></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
 </script>
