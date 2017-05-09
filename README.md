@@ -8,7 +8,7 @@ A demo of this project can be [seen here.](http://opbwu16eintg8.my.eal.dk/)
 The API for this project was created using the Codeigniter PHP framework, and a MySQL database.
 It partially follows the RESTful style of WEB API's, using HTTP as it's protocol, and JSON as the format for data transfer.
 ### Overview of the API
-Requests to the API can be made at the following URL, with an appended endpoint: **opbwu16eintg8.my.eal.dk/app**
+Requests to the API can be made at the following URL, with an appended endpoint: `opbwu16eintg8.my.eal.dk/app`
 
 Endpoint | Accepted HTTP method | Requires Authenthication | Functionality |
 --- | --- | --- | ---
