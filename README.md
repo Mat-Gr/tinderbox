@@ -21,7 +21,7 @@ Endpoint | Accepted HTTP method | Requires Authenthication | Functionality |
 
 ## Frontend
 The frontend was developed mainly with jQuery for functionality and SASS for styling.
-The web app also uses a web app manifest best on [google's guidelines](https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/), to allow the app to be added to the home screen on mobile devices, and generally create a more native app feel.
+The web app also uses a web app manifest based on [google's guidelines](https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/), to allow the app to be added to the home screen on mobile devices, and generally create a more native app feel.
 This has also been achieved by using AJAX, which allowed for loading page content without browser refresh.
 Here are a few screenshots of the finnished product:
 
